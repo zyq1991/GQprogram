@@ -1,0 +1,12 @@
+<!--pages/question-page/question-page.wxml-->
+<view class="container">
+  <view>
+    <text>{{text}}</text>
+  </view>
+  <view>
+
+  </view>
+  <view>
+    <button>下一题</button>
+  </view>
+</view>

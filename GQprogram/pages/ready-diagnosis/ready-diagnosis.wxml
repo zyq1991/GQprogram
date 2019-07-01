@@ -1,0 +1,27 @@
+<!--pages/ready-diagnosis/ready-diagnosis.wxml-->
+<view class="container">
+  <view class="bg">
+    <image src="/assets/image/ready-background.png" class="bg-image"></image>
+    <image src="/assets/image/banner.png" class="liner-image"></image>
+    <image src="/assets/image/blue-big.png" class="big-ball"></image>
+    <image src="/assets/image/earth.png" class="middle-ball"></image>
+    <image src="/assets/image/small-ball.png" class="small-ball"></image>
+  </view>
+
+  <view class="intro">
+    <view class="intro-text">
+    <text>{{text}}</text>
+      <!-- <text>
+  1.诊断过程中约有10到15题
+  </text>
+      <text>
+  2.约需时间15分钟
+  </text>
+      <text>
+  3.请坚持完成
+  </text> -->
+    </view>
+
+    <button bindtap="start">开始诊断</button>
+  </view>
+</view>

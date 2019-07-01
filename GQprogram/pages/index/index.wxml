@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view class="container">
+ <image src="/assets/image/transition.png" style="height:100%;width:100%;"></image>
+</view>
