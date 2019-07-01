@@ -4,7 +4,10 @@
     <text>{{text}}</text>
   </view>
   <view>
-
+<button>下一题</button>
+<button>下一题</button>
+<button>下一题</button>
+<button>下一题</button>
   </view>
   <view>
     <button>下一题</button>
