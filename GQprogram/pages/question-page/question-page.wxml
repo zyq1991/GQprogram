@@ -1,12 +1,27 @@
-<!--pages/question-page/question-page.wxml-->
+<!-- pages/question-page/question-page.wxml -->
 <view class="container">
-  <view>
+  <view class="question">
     <text>{{text}}</text>
   </view>
   <view>
-<button>下一题333</button>
-<button>下一题666</button>
+    <view class="option-item">
+      <view class="option">A</view>
+      <view class="option-content">a=5,b=4,c=3,d=2</view>
+    </view>
+    <view class="option-item">
+      <view class="option">B</view>
+      <view class="option-content">a=5,b=4,c=3,d=2</view>
+    </view>
+    <view class="option-item">
+      <view class="option">C</view>
+      <view class="option-content">a=5,b=4,c=3,d=2</view>
+    </view>
+    <view class="option-item">
+      <view class="option">D</view>
+      <view class="option-content">a=5,b=4,c=3,d=2</view>
+    </view>
   </view>
+
   <view>
     <button>下一题</button>
   </view>
