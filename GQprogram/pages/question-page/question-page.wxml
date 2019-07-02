@@ -1,5 +1,5 @@
 <!-- pages/question-page/question-page.wxml -->
-<view class="container">
+<button class="container">
   <view class="question">
     <text>{{text}}</text>
   </view>
@@ -22,7 +22,7 @@
     </view>
   </view>
 
-  <view>
+  <button>
     <button>下一题</button>
-  </view>
-</view>
+  </button>
+</button>
