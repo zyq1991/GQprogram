@@ -22,7 +22,7 @@
     </view>
   </view>
 
-  <view>
-    <button>下一题</button>
+  <view class="next-btn">
+    <button class="btn">下一题</button>
   </view>
 </view>
