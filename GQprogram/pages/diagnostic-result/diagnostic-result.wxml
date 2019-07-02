@@ -1,0 +1,68 @@
+<!--pages/diagnostic-result/diagnostic-result.wxml-->
+<view>
+  <view class="card">
+    <text class="card-title">已掌握</text>
+    <view class="card-content">
+      <view class="content-item">
+        <image></image>
+        <text>求解一般函数的梯度一般函数的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>求解空间几何的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>求解一般概率与统计概率与统计一般的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>求解数学建模的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>预备知识</text>
+      </view>
+    </view>
+  </view>
+  <view>
+    <text>未掌握</text>
+    <view>
+      <view>
+        <image></image>
+        <text>求解一般函数的梯度一般函数的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>求解空间几何的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>求解一般概率与统计概率与统计一般的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>求解数学建模的梯度</text>
+      </view>
+      <view>
+        <image></image>
+        <text>预备知识</text>
+      </view>
+    </view>
+  </view>
+  <view>
+    <text>将要学习</text>
+    <view>
+      <view>
+        <image></image>
+        <text>求解一般函数的梯度一般函数的梯度</text>
+      </view>
+    </view>
+  </view>
+  <view>
+    <text>接下来将基于您的知识薄弱项进行学习，每个知识点的学习时间约为5到15分钟。</text>
+  </view>
+  <view>
+    <button>开始学习</button>
+  </view>
+</view>

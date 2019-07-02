@@ -1,0 +1,50 @@
+/* pages/fill-blanks-test-page/fill-blanks-test-page.wxss */
+page {
+    background: #f1f4f8;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    position: relative;
+}
+
+.question {
+    margin: 30rpx;
+    padding: 0;
+}
+
+.question text {
+    width: 100%;
+    color: #393939;
+    font-size: 32rpx;
+}
+
+.next-btn {
+    width: 100%;
+    position: absolute;
+    bottom: 20rpx;
+}
+
+.btn {
+    margin: 0 40rpx;
+    border-radius: 50rpx;
+    background: #5297FF;
+    border: none;
+    color: #fff;
+}
+.content{
+  width:100%;
+  height:76rpx;
+}
+.content input{
+  margin:0 50rpx;
+  height:100%;
+  background:#fff;
+  border:4rpx solid #5297FF;
+  border-radius: 20rpx;
+  padding:10rpx 20rpx;
+}

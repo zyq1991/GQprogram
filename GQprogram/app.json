@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/ready-diagnosis/ready-diagnosis",
-    "pages/question-page/question-page"
+    "pages/question-page/question-page",
+    "pages/fill-blanks-test-page/fill-blanks-test-page",
+    "pages/diagnostic-result/diagnostic-result"
   ],
   "window": {
     "backgroundTextStyle": "light",

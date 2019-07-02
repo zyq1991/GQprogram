@@ -4,9 +4,9 @@
     <text>{{text}}</text>
   </view>
   <view>
-    <view class="option-item">
-      <view class="option">A</view>
-      <view class="option-content">a=5,b=4,c=3,d=2</view>
+    <view class="option-item" bindtap="checked">
+      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">A</view>
+      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">a=5,b=4,c=3,d=2</view>
     </view>
     <view class="option-item">
       <view class="option">B</view>
@@ -21,8 +21,13 @@
       <view class="option-content">a=5,b=4,c=3,d=2</view>
     </view>
   </view>
-
+  <!-- <view class="pic-option">
+    <view class="pic-item">
+      <image></image>
+      <button>A</button>
+    </view>
+  </view> -->
   <view class="next-btn">
-    <button class="btn">下一题</button>
+    <button class="btn" bindtap="next">下一题</button>
   </view>
 </view>
