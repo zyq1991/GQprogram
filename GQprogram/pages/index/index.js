@@ -3,11 +3,12 @@
 const app = getApp()
 
 Page({
-  onLoad: function () {
-      wx.navigateTo({
-        url: '../ready-diagnosis/ready-diagnosis'
+  onLoad: function() {
+    wx.navigateTo({
+      // url: '../ready-diagnosis/ready-diagnosis'
+      url: '../comment-detail/comment-detail'
     })
-    
+
   },
 
 })

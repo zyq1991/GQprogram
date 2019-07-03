@@ -1,4 +1,4 @@
-/* pages/diagnostic-result/diagnostic-result.wxss */
+/* pages/learning-summary/learning-summary.wxss */
 
 page {
   width: 100%;
@@ -46,26 +46,8 @@ page {
   width: 400rpx;
 }
 
-.content-item text.content-jyxx {
-  color: #5297ff;
-}
-
-.tips {
-  margin: 20rpx 30rpx 80rpx;
-  color: #393939;
-  font-size: 24rpx;
-}
-
-.start-btn {
-  margin: 20rpx 30rpx;
-}
-
-.start-btn button {
-  width:100%;
-  border-radius: 44rpx;
+.to-rest {
   color: #fff;
-  background: #5297ff;
-  padding:0;
-  font-size: 36rpx;
-  height:88rpx;
+  font-size: 26rpx;
+  margin: 40rpx;
 }
