@@ -1,2 +1,32 @@
 <!--pages/comment-detail/comment-detail.wxml-->
-<text>pages/comment-detail/comment-detail.wxml</text>
+<view class="container">
+  <view class="comment-detail">
+    <view class="avatar">
+      <image src="/assets/image/ico_dz_bor.png"></image>
+    </view>
+    <view class="detail">
+      <view class="comment-top">
+        <view class="name">{{name}}</view>
+        <view class="dz">
+          <image src="/assets/image/ico_dz_bor.png"></image>
+          <text>{{count}}</text>
+        </view>
+      </view>
+      <view class="comment">
+        <text class="inner"></text>
+        <text>{{comment}}</text>
+      </view>
+    </view>
+
+  </view>
+  <view class="input-comment">
+    <view class="ipt">
+      <image src="/assets/image/ico_pl.png"></image>
+      <input placeholder="写评论..."></input>
+    </view>
+    <image src="/assets/image/ico_dz_bor.png"></image>
+    <view>
+      <image src="/assets/image/ico_msg.pngico"></image>
+    </view>
+  </view>
+</view>

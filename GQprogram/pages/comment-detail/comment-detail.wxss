@@ -1,1 +1,98 @@
 /* pages/comment-detail/comment-detail.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 30rpx;
+}
+
+.comment-detail {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.input-comment {
+  width: 100%;
+  height: 98rpx;
+  position: absolute;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-detail .avatar {
+  width: 10%;
+  margin-right: 30rpx;
+}
+
+.detail {
+  width: 90%;
+}
+
+.comment-detail .avatar image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.comment-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dz {
+  display: flex;
+  line-height: 26rpx;
+}
+
+.dz image {
+  width: 30rpx;
+  height: 28rpx;
+  margin-right: 12rpx;
+  vertical-align: middle;
+}
+
+.dz text {
+  font-size: 26rpx;
+  color: #393939;
+}
+
+.name {
+  color: #6c6f71;
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.comment text {
+  font-size: 28rpx;
+  color: #393939;
+  padding: 14rpx 32rpx;
+  background: #eceff2;
+  border-radius: 20rpx;
+  position: relative;
+  z-index: 100;
+}
+
+.comment {
+  position: relative;
+}
+
+.comment .inner {
+  background-color: #eceff2;
+  padding: 0;
+  width: 18rpx;
+  height: 18rpx;
+  position: absolute;
+  left: -10rpx;
+  top: 20rpx;
+  transform: rotate(45deg);
+  border-radius: 0;
+}
