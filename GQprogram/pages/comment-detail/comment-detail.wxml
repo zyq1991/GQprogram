@@ -21,12 +21,12 @@
   </view>
   <view class="input-comment">
     <view class="ipt">
-      <image src="/assets/image/ico_pl.png"></image>
+      <image src="/assets/image/ico_pl.png" class="pl-image"></image>
       <input placeholder="写评论..."></input>
     </view>
-    <image src="/assets/image/ico_dz_bor.png"></image>
-    <view>
-      <image src="/assets/image/ico_msg.pngico"></image>
+    <image src="/assets/image/ico_dz_bor.png" class="dz-image"></image>
+    <view class="msg-image">
+      <image src="/assets/image/ico_msg.png"></image>
     </view>
   </view>
 </view>

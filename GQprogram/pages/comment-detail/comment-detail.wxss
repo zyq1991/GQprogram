@@ -19,7 +19,7 @@ page {
 }
 
 .input-comment {
-  width: 100%;
+  width: 90%;
   height: 98rpx;
   position: absolute;
   bottom: 0;
@@ -95,4 +95,39 @@ page {
   top: 20rpx;
   transform: rotate(45deg);
   border-radius: 0;
+}
+
+.ipt {
+  position: relative;
+  width: 80%;
+}
+
+.ipt .pl-image {
+  position: absolute;
+  left: 18rpx;
+  top: 24rpx;
+  width: 30rpx;
+  height: 32rpx;
+  vertical-align: bottom;
+}
+
+.ipt input {
+  left: 40rpx;
+  border: 2rpx solid #909192;
+  padding: 12rpx 12rpx 12rpx 60rpx;
+}
+
+.dz-image {
+  width: 44rpx;
+  height: 46rpx;
+}
+
+.msg-image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.msg-image image {
+  width: 46rpx;
+  height: 44rpx;
 }
