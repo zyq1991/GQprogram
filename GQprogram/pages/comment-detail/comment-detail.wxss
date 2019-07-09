@@ -21,6 +21,7 @@ page {
 .input-comment {
   width: 90%;
   height: 98rpx;
+  line-height: 98rpx;
   position: absolute;
   bottom: 0;
   z-index: 1000;
@@ -99,7 +100,7 @@ page {
 
 .ipt {
   position: relative;
-  width: 80%;
+  width: 75%;
 }
 
 .ipt .pl-image {

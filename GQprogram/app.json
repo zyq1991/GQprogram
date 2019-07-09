@@ -7,12 +7,14 @@
     "pages/diagnostic-result/diagnostic-result",
     "pages/topic-analysis/topic-analysis",
     "pages/learning-summary/learning-summary",
-    "pages/comment-detail/comment-detail"
+    "pages/comment-detail/comment-detail",
+    "pages/component/calculator/calculator",
+    "pages/super/super"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "高考诊断",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
