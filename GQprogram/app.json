@@ -2,12 +2,19 @@
   "pages": [
     "pages/index/index",
     "pages/ready-diagnosis/ready-diagnosis",
-    "pages/question-page/question-page"
+    "pages/question-page/question-page",
+    "pages/fill-blanks-test-page/fill-blanks-test-page",
+    "pages/diagnostic-result/diagnostic-result",
+    "pages/topic-analysis/topic-analysis",
+    "pages/learning-summary/learning-summary",
+    "pages/comment-detail/comment-detail",
+    "pages/component/calculator/calculator",
+    "pages/super/super"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "高考诊断",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
