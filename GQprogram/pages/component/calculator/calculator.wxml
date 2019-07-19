@@ -1,0 +1,31 @@
+<!--pages/calculator.wxml-->
+<view class="calculator">
+  <view class="calculator-row">
+    <button class="calculator-key">+</button>
+    <button class="calculator-key">1</button>
+    <button class="calculator-key">2</button>
+    <button class="calculator-key">3</button>
+    <button class="calculator-key">x</button>
+  </view>
+  <view class="calculator-row">
+    <button class="calculator-key">-</button>
+    <button class="calculator-key">4</button>
+    <button class="calculator-key">5</button>
+    <button class="calculator-key">6</button>
+    <button class="calculator-key">分子</button>
+  </view>
+  <view class="calculator-row">
+    <button class="calculator-key">x</button>
+    <button class="calculator-key">7</button>
+    <button class="calculator-key">8</button>
+    <button class="calculator-key">9</button>
+    <button class="calculator-key">下一行</button>
+  </view>
+  <view class="calculator-row">
+    <button class="calculator-key">+</button>
+    <button class="calculator-key">1</button>
+    <button class="calculator-key">2</button>
+    <button class="calculator-key">3</button>
+    <button class="calculator-key">x</button>
+  </view>
+</view>

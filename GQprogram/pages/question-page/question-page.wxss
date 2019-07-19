@@ -1,52 +1,112 @@
 /* pages/question-page/question-page.wxss */
 
 page {
-    background: #f1f4f8;
-    width:100%;
-    height:100%;
-  }
-  .container{
-    width:100%;
-    height:100%;
-    padding:0;
-  }
-  
-  .question {
-    margin: 30rpx;
-    padding: 0;
-  }
-  
-  .question text {
-    width:100%;
-    color: #393939;
-    font-size: 32rpx;
-  }
-  
-  .option-item {
-    display: flex;
-    height: 100rpx;
-    border-radius: 20px;
-    text-align: center;
-    width: 620rpx;
-    margin: 40rpx 0;
-  }
-  
-  .option {
-    color: #fff;
-    background: #e4e8eb;
-    width: 120rpx;
-    line-height: 100rpx;
-    height: 100%;
-    border-top-left-radius: 20rpx;
-    border-bottom-left-radius: 20rpx;
-  }
-  
-  .option-content {
-    background: #fff;
-    width: 550rpx;
-    height: 100%;
-    line-height: 100rpx;
-    border-top-right-radius: 20rpx;
-    border-bottom-right-radius: 20rpx;
-  }
-  
+  background: #f1f4f8;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.question {
+  margin: 30rpx;
+  padding: 0;
+}
+
+.question text {
+  width: 100%;
+  color: #393939;
+  font-size: 32rpx;
+}
+
+.option-item {
+  display: flex;
+  height: 100rpx;
+  border-radius: 20px;
+  text-align: center;
+  width: 620rpx;
+  margin: 40rpx 0;
+}
+
+.option-checked {
+  background: #5297ff;
+}
+
+.option-content-checked {
+  border-color: #5297ff;
+}
+
+.option {
+  color: #fff;
+  background: #e4e8eb;
+  width: 120rpx;
+  line-height: 100rpx;
+  height: 100%;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+}
+
+.option-content {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  line-height: 100rpx;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}
+
+.next-btn {
+  width: 100%;
+  position: absolute;
+  bottom: 20rpx;
+}
+
+.btn {
+  margin: 0 40rpx;
+  border-radius: 50rpx;
+  background: #5297ff;
+  border: none;
+  color: #fff;
+}
+
+.pic-option {
+  /* display: flex; */
+  width: 100%;
+}
+
+.pic-item {
+  width: 320rpx;
+  height: 320rpx;
+  display: inline-block;
+  background: #fff;
+  margin: 20rpx;
+  position: relative;
+}
+
+.pic-item image {
+  width: 254rpx;
+  height: 220rpx;
+  margin: 20rpx;
+}
+
+.pic-item button {
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-right: 0;
+  background: #e4e8eb;
+  color: #fff;
+  border-top-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  position: absolute;
+  bottom:0;
+  right:0;
+  border:none;
+}

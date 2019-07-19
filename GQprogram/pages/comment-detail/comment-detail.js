@@ -1,14 +1,13 @@
-// pages/ready-diagnosis/ready-diagnosis.js
-import {
-  Get
-} from '../../utils/request.js';
+// pages/comment-detail/comment-detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    text: "1.诊断过程中约有10到15题\n2.约需时间15分钟\n 3.请坚持完成"
+    name: '一念执着',
+    comment: '优秀',
+    count: '12'
   },
 
   /**
@@ -65,16 +64,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-  start() {
-    wx.navigateTo({
-      url: "../question-page/question-page"
-    })
-    // Get("http://39.105.185.44:8090/cp/startcpexam?userId=1").then(res => {
-    //   console.log(res);
-    //   wx.navigateTo({
-    //     url: "../question-page/question-page"
-    //   })
-    // })
   }
 })

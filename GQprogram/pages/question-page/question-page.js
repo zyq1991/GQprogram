@@ -1,18 +1,23 @@
 // pages/question-page/question-page.js
+import {
+  Get
+} from '../../utils/request.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    text: "假设有两个分类变量X和Y，它们的值域分别为{x1,x2}和{y1,y2}，其中2x2列联表为:"
+    data: data
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    Get("http://39.105.185.44:8090/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
+      data = res;
+    })
   },
 
   /**
@@ -62,5 +67,18 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+  checked: function(e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    that.setData({
+      nameId: id
+    });
+  },
+  next: function() {
+    wx.navigateTo({
+      url: "../fill-blanks-test-page/fill-blanks-test-page"
+    })
   }
+
 })

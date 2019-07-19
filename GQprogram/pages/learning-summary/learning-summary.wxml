@@ -1,0 +1,31 @@
+<!--pages/learning-summary/learning-summary.wxml-->
+<view class="container">
+  <view class="card">
+    <text class="card-title">在过去的15分钟里，你通过学习已经基本掌握了一下知识点：</text>
+    <view class="card-content">
+      <view class="content-item">
+        <image src="/assets/image/ico_hs.png"></image>
+        <text>求解一般函数的梯度一般函数的梯度</text>
+      </view>
+      <view class="content-item">
+        <image src="/assets/image/ico_kjjh.png"></image>
+        <text>求解空间几何的梯度</text>
+      </view>
+      <view class="content-item">
+        <image src="/assets/image/ico_gl.png"></image>
+        <text>求解一般概率与统计概率与统计一般的梯度</text>
+      </view>
+      <view class="content-item">
+        <image src="/assets/image/ico_sxjm.png"></image>
+        <text>求解数学建模的梯度</text>
+      </view>
+      <view class="content-item">
+        <image src="/assets/image/ico_yuzs.png"></image>
+        <text>预备知识</text>
+      </view>
+    </view>
+  </view>
+  <view class="to-rest">
+    <text>好好休息一下，下次再来吧</text>
+  </view>
+</view>
