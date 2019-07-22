@@ -63,6 +63,6 @@
     <text>接下来将基于您的知识薄弱项进行学习，每个知识点的学习时间约为5到15分钟。</text>
   </view>
   <view class="start-btn">
-    <button>开始学习</button>
+    <button bindtap="startLearning">开始学习</button>
   </view>
 </view>

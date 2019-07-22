@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  startLearning:function(){
+    wx.redirectTo({
+      url: '../comment-detail/comment-detail',
+    })
   }
 })

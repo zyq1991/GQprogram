@@ -1,13 +1,17 @@
 <!--pages/fill-blanks-test-page/fill-blanks-test-page.wxml-->
 <view class="container">
-  <view class="question">
-    <text>{{text}}</text>
+  <view>
+    <view class="question">
+      <text>{{text}}</text>
+    </view>
+    <view class="content">
+      <input selection-start="10" selection-end="10" bindtap="calcular" />
+    </view>
   </view>
-  <view class="content">
-    <input selection-start="10" selection-end="10"/>
-  </view>
+
 
   <view class="next-btn">
     <button class="btn" bindtap="next">下一题</button>
   </view>
+  <calcular></calcular>
 </view>

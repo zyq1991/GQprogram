@@ -1,8 +1,8 @@
 <!-- pages/question-page/question-page.wxml -->
 <view class="container">
-  <view class="question">
+  <!-- <view class="question">
     <text>{{text}}</text>
-  </view>
+  </view> -->
   <view>
     <view class="option-item" bindtap="checked">
       <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">A</view>

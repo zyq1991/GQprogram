@@ -30,25 +30,25 @@
   </view> -->
   <view class="rescult">
 		<textarea type="text" id="result0"></textarea>
-		<textarea type="text" id="result"></textarea>
+		<!-- <textarea type="text" id="result"></textarea> -->
 	</view>
-  <view id="sci" style="display:none;">
+  <view id="sci">
     <view class="sci1">
-      <button id="bt21" bindtap="zero()">C</button>
-      <button id="bt22" bindtap="back()">DEL</button>
-      <button id="bt23" bindtap="pow1()">^</button>
+      <button id="bt21" bindtap="zero">C</button>
+      <button id="bt22" bindtap="back">DEL</button>
+      <button id="bt23" bindtap="pow1">^</button>
       <button id="bt24" bindtap="num('π')">π</button>
-      <button id="bt25" bindtap="pow2()">√</button>
+      <button id="bt25" bindtap="pow2">√</button>
     </view>
     <view class="sci2">
-      <button id="bt26" bindtap="sin()">sin</button>
+      <button id="bt26" bindtap="sin">sin</button>
       <button id="bt27" bindtap="num('(')">(</button>
       <button id="bt28" bindtap="num(')')">)</button>
       <button id="bt29" bindtap="divide1()">1/X</button>
       <button id="bt30" bindtap="divide()">÷</button>
     </view>
     <view class="sci3">
-      <button id="bt31" bindtap="cos()">cos</button>
+      <button id="bt31" bindtap="cos">cos</button>
       <button id="bt32" bindtap="num(7)">7</button>
       <button id="bt33" bindtap="num(8)">8</button>
       <button id="bt34" bindtap="num(9)">9</button>
