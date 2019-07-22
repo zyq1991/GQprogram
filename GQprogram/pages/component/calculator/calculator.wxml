@@ -28,10 +28,9 @@
     <button class="calculator-key">3</button>
     <button class="calculator-key">x</button>
   </view> -->
-  <view class="rescult">
-		<textarea type="text" id="result0"></textarea>
-		<!-- <textarea type="text" id="result"></textarea> -->
-	</view>
+  <!--  <view class="rescult">
+		 <textarea type="text" id="result0"></textarea> 
+	</view>-->
   <view id="sci">
     <view class="sci1">
       <button id="bt21" bindtap="zero">C</button>

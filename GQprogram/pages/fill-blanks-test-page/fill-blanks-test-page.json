@@ -3,5 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "填空题",
   "navigationBarTextStyle": "black",
-  "usingComponents": {}
+  "usingComponents": {
+    "calculator": "../component/calculator/calculator"
+  }
 }

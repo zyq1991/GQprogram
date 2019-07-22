@@ -46,7 +46,7 @@ body div {
 .calculator {
   text-align: center;
   width: 350px;
-  height: 550px;
+  height: 76%;
   margin: 10px auto;
   border: #fff 2px solid;
   overflow: hidden;
