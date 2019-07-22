@@ -6,8 +6,8 @@ const app = getApp()
 Page({
   onLoad: function() {
     wx.navigateTo({
-      url: '../ready-diagnosis/ready-diagnosis'
-      // url: '../component/calculator/calculator'
+      // url: '../ready-diagnosis/ready-diagnosis'
+      url: '../component/calculator/calculator'
     })
 
   },

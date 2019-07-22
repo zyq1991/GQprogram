@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data: data
+    data:""
   },
 
   /**
@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function(options) {
     Get("http://39.105.185.44:8090/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
-      data = res;
+      // data = res;
     })
   },
 
