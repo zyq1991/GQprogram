@@ -4,13 +4,18 @@
 const app = getApp()
 
 Page({
+  data:{
+
+  },
   onLoad: function() {
     wx.navigateTo({
-      // url: '../ready-diagnosis/ready-diagnosis'
-      url: '../start-learning/start-learning'
+      url: '../ready-diagnosis/ready-diagnosis'
+      // url: '../component/calculator/calculator'
     })
 
   },
 
-
+  click: function(e) {
+    console.log(e)
+  }
 })

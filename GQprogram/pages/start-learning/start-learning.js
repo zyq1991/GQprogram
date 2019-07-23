@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  comment: function(){
+    wx.navigateTo({
+      url: '../comment-detail/comment-detail'
+    })
   }
 })
