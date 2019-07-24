@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options)
 
   },
 
@@ -22,6 +23,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    // wx.getSetting({
+    //   success(res){
+    //     console.log(res)
+    //     if(res.authSetting['scope.record']){
+    //       wx.getUserInfo({
+    //         success(res){
+    //           console.log(res)
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
+    
 
   },
 
@@ -66,15 +80,43 @@ Page({
   onShareAppMessage: function() {
 
   },
-  start() {
-    wx.navigateTo({
-      url: "../question-page/question-page"
+  onGotUserInfo: function (e) {
+    console.log('18S')
+    console.log(e)
+    Get("http://39.105.185.44:8090/cp/startcpexam?userId=1").then(res => {
+      console.log(res);
+      wx.navigateTo({
+        url: "../question-page/question-page"
+      })
     })
+  },
+  start(e) {
+    // console.log(e)
+    // wx.navigateTo({
+    //   url: "../question-page/question-page"
+    // })
     // Get("http://39.105.185.44:8090/cp/startcpexam?userId=1").then(res => {
     //   console.log(res);
     //   wx.navigateTo({
     //     url: "../question-page/question-page"
     //   })
     // })
-  }
+  },
+ 
+/**
+ * 用户登陆
+ */
+  // userLogin(){
+  //   wx.checkSession({
+  //     success:function(){
+  //       //存在登陆状态
+  //       console.log('登陆成功')
+  //     },
+  //     fail:function(){
+  //       //不存在登陆状态
+  //       console.log('登陆失败')
+
+  //     }
+  //   })
+  // }
 })

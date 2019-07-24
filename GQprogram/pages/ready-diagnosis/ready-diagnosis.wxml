@@ -22,6 +22,6 @@
   </text> -->
     </view>
 
-    <button bindtap="start">开始诊断</button>
+    <button opentype='getUserinfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">开始诊断</button>
   </view>
 </view>

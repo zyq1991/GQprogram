@@ -7,7 +7,8 @@
     <view class="content">
       <input selection-start="10" selection-end="10" bindtap="calcular" />
     </view>
-    <calculator></calculator>
+<!--index.wxml-->
+    <calculator wx:if='{{isShow}}'></calculator>
   </view>
 
 
