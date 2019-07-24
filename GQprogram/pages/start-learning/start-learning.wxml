@@ -7,7 +7,7 @@
   <view class="input-comment">
     <view class="ipt">
       <image src="/assets/image/ico_pl.png" class="pl-image"></image>
-      <input placeholder="写评论..."></input>
+      <input placeholder="写评论..." bindtap="comment"></input>
     </view>
     <view>
       <image src="/assets/image/ico_dz_bor.png" class="dz-image"></image>

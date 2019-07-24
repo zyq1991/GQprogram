@@ -14,7 +14,7 @@ page {
 }
 
 .con-top {
-  height: 88%;
+  height: 80%;
 }
 
 .question {
@@ -44,14 +44,53 @@ page {
 
 .content {
   width: 100%;
-  height: 76rpx;
+  height: 152rpx;
+  margin-bottom: 40rpx;
 }
 
-.content input {
+.content textarea {
   margin: 0 50rpx;
   height: 100%;
   background: #fff;
   border: 4rpx solid #5297ff;
   border-radius: 20rpx;
   padding: 10rpx 20rpx;
+}
+
+.calculator {
+  width: 100%;
+  height: 100%;
+  background: #d8d8d8;
+}
+
+.calculator-row {
+  width: 100%;
+  height: 100rpx;
+  padding: 10rpx 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.calculator-key {
+  width: 16%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.key-btn {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.result {
+  background: #fff;
+  width: 100%;
+  border: 2rpx solid #333;
 }
