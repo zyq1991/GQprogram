@@ -10,12 +10,16 @@ Page({
   data: {
     text: "1.诊断过程中约有10到15题\n2.约需时间15分钟\n 3.请坚持完成"
   },
+  onGotUserInfo: function (e) {
+    console.log('18S')
+    console.log(e)
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
+    
 
   },
 
@@ -23,6 +27,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    
     // wx.getSetting({
     //   success(res){
     //     console.log(res)
@@ -80,27 +85,17 @@ Page({
   onShareAppMessage: function() {
 
   },
-  onGotUserInfo: function (e) {
-    console.log('18S')
-    console.log(e)
+  
+  start(e) {
+    wx.navigateTo({
+      url: "../question-page/question-page"
+    })
     Get("http://39.105.185.44:8090/cp/startcpexam?userId=1").then(res => {
       console.log(res);
       wx.navigateTo({
         url: "../question-page/question-page"
       })
     })
-  },
-  start(e) {
-    // console.log(e)
-    // wx.navigateTo({
-    //   url: "../question-page/question-page"
-    // })
-    // Get("http://39.105.185.44:8090/cp/startcpexam?userId=1").then(res => {
-    //   console.log(res);
-    //   wx.navigateTo({
-    //     url: "../question-page/question-page"
-    //   })
-    // })
   },
  
 /**
