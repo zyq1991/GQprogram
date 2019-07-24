@@ -16,12 +16,13 @@
           <button class="key-btn" bindtap="num" id="{{keyInfo.id}}">{{keyInfo.value}}</button>
         </view>
       </view>
+
     </view>
+
+
+    <view class="next-btn">
+      <button class="btn" bindtap="next">下一题</button>
+    </view>
+
   </view>
-
-
-  <view class="next-btn">
-    <button class="btn" bindtap="next">下一题</button>
-  </view>
-
 </view>

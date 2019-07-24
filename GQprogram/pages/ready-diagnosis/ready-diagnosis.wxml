@@ -21,7 +21,7 @@
   3.请坚持完成
   </text> -->
     </view>
-
-    <button bindtap="start">开始诊断</button>
+   <button bintap='start'>开始诊断</button>
+    <button opentype='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo" >获取用户信息</button>
   </view>
 </view>
