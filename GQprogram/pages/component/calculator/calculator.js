@@ -211,13 +211,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // onShow: function() {
-    //   katex.render("c = \\pm\\sqrt{a^2 + b^2}", element, {
-    //     throwOnError: false
-    //   });
-
-    // },
-    //改进： 定义一个变量记录“=”的输入与否而不必每输入数字时都要检索一遍文本框内容
     num: function(e) {
       var content = e.currentTarget.id;
       var result = ''

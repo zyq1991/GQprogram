@@ -5,9 +5,18 @@
       <text>{{text}}</text>
     </view>
     <view class="content">
-      <input selection-start="10" selection-end="10" bindtap="calcular" />
+      <!-- <input selection-start="10" selection-end="10" bindtap="calcular" value="{{result}}"/> -->
+      <textarea selection-start="10" selection-end="10" bindtap="calcular" value="{{result}}"></textarea>
     </view>
-    <calculator></calculator>
+    <!-- <calculator></calculator> -->
+    <view wx:if="{{isShow}}">
+      <view class="calculator-row" wx:for-items="{{layout}}" wx:for-item="itemName" wx:key="unique">
+
+        <view class="calculator-key" wx:for-items="{{itemName}}" wx:for-item="keyInfo" wx:key="unique">
+          <button class="key-btn" bindtap="num" id="{{keyInfo.id}}">{{keyInfo.value}}</button>
+        </view>
+      </view>
+    </view>
   </view>
 
 
