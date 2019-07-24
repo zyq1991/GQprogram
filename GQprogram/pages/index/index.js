@@ -4,10 +4,15 @@
 const app = getApp()
 
 Page({
-  data:{
+  data: {
 
   },
   onLoad: function() {
+    wx.getUserInfo({
+      success:res => {
+        console.log(res)
+      }
+    })
     wx.navigateTo({
       url: '../ready-diagnosis/ready-diagnosis'
       // url: '../component/calculator/calculator'

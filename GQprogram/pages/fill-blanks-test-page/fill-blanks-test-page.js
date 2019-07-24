@@ -210,7 +210,7 @@ Page({
   calcular: function(e) {
     var that = this;
     that.setData({
-      isShow: true
+      isShow: true,
     });
 
   },
@@ -240,6 +240,5 @@ Page({
 
     }
     this.setData({ result: result })
-    console.log(this.data.result)
   }
 })

@@ -1,24 +1,24 @@
 <!-- pages/question-page/question-page.wxml -->
-<view class="container">
-  <!-- <view class="question">
-    <text>{{text}}</text>
-  </view> -->
-  <view>
+<view class="content">
+  <view class="question">
+    <text>{{stem}}</text>
+  </view>
+  <view class="options">
     <view class="option-item" bindtap="checked">
       <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">A</view>
-      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">a=5,b=4,c=3,d=2</view>
+      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[0]}}</view>
     </view>
     <view class="option-item">
       <view class="option">B</view>
-      <view class="option-content">a=5,b=4,c=3,d=2</view>
+      <view class="option-content">{{options[1]}}</view>
     </view>
     <view class="option-item">
       <view class="option">C</view>
-      <view class="option-content">a=5,b=4,c=3,d=2</view>
+      <view class="option-content">{{options[2]}}</view>
     </view>
     <view class="option-item">
       <view class="option">D</view>
-      <view class="option-content">a=5,b=4,c=3,d=2</view>
+      <view class="option-content">{{options[3]}}</view>
     </view>
   </view>
   <!-- <view class="pic-option">

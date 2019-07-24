@@ -15,17 +15,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    Get("http://39.105.185.44:8090/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
-      data = res;
-      // console.log(res)
-    })
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    Get("/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
 
+
+      let questID = res.data.qId;
+      Get("/cp/findcpquestion/" + questID).then(res => {
+        this.setData(res.data);
+        console.log(this.data);
+      })
+    })
   },
 
   /**
