@@ -182,8 +182,8 @@ page {
 
 .next-btn {
   width: 100%;
-  position: absolute;
-  bottom: 20rpx;
+  margin-bottom: 80rpx;
+ 
 }
 
 .btn {
@@ -233,4 +233,5 @@ page {
 
 .q-content {
   width: 100%;
+  margin-top:98rpx;
 }

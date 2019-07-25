@@ -68,4 +68,5 @@ page {
   padding:0;
   font-size: 36rpx;
   height:88rpx;
+  margin-bottom: 80rpx;
 }
