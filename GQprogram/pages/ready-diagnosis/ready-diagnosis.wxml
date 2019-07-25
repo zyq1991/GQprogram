@@ -10,7 +10,7 @@
 
   <view class="intro">
     <view class="intro-text">
-    <text>{{text}}</text>
+      <text>{{text}}</text>
       <!-- <text>
   1.诊断过程中约有10到15题
   </text>
@@ -21,7 +21,7 @@
   3.请坚持完成
   </text> -->
     </view>
-   <button bintap='start'>开始诊断</button>
+    <button bindtap='start'>开始诊断</button>
     <button opentype='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo" >获取用户信息</button>
   </view>
 </view>

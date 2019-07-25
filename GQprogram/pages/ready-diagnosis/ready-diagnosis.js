@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    text: "1.诊断过程中约有10到15题\n2.约需时间15分钟\n 3.请坚持完成"
+    text: "1.诊断过程中约有10到15题\n2.约需时间15分钟\n 3.请坚持完成",
+    userId:''
   },
   onGotUserInfo: function (e) {
     console.log('18S')
@@ -62,7 +63,16 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
+    // Get("/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
+    //   let questID = res.data.qId;
+    //   Get("/cp/findcpquestion/" + questID).then(res => {
+    //     this.setData(res.data);
+    //     console.log(this.data);
+    //   })
+    // })
+    // Get("/cp/startcpexam?"+this.data.userId).then(res=>{
 
+    // })
   },
 
   /**
@@ -86,16 +96,16 @@ Page({
 
   },
   
-  start(e) {
+  start:function() {
     wx.navigateTo({
       url: "../question-page/question-page"
     })
-    Get("http://39.105.185.44:8090/cp/startcpexam?userId=1").then(res => {
-      console.log(res);
-      wx.navigateTo({
-        url: "../question-page/question-page"
-      })
-    })
+    // Get("/cp/startcpexam?userId=1").then(res => {
+    //   console.log(res);
+    //   wx.navigateTo({
+    //     url: "../question-page/question-page"
+    //   })
+    // })
   },
  
 /**
