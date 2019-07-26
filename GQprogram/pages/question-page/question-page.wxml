@@ -4,22 +4,22 @@
     <text>{{stem}}</text>
   </view>
   <view class="options">
-    <view class="option-item" bindtap="checked">
-      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">A</view>
-      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[0]}}</view>
+    <view class="option-item" bindtap="checked" wx:for-items="{{options}}" wx:for-item="item">
+      <view class="option {{index==nameId?'option-checked':''}}" id="{{index}}">{{index==0 ? 'A ':(index==1?'B':(index==2?'C':'D'))}}</view>
+      <view class="option-content {{index==nameId?'option-content-checked':''}}" id="{{index}}">{{item}}</view>
+    </view>
+    <!-- <view class="option-item">
+      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">B</view>
+      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[1]}}</view>
     </view>
     <view class="option-item">
-      <view class="option">B</view>
-      <view class="option-content">{{options[1]}}</view>
+      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">C</view>
+      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[2]}}</view>
     </view>
     <view class="option-item">
-      <view class="option">C</view>
-      <view class="option-content">{{options[2]}}</view>
-    </view>
-    <view class="option-item">
-      <view class="option">D</view>
-      <view class="option-content">{{options[3]}}</view>
-    </view>
+      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">D</view>
+      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[3]}}</view>
+    </view> -->
   </view>
   <!-- <view class="pic-option">
     <view class="pic-item">
@@ -30,4 +30,23 @@
   <view class="next-btn">
     <button class="btn" bindtap="next">下一题</button>
   </view>
+  <image src="/assets/image/ico_hdzq.png" class="correct-ico" wx:if="{{isCorrect}}"></image>
+
+</view>
+<view class="error-view" wx:if="{{isWrong}}">
+  <view class="error-content">
+    <view class="analysis">
+      <text>回答错误</text>
+      <text>我的答案：<text class="my-answer"></text></text>
+      <text>正确答案：<text></text></text>
+      <view class="look">
+        <button>查看解析</button>
+      </view>
+
+    </view>
+    <view class="next-btn">
+      <button class="btn" bindtap="next">下一题</button>
+    </view>
+  </view>
+
 </view>

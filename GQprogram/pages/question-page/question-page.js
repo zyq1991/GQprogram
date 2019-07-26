@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data: ""
+    data: "",
+    isCorrect:false,
+    isWrong:false
   },
 
   /**
@@ -76,10 +78,8 @@ Page({
   },
   checked: function(e) {
     var that = this;
-    var id = e.currentTarget.dataset.id;
-    that.setData({
-      nameId: id
-    });
+    var id = e.target.id;
+    console.log(id);
   },
   next: function() {
     wx.navigateTo({
