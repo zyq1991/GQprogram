@@ -9,16 +9,19 @@ Page({
    */
   data: {
     data: "",
-    isCorrect:false,
-    isWrong:false,
-    nameId:''
+    isCorrect: false,
+    isWrong: false,
+    nameId: "",
+    result: '',
+    option: '',
+    optionContent: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
   },
 
   /**
@@ -26,12 +29,13 @@ Page({
    */
   onReady: function() {
     Get("/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
-
-
       let questID = res.data.qId;
       Get("/cp/findcpquestion/" + questID).then(res => {
         this.setData(res.data);
-        console.log(this.data);
+        this.setData({
+          result: res.data.key
+        })
+        // console.log(this.data);
       })
     })
   },
@@ -80,7 +84,26 @@ Page({
   checked: function(e) {
     var that = this;
     var id = e.target.dataset.id;
-    this.setData({ nameId:id})
+    if (this.data.result == id) {
+      e.target.dataset.option = 'option-checked';
+      e.target.dataset.optionContent = 'option-content-checked';
+      this.setData({
+        isCorrect: true,
+        isWrong: false
+      });
+    } else {
+      e.target.dataset.option = 'option-wrong';
+      e.target.dataset.optionContent = 'option-content-wrong';
+      this.setData({
+        isCorrect: false,
+        isWrong: true
+      });
+    }
+    this.setData({
+      option: e.target.dataset.option,
+      optionContent: e.target.dataset.optionContent,
+      nameId: id
+    })
   },
   next: function() {
     wx.navigateTo({
