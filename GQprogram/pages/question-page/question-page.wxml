@@ -5,28 +5,10 @@
   </view>
   <view class="options">
     <view class="option-item" bindtap="checked" wx:for-items="{{options}}" wx:for-item="item">
-      <view class="option {{index==nameId?'option-checked':''}}" id="{{index}}">{{index==0 ? 'A ':(index==1?'B':(index==2?'C':'D'))}}</view>
-      <view class="option-content {{index==nameId?'option-content-checked':''}}" id="{{index}}">{{item}}</view>
+      <view class="option {{nameId==index?'option-checked':''}}" data-id="{{index}}">{{index==0 ? 'A ':(index==1?'B':(index==2?'C':'D'))}}</view>
+      <view class="option-content {{nameId==index?'option-content-checked':''}}" data-id="{{index}}">{{item}}</view>
     </view>
-    <!-- <view class="option-item">
-      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">B</view>
-      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[1]}}</view>
-    </view>
-    <view class="option-item">
-      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">C</view>
-      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[2]}}</view>
-    </view>
-    <view class="option-item">
-      <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">D</view>
-      <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">{{options[3]}}</view>
-    </view> -->
   </view>
-  <!-- <view class="pic-option">
-    <view class="pic-item">
-      <image></image>
-      <button>A</button>
-    </view>
-  </view> -->
   <view class="next-btn">
     <button class="btn" bindtap="next">下一题</button>
   </view>

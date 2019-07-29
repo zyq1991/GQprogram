@@ -37,14 +37,6 @@ page {
   margin: 40rpx 0;
 }
 
-.option-checked {
-  background: #5297ff;
-}
-
-.option-content-checked {
-  border-color: #5297ff;
-}
-
 .option {
   color: #fff;
   background: #e4e8eb;
@@ -53,6 +45,7 @@ page {
   height: 100%;
   border-top-left-radius: 20rpx;
   border-bottom-left-radius: 20rpx;
+   border:2rpx solid #fff;
 }
 
 .option-content {
@@ -62,6 +55,16 @@ page {
   line-height: 100rpx;
   border-top-right-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
+  border:2rpx solid #fff;
+}
+
+.option-checked {
+  background: #5297ff;
+  border:2rpx solid #5297ff;
+}
+
+.option-content-checked {
+  border:2rpx solid #5297ff;
 }
 
 .next-btn {

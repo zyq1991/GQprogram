@@ -10,7 +10,8 @@ Page({
   data: {
     data: "",
     isCorrect:false,
-    isWrong:false
+    isWrong:false,
+    nameId:''
   },
 
   /**
@@ -78,8 +79,8 @@ Page({
   },
   checked: function(e) {
     var that = this;
-    var id = e.target.id;
-    console.log(id);
+    var id = e.target.dataset.id;
+    this.setData({ nameId:id})
   },
   next: function() {
     wx.navigateTo({
