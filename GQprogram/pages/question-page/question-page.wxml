@@ -1,21 +1,21 @@
 <!-- pages/question-page/question-page.wxml -->
-<view class="content">
+<view class="content" catchtap="hideTap">
   <view class="question">
     <text>{{stem}}</text>
   </view>
   <view class="options">
-    <view class="option-item" bindtap="checked" wx:for-items="{{options}}" wx:for-item="item">
+    <view class="option-item" catchtap="checked" wx:for-items="{{options}}" wx:for-item="item">
       <view class="option {{nameId==index?option:''}}" data-id="{{index}}">{{index==0 ? 'A ':(index==1?'B':(index==2?'C':'D'))}}</view>
       <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">{{item}}</view>
     </view>
   </view>
   <view class="next-btn">
-    <button class="btn" bindtap="next">下一题</button>
+    <button class="btn" catchtap="next">下一题</button>
   </view>
   <image src="/assets/image/ico_hdzq.png" class="correct-ico" wx:if="{{isCorrect}}"></image>
 
 </view>
-<view class="error-view" wx:if="{{isWrong}}">
+<view class="error-view" wx:if="{{isWrong}}" catchtap="hideTap">
   <view class="error-content">
     <view class="analysis">
       <text>回答错误</text>
@@ -27,7 +27,7 @@
 
     </view>
     <view class="next-btn">
-      <button class="btn" bindtap="next">下一题</button>
+      <button class="btn" catchtap="next">下一题</button>
     </view>
   </view>
 

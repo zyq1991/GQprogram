@@ -109,6 +109,12 @@ Page({
     wx.navigateTo({
       url: "../fill-blanks-test-page/fill-blanks-test-page"
     })
+  },
+  hideTap: function() {
+    this.setData({
+      isCorrect: false,
+      isWrong: false
+    })
   }
 
 })
