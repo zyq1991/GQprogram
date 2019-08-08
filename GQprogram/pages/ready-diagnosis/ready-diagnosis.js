@@ -97,24 +97,22 @@ Page({
   },
 
   start: function() {
-    // wx.navigateTo({
-    //   url: "../question-page/question-page"
-    // })
     Get("/cp/cpexam/start?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
       if (res.data.success) {
         let miniOpenId = res.data.data.miniOpenId,
           eId = res.data.data.eId;
         Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
           if (res.data.success) {
+            console.log(res.data.data)
             let qtype = res.data.data.qType,
               qId = res.data.data.id;
             if (qtype == '2') {
               wx.navigateTo({
-                url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+                url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId +"&exerciseType=1"
               })
             } else {
               wx.navigateTo({
-                url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+                url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=1"
               })
             }
           }

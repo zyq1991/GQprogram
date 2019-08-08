@@ -23,9 +23,11 @@ Page({
   onLoad: function(options) {
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
+    let exerciseType = options.exerciseType
     this.setData({
       miniOpenId: miniOpenId,
-      eId: eId
+      eId: eId,
+      exerciseType: exerciseType
     })
     Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
@@ -97,21 +99,37 @@ Page({
   checked: function(e) {
     var that = this;
     var id = e.target.dataset.id;
-    if (this.data.result == id) {
-      e.target.dataset.option = 'option-checked';
-      e.target.dataset.optionContent = 'option-content-checked';
-      this.setData({
-        isCorrect: true,
-        isWrong: false
-      });
+    if (this.data.exerciseType == 1) {
+
+      if (this.data.result == id) {
+        e.target.dataset.option = 'option-checked';
+        e.target.dataset.optionContent = 'option-content-checked';
+
+      } else {
+        e.target.dataset.option = 'option-wrong';
+        e.target.dataset.optionContent = 'option-content-wrong';
+
+      }
     } else {
-      e.target.dataset.option = 'option-wrong';
-      e.target.dataset.optionContent = 'option-content-wrong';
-      this.setData({
-        isCorrect: false,
-        isWrong: true
-      });
+      if (this.data.result == id) {
+        e.target.dataset.option = 'option-checked';
+        e.target.dataset.optionContent = 'option-content-checked';
+        this.setData({
+          isCorrect: true,
+          isWrong: false
+        });
+
+      } else {
+        e.target.dataset.option = 'option-wrong';
+        e.target.dataset.optionContent = 'option-content-wrong';
+        this.setData({
+          isCorrect: false,
+          isWrong: true
+        });
+
+      }
     }
+
     this.setData({
       option: e.target.dataset.option,
       optionContent: e.target.dataset.optionContent,
@@ -144,7 +162,7 @@ Page({
           Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
             if (res.data.success) {
               wx.navigateTo({
-                url: "../diagnostic-result/diagnostic-result?miniOprnId="+this.data.miniOpenId + "&eId=" + this.data.eId
+                url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
               })
             }
           })
