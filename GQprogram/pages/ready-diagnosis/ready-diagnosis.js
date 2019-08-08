@@ -9,9 +9,9 @@ Page({
    */
   data: {
     text: "1.诊断过程中约有10到15题\n2.约需时间15分钟\n 3.请坚持完成",
-    userId:''
+    userId: ''
   },
-  onGotUserInfo: function (e) {
+  onGotUserInfo: function(e) {
     console.log('18S')
     console.log(e)
   },
@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
 
   },
 
@@ -28,7 +28,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
+
     // wx.getSetting({
     //   success(res){
     //     console.log(res)
@@ -41,7 +41,7 @@ Page({
     //     }
     //   }
     // })
-    
+
 
   },
 
@@ -95,22 +95,40 @@ Page({
   onShareAppMessage: function() {
 
   },
-  
-  start:function() {
-    wx.navigateTo({
-      url: "../question-page/question-page"
-    })
-    // Get("/cp/startcpexam?userId=1").then(res => {
-    //   console.log(res);
-    //   wx.navigateTo({
-    //     url: "../question-page/question-page"
-    //   })
+
+  start: function() {
+    // wx.navigateTo({
+    //   url: "../question-page/question-page"
     // })
+    Get("/cp/cpexam/start?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
+      if (res.data.success) {
+        let miniOpenId = res.data.data.miniOpenId,
+          eId = res.data.data.eId;
+        Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+          if (res.data.success) {
+            let qtype = res.data.data.qType,
+              qId = res.data.data.id;
+            if (qtype == '2') {
+              wx.navigateTo({
+                url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+              })
+            } else {
+              wx.navigateTo({
+                url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+              })
+            }
+          }
+
+        })
+
+      }
+
+    })
   },
- 
-/**
- * 用户登陆
- */
+
+  /**
+   * 用户登陆
+   */
   // userLogin(){
   //   wx.checkSession({
   //     success:function(){

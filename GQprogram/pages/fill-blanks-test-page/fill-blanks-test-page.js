@@ -13,196 +13,247 @@ Page({
     tmpArr: [],
     layout: [
       [{
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "!",
-        value: "!",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "^",
-        value: "^",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "√",
-        value: "√",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "π",
-        value: "π",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "warn",
-        id: "c",
-        value: "C",
-      }
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "!",
+          value: "!",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "^",
+          value: "^",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "√",
+          value: "√",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "π",
+          value: "π",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "warn",
+          id: "c",
+          value: "C",
+        }
       ],
       [{
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "sin",
-        value: "sin",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "(",
-        value: "(",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: ")",
-        value: ")",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "e",
-        value: "e",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "warn",
-        id: "ac",
-        value: "AC",
-      }
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "sin",
+          value: "sin",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "(",
+          value: "(",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: ")",
+          value: ")",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "e",
+          value: "e",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "warn",
+          id: "ac",
+          value: "AC",
+        }
       ],
       [{
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "cos",
-        value: "cos",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "7",
-        value: "7",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "8",
-        value: "8",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "9",
-        value: "9",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "primary",
-        id: "÷",
-        value: "÷",
-      }
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "cos",
+          value: "cos",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "7",
+          value: "7",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "8",
+          value: "8",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "9",
+          value: "9",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "primary",
+          id: "÷",
+          value: "÷",
+        }
       ],
       [{
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "tan",
-        value: "tan",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "4",
-        value: "4",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "5",
-        value: "5",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "6",
-        value: "6",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "primary",
-        id: "×",
-        value: "×",
-      }
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "tan",
+          value: "tan",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "4",
+          value: "4",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "5",
+          value: "5",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "6",
+          value: "6",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "primary",
+          id: "×",
+          value: "×",
+        }
       ],
       [{
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "ln",
-        value: "ln",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "1",
-        value: "1",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "2",
-        value: "2",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "3",
-        value: "3",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "primary",
-        id: "-",
-        value: "-",
-      }
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "ln",
+          value: "ln",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "1",
+          value: "1",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "2",
+          value: "2",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "3",
+          value: "3",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "primary",
+          id: "-",
+          value: "-",
+        }
       ],
       [{
-        opt: "bindViewTapOpt",
-        type: "default",
-        id: "lg",
-        value: "lg",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: "0",
-        value: "0",
-      },
-      {
-        opt: "bindViewTapInput",
-        type: "default",
-        id: ".",
-        value: ".",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "warn",
-        id: "=",
-        value: "=",
-      },
-      {
-        opt: "bindViewTapOpt",
-        type: "primary",
-        id: "+",
-        value: "+",
-      }
+          opt: "bindViewTapOpt",
+          type: "default",
+          id: "lg",
+          value: "lg",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: "0",
+          value: "0",
+        },
+        {
+          opt: "bindViewTapInput",
+          type: "default",
+          id: ".",
+          value: ".",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "warn",
+          id: "=",
+          value: "=",
+        },
+        {
+          opt: "bindViewTapOpt",
+          type: "primary",
+          id: "+",
+          value: "+",
+        }
       ]
     ],
   },
-
+  onLoad: function(options) {
+    let miniOpenId = options.miniOpenId;
+    let eId = options.eId;
+    this.setData({
+      miniOpenId: miniOpenId,
+      eId: eId
+    })
+    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+      if (res.data.success) {
+        this.setData(res.data.data);
+        this.setData({
+          result: res.data.data.key
+        })
+      }
+    })
+  },
 
   next: function() {
+    Get("/cp/startansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&qType=1&exerciseType=1").then(res => {
+      console.log(res)
+    });
+    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+      if (res.data.success) {
+        let qtype = res.data.data.qType,
+          qId = res.data.data.id;
+        this.setData({
+          isEndQuestion: res.data.data.isEndQuestion
+        })
+        if (!this.data.isEndQuestion) {
+          if (qtype == '2') {
+            wx.navigateTo({
+              url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId
+            })
+          } else {
+            wx.navigateTo({
+              url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+            })
+          }
+        } else {
+          Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+            if (res.data.success) {
+              wx.navigateTo({
+                url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+              })
+            }
+          })
+
+        }
+
+      }
+
+    })
+
+
     wx.redirectTo({
       url: '../diagnostic-result/diagnostic-result',
     })
@@ -214,7 +265,7 @@ Page({
     });
 
   },
-  num: function (e) {
+  num: function(e) {
     var content = e.currentTarget.id;
     var result = ''
 
@@ -239,6 +290,8 @@ Page({
       })
 
     }
-    this.setData({ result: result })
+    this.setData({
+      result: result
+    })
   }
 })

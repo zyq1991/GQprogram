@@ -21,23 +21,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let miniOpenId = options.miniOpenId;
+    let eId = options.eId;
+    this.setData({
+      miniOpenId: miniOpenId,
+      eId: eId
+    })
+    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+      if (res.data.success) {
+        this.setData(res.data.data);
+        this.setData({
+          result: res.data.data.key
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    Get("/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
-      let questID = res.data.qId;
-      Get("/cp/findcpquestion/" + questID).then(res => {
-        this.setData(res.data);
-        this.setData({
-          result: res.data.key
-        })
-        // console.log(this.data);
-      })
-    })
+    // Get("/cp/startansque?userId=1&eId=2&qId=q_0002&qType=1").then(res => {
+    //   let questID = res.data.qId;
+    //   Get("/cp/findcpquestion/" + questID).then(res => {
+    //     this.setData(res.data);
+    //     this.setData({
+    //       result: res.data.key
+    //     })
+    //     // console.log(this.data);
+    //   })
+    // })
   },
 
   /**
@@ -104,11 +117,46 @@ Page({
       optionContent: e.target.dataset.optionContent,
       nameId: id
     })
+    Get("/cp/startansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&qType=2&exerciseType=1").then(res => {
+      console.log(res)
+    })
   },
   next: function() {
-    wx.navigateTo({
-      url: "../fill-blanks-test-page/fill-blanks-test-page"
+
+    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+      if (res.data.success) {
+        let qtype = res.data.data.qType,
+          qId = res.data.data.id;
+        this.setData({
+          isEndQuestion: res.data.data.isEndQuestion
+        })
+        if (!this.data.isEndQuestion) {
+          if (qtype == '2') {
+            wx.navigateTo({
+              url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId
+            })
+          } else {
+            wx.navigateTo({
+              url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+            })
+          }
+        } else {
+          Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+            if (res.data.success) {
+              wx.navigateTo({
+                url: "../diagnostic-result/diagnostic-result?miniOprnId="+this.data.miniOpenId + "&eId=" + this.data.eId
+              })
+            }
+          })
+
+        }
+
+      }
+
     })
+    // wx.navigateTo({
+    //   url: "../fill-blanks-test-page/fill-blanks-test-page"
+    // })
   },
   hideTap: function() {
     this.setData({

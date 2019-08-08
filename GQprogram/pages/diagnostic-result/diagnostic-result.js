@@ -12,7 +12,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let miniOpenId = options.miniOpenId;
+    let eId = options.eId;
+    this.setData({
+      miniOpenId: miniOpenId,
+      eId: eId
+    })
+    Get("/cp/cpexam/report?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+      if (res.data.success) {
+        this.setData(res.data.data)
+      }
+    })
   },
 
   /**
