@@ -102,8 +102,8 @@ Page({
     if (this.data.exerciseType == 1) {
 
       // if (this.data.result == id) {
-        e.target.dataset.option = 'option-checked';
-        e.target.dataset.optionContent = 'option-content-checked';
+      e.target.dataset.option = 'option-checked';
+      e.target.dataset.optionContent = 'option-content-checked';
 
       // } else {
       //   e.target.dataset.option = 'option-wrong';
@@ -135,46 +135,49 @@ Page({
       optionContent: e.target.dataset.optionContent,
       nameId: id
     })
-    Get("/cp/startansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&qType=2&exerciseType=1").then(res => {
-      console.log(res)
-    })
+
   },
   next: function() {
-
-    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-      if (res.data.success) {
-        let qtype = res.data.data.qType,
-          qId = res.data.data.id;
-        this.setData({
-          isEndQuestion: res.data.data.isEndQuestion
-        })
-        if (!this.data.isEndQuestion) {
-          if (qtype == '2') {
-            wx.navigateTo({
-              url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId
+    Get("/cp/startansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&qType=2&exerciseType=1").then(res => {
+      if (res.data.sucess) {
+        Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+          if (res.data.success) {
+            let qtype = res.data.data.qType,
+              qId = res.data.data.id;
+            this.setData({
+              isEndQuestion: res.data.data.isEndQuestion
             })
-          } else {
-            wx.navigateTo({
-              url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
-            })
-          }
-        } else {
-          Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-            if (res.data.success) {
-              wx.navigateTo({
-                url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+            if (!this.data.isEndQuestion) {
+              if (qtype == '2') {
+                wx.navigateTo({
+                  url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId
+                })
+              } else {
+                wx.navigateTo({
+                  url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+                })
+              }
+            } else {
+              Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+                if (res.data.success) {
+                  wx.navigateTo({
+                    url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+                  })
+                }
               })
+
             }
-          })
 
-        }
+          }
 
+        })
+      }else{
+        wx.showToast({
+          title: res.data.msg,
+        })
       }
-
     })
-    // wx.navigateTo({
-    //   url: "../fill-blanks-test-page/fill-blanks-test-page"
-    // })
+
   },
   hideTap: function() {
     this.setData({

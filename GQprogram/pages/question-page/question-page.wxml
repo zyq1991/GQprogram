@@ -4,7 +4,7 @@
     <text>{{stem}}</text>
   </view>
   <view class="options">
-    <view class="option-item" catchtap="checked" wx:for-items="{{options}}" wx:for-item="item">
+    <view class="option-item" catchtap="checked" wx:for-items="{{options}}" wx:key="{{index}}" wx:for-item="item">
       <view class="option {{nameId==index?option:''}}" data-id="{{index}}">{{index==0 ? 'A ':(index==1?'B':(index==2?'C':'D'))}}</view>
       <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">{{item}}</view>
     </view>

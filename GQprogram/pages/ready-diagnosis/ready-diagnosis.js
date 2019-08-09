@@ -115,6 +115,10 @@ Page({
                 url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=1"
               })
             }
+          }else{
+            wx.showToast({
+              title: res.data.msg,
+            })
           }
 
         })
