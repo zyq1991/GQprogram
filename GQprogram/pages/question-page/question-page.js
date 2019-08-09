@@ -101,15 +101,15 @@ Page({
     var id = e.target.dataset.id;
     if (this.data.exerciseType == 1) {
 
-      if (this.data.result == id) {
+      // if (this.data.result == id) {
         e.target.dataset.option = 'option-checked';
         e.target.dataset.optionContent = 'option-content-checked';
 
-      } else {
-        e.target.dataset.option = 'option-wrong';
-        e.target.dataset.optionContent = 'option-content-wrong';
+      // } else {
+      //   e.target.dataset.option = 'option-wrong';
+      //   e.target.dataset.optionContent = 'option-content-wrong';
 
-      }
+      // }
     } else {
       if (this.data.result == id) {
         e.target.dataset.option = 'option-checked';
