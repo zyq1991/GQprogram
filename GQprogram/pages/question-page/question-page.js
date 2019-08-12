@@ -29,11 +29,14 @@ Page({
       eId: eId,
       exerciseType: exerciseType
     })
-    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=1").then(res => {
       if (res.data.success) {
         this.setData(res.data.data);
         this.setData({
           result: res.data.data.key
+        })
+        console.log(res.data.data)
+        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=1").then(res => {
         })
       }
     })
@@ -133,12 +136,14 @@ Page({
     this.setData({
       option: e.target.dataset.option,
       optionContent: e.target.dataset.optionContent,
-      nameId: id
+      nameId: id,
+      result: this.data.options[id]
     })
-
+    console.log(this.data.result)
   },
   next: function() {
-    Get("/cp/startansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&qType=2&exerciseType=1").then(res => {
+    Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer="+this.data.result+"&exerciseType=1").then(res => {
+      console.log(res);
       if (res.data.sucess) {
         Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
           if (res.data.success) {
@@ -163,6 +168,10 @@ Page({
                   wx.navigateTo({
                     url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
                   })
+                } else {
+                  wx.showToast({
+                    title: res.data.msg,
+                  })
                 }
               })
 
@@ -171,7 +180,7 @@ Page({
           }
 
         })
-      }else{
+      } else {
         wx.showToast({
           title: res.data.msg,
         })

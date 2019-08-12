@@ -213,6 +213,8 @@ Page({
         this.setData({
           result: res.data.data.key
         })
+        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=1").then(res => {
+        })
       }
     })
   },
