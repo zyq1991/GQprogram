@@ -248,7 +248,7 @@ Page({
               console.log(this.data)
               if (res.data.success) {
                 wx.navigateTo({
-                  url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+                  url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
                 })
               }
             })
