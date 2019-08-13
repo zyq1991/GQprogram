@@ -143,7 +143,7 @@ Page({
   next: function() {
     Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
       console.log(res.data.success)
-      if (res.data.sucess) {
+      if (res.data.success) {
         console.log('1111111' + this.data.exerciseType)
         Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
           console.log(res)
@@ -167,7 +167,7 @@ Page({
               Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
                 if (res.data.success) {
                   wx.navigateTo({
-                    url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+                    url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
                   })
                 } else {
                   wx.showToast({

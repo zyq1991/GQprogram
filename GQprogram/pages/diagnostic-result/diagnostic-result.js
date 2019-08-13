@@ -22,6 +22,7 @@ Page({
       miniOpenId: miniOpenId,
       eId: eId
     })
+    console.log(this.data)
     Get("/cp/cpexam/report?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
         console.log(res.data.data)
