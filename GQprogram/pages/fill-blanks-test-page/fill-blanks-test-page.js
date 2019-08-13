@@ -222,6 +222,7 @@ Page({
   },
 
   next: function() {
+    console.log("result:"+this.data.result)
     Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
 
       Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
@@ -295,5 +296,8 @@ Page({
     this.setData({
       result: result
     })
+  },
+  resultChange:function(e){
+    this.data.result = e.detail.value;
   }
 })
