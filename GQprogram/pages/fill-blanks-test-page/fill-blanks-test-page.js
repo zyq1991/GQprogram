@@ -1,5 +1,8 @@
 // pages/fill-blanks-test-page/fill-blanks-test-page.js
 // var that = this
+import {
+  Get
+} from '../../utils/request.js';
 Page({
 
 
@@ -201,64 +204,61 @@ Page({
     ],
   },
   onLoad: function(options) {
+    console.log(options)
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
+    let exerciseType = options.exerciseType;
     this.setData({
       miniOpenId: miniOpenId,
-      eId: eId
+      eId: eId,
+      exerciseType: exerciseType
     })
-    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
       if (res.data.success) {
         this.setData(res.data.data);
-        this.setData({
-          result: res.data.data.key
-        })
-        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=1").then(res => {
-        })
+        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
       }
     })
   },
 
   next: function() {
-    Get("/cp/startansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&qType=1&exerciseType=1").then(res => {
-      console.log(res)
-    });
-    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-      if (res.data.success) {
-        let qtype = res.data.data.qType,
-          qId = res.data.data.id;
-        this.setData({
-          isEndQuestion: res.data.data.isEndQuestion
-        })
-        if (!this.data.isEndQuestion) {
-          if (qtype == '2') {
-            wx.navigateTo({
-              url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId
-            })
-          } else {
-            wx.navigateTo({
-              url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
-            })
-          }
-        } else {
-          Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-            if (res.data.success) {
+    Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
+
+      Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
+        console.log(res)
+        if (res.data.success) {
+          let qtype = res.data.data.qType,
+            qId = res.data.data.id;
+          this.setData({
+            isEndQuestion: res.data.data.isEndQuestion
+          })
+          console.log(this.data.isEndQuestion)
+          if (!this.data.isEndQuestion) {
+            if (qtype == '2') {
               wx.navigateTo({
-                url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+                url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
+              })
+            } else {
+              wx.navigateTo({
+                url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
               })
             }
-          })
+          } else {
+            Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+              console.log(this.data)
+              if (res.data.success) {
+                wx.navigateTo({
+                  url: "../diagnostic-result/diagnostic-result?miniOprnId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+                })
+              }
+            })
+
+          }
 
         }
 
-      }
-
-    })
-
-
-    wx.redirectTo({
-      url: '../diagnostic-result/diagnostic-result',
-    })
+      })
+    });
   },
   calcular: function(e) {
     var that = this;

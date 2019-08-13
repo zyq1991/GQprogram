@@ -1,4 +1,7 @@
 // pages/diagnostic-result/diagnostic-result.js
+import {
+  Get
+} from '../../utils/request.js';
 Page({
 
   /**
@@ -12,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options);
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
     this.setData({
@@ -20,6 +24,7 @@ Page({
     })
     Get("/cp/cpexam/report?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
+        console.log(res.data.data)
         this.setData(res.data.data)
       }
     })

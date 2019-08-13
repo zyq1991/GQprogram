@@ -21,6 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options)
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
     let exerciseType = options.exerciseType
@@ -29,15 +30,14 @@ Page({
       eId: eId,
       exerciseType: exerciseType
     })
-    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=1").then(res => {
+    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
       if (res.data.success) {
         this.setData(res.data.data);
         this.setData({
           result: res.data.data.key
         })
         console.log(res.data.data)
-        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=1").then(res => {
-        })
+        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
       }
     })
   },
@@ -139,13 +139,14 @@ Page({
       nameId: id,
       result: this.data.options[id]
     })
-    console.log(this.data.result)
   },
   next: function() {
-    Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer="+this.data.result+"&exerciseType=1").then(res => {
-      console.log(res);
+    Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
+      console.log(res.data.success)
       if (res.data.sucess) {
-        Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+        console.log('1111111' + this.data.exerciseType)
+        Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
+          console.log(res)
           if (res.data.success) {
             let qtype = res.data.data.qType,
               qId = res.data.data.id;
@@ -155,11 +156,11 @@ Page({
             if (!this.data.isEndQuestion) {
               if (qtype == '2') {
                 wx.navigateTo({
-                  url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId
+                  url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
                 })
               } else {
                 wx.navigateTo({
-                  url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId
+                  url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
                 })
               }
             } else {
@@ -177,10 +178,13 @@ Page({
 
             }
 
+          } else {
+            console.log('nnnnn')
           }
 
         })
       } else {
+        console.log('失败啦')
         wx.showToast({
           title: res.data.msg,
         })
