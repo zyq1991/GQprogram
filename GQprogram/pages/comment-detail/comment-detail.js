@@ -1,20 +1,30 @@
 // pages/comment-detail/comment-detail.js
+import {
+  Get
+} from '../../utils/request.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name: '一念执着',
-    comment: '优秀',
-    count: '12'
+    isLikeIt: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    // let videoNo = options.videoNo;
+    let videoNo = 1;
+    Get('/cp/comment/list?videoNo=' + videoNo).then(res => {
+      if (res.data.success) {
+        this.setData({
+          contents: res.data.data.contents
+        });
+      }
+    })
+    console.log(this.data);
   },
 
   /**
@@ -64,5 +74,8 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+  likeIt: function() {
+    this.data.isLikeIt = !this.data.isLikeIt;
   }
 })

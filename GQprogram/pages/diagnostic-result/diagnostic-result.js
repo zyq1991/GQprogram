@@ -81,7 +81,7 @@ Page({
   },
   startLearning: function() {
     wx.redirectTo({
-      url: '../start-learning/start-learning',
+      url: '../start-learning/start-learning?miniOpenId='+this.data.miniOpenId+'&eId='+this.data.eId,
     })
   }
 })
