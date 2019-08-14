@@ -222,44 +222,46 @@ Page({
   },
 
   next: function() {
-    console.log("result:"+this.data.result)
-    Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
-
-      Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
-        console.log(res)
+    if (this.data.isEndQuestion) {
+      Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
         if (res.data.success) {
-          let qtype = res.data.data.qType,
-            qId = res.data.data.id;
-          this.setData({
-            isEndQuestion: res.data.data.isEndQuestion
-          })
-          console.log(this.data.isEndQuestion)
-          if (!this.data.isEndQuestion) {
-            if (qtype == '2') {
+          Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+            console.log(this.data)
+            if (res.data.success) {
               wx.navigateTo({
-                url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
-              })
-            } else {
-              wx.navigateTo({
-                url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
+                url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
               })
             }
-          } else {
-            Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-              console.log(this.data)
-              if (res.data.success) {
+          })
+        }
+      })
+    } else {
+      Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
+
+        Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
+          console.log(res)
+          if (res.data.success) {
+            let qtype = res.data.data.qType,
+              qId = res.data.data.id;
+            this.setData({
+              isEndQuestion: res.data.data.isEndQuestion
+            })
+              if (qtype == '2') {
                 wx.navigateTo({
-                  url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+                  url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
+                })
+              } else {
+                wx.navigateTo({
+                  url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
                 })
               }
-            })
 
           }
 
-        }
+        })
+      });
+    }
 
-      })
-    });
   },
   calcular: function(e) {
     var that = this;
@@ -297,7 +299,7 @@ Page({
       result: result
     })
   },
-  resultChange:function(e){
+  resultChange: function(e) {
     this.data.result = e.detail.value;
   }
 })

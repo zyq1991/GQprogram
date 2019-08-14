@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/comment-detail/comment-detail",
+    
     "pages/index/index",
     "pages/ready-diagnosis/ready-diagnosis",
     "pages/question-page/question-page",
@@ -8,7 +8,7 @@
     "pages/diagnostic-result/diagnostic-result",
     "pages/topic-analysis/topic-analysis",
     "pages/learning-summary/learning-summary",
-    
+    "pages/comment-detail/comment-detail",
     "pages/component/calculator/calculator",
     "pages/super/super",
     "pages/start-learning/start-learning"

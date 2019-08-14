@@ -101,22 +101,24 @@ Page({
       if (res.data.success) {
         let miniOpenId = res.data.data.miniOpenId,
           eId = res.data.data.eId;
-        Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId +"&exerciseType=1").then(res => {
+        Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=1").then(res => {
           if (res.data.success) {
             let qtype = res.data.data.qType,
-              qId = res.data.data.id;
+              qId = res.data.data.id,
+              isEndQuestion = res.data.data.isEndQuestion;
+            console.log(res.data)
             if (qtype == '2') {
-                wx.navigateTo({
-                url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId +"&exerciseType=1"
+              wx.navigateTo({
+                url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=1" + "&isEndQuestion=" + isEndQuestion
               })
-              
+
             } else {
-                wx.navigateTo({
-                url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=1"
+              wx.navigateTo({
+                url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=1" + "&isEndQuestion=" + isEndQuestion
               })
-              
+
             }
-          }else{
+          } else {
             wx.showToast({
               title: res.data.msg,
             })

@@ -22,13 +22,15 @@ Page({
    */
   onLoad: function(options) {
     console.log(options)
-    let miniOpenId = options.miniOpenId;
-    let eId = options.eId;
-    let exerciseType = options.exerciseType
+    let miniOpenId = options.miniOpenId,
+      eId = options.eId,
+      exerciseType = options.exerciseType,
+      isEndQuestion = options.isEndQuestion;
     this.setData({
       miniOpenId: miniOpenId,
       eId: eId,
-      exerciseType: exerciseType
+      exerciseType: exerciseType,
+      isEndQuestion: isEndQuestion
     })
     Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
       if (res.data.success) {
@@ -141,55 +143,56 @@ Page({
     })
   },
   next: function() {
-    Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
-      console.log(res.data.success)
-      if (res.data.success) {
-        console.log('1111111' + this.data.exerciseType)
-        Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
-          console.log(res)
-          if (res.data.success) {
-            let qtype = res.data.data.qType,
-              qId = res.data.data.id;
-            this.setData({
-              isEndQuestion: res.data.data.isEndQuestion
-            })
-            if (!this.data.isEndQuestion) {
+    if (!this.data.isEndQuestion) {
+      Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
+        console.log(res.data.success)
+        if (res.data.success) {
+          Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
+            if (res.data.success) {
+              let qtype = res.data.data.qType,
+                qId = res.data.data.id;
+              this.setData({
+                isEndQuestion: res.data.data.isEndQuestion
+              });
               if (qtype == '2') {
                 wx.navigateTo({
-                  url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
+                  url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
                 })
               } else {
                 wx.navigateTo({
-                  url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType
+                  url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
                 })
               }
-            } else {
-              Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-                if (res.data.success) {
-                  wx.navigateTo({
-                    url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
-                  })
-                } else {
-                  wx.showToast({
-                    title: res.data.msg,
-                  })
-                }
-              })
 
+            } else {
+              wx.showToast({
+                title: res.data.msg,
+              })
             }
 
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      })
+    } else {
+      Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
+        Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+          if (res.data.success) {
+            wx.navigateTo({
+              url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+            })
           } else {
-            console.log('nnnnn')
+            wx.showToast({
+              title: res.data.msg,
+            })
           }
+        })
+      })
+    }
 
-        })
-      } else {
-        console.log('失败啦')
-        wx.showToast({
-          title: res.data.msg,
-        })
-      }
-    })
 
   },
   hideTap: function() {

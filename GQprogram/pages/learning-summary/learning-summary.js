@@ -15,13 +15,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let miniOpenId = options.miniOpenId;
-    let eId = options.eId;
-    this.setData({
-      miniOpenId: miniOpenId,
-      eId: eId
-    })
-    Get("/cp/cpexam/end/report?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+    // let miniOpenId = options.miniOpenId;
+    // let eId = options.eId;
+    // this.setData({
+    //   miniOpenId: miniOpenId,
+    //   eId: eId
+    // })
+    // Get("/cp/cpexam/end/report?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+    //   if (res.data.success) {
+    //     this.setData(res.data.data)
+    //   }
+    // })
+    Get("/cp/cpexam/end/report?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1").then(res => {
       if (res.data.success) {
         this.setData(res.data.data)
       }
