@@ -13,7 +13,7 @@ Page({
     //     console.log(res)
     //   }
     // })
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../ready-diagnosis/ready-diagnosis'
       // url: '../component/calculator/calculator'
     })

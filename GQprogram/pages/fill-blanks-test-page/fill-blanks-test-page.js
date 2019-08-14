@@ -204,7 +204,6 @@ Page({
     ],
   },
   onLoad: function(options) {
-    console.log(options)
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
     let exerciseType = options.exerciseType;
@@ -226,9 +225,8 @@ Page({
       Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
         if (res.data.success) {
           Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-            console.log(this.data)
             if (res.data.success) {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
               })
             }
@@ -239,7 +237,6 @@ Page({
       Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
 
         Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
-          console.log(res)
           if (res.data.success) {
             let qtype = res.data.data.qType,
               qId = res.data.data.id;
@@ -247,11 +244,11 @@ Page({
               isEndQuestion: res.data.data.isEndQuestion
             })
               if (qtype == '2') {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
                 })
               } else {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
                 })
               }

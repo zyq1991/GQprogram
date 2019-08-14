@@ -16,25 +16,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // let miniOpenId = options.miniOpenId;
-    // let eId = options.eId;
-    // this.setData({
-    //   miniOpenId: miniOpenId,
-    //   eId: eId
-    // })
-    // Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
-    //   if (res.data.success) {
-    //     this.setData(res.data.data)
-    //   }
-    // })
-    Get("/cp/video/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1").then(res => {
+    let miniOpenId = options.miniOpenId;
+    let eId = options.eId;
+    this.setData({
+      miniOpenId: miniOpenId,
+      eId: eId
+    })
+    Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
-        this.setData(res.data.data);
-        Get("/cp/question/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1&exerciseType=2").then(res=>{
-          console.log(res);
-        })
+        this.setData(res.data.data)
+        
       }
     })
+    // Get("/cp/video/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1").then(res => {
+    //   if (res.data.success) {
+    //     this.setData(res.data.data);
+    //     Get("/cp/question/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1&exerciseType=2").then(res=>{
+    //       console.log(res);
+    //     })
+    //   }
+    // })
   },
 
   /**
@@ -88,6 +89,11 @@ Page({
   comment: function() {
     wx.navigateTo({
       url: '../comment-detail/comment-detail?videoNo='+this.data.videoNo
+    })
+  },
+  viedoEnded(){
+    Get("/cp/question/push?miniOpenId="+this.data.miniOpenId+"&eId="+this.data.eId+"&exerciseType=2").then(res => {
+      this.setData(res.data.data);
     })
   }
 })

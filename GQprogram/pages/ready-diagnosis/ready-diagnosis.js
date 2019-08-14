@@ -108,12 +108,12 @@ Page({
               isEndQuestion = res.data.data.isEndQuestion;
             console.log(res.data)
             if (qtype == '2') {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=1" + "&isEndQuestion=" + isEndQuestion
               })
 
             } else {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=1" + "&isEndQuestion=" + isEndQuestion
               })
 

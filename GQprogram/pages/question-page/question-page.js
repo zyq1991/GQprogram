@@ -21,7 +21,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     let miniOpenId = options.miniOpenId,
       eId = options.eId,
       exerciseType = options.exerciseType,
@@ -38,7 +37,6 @@ Page({
         this.setData({
           result: res.data.data.key
         })
-        console.log(res.data.data)
         Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
       }
     })
@@ -145,7 +143,6 @@ Page({
   next: function() {
     if (!this.data.isEndQuestion) {
       Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
-        console.log(res.data.success)
         if (res.data.success) {
           Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
             if (res.data.success) {
@@ -155,11 +152,11 @@ Page({
                 isEndQuestion: res.data.data.isEndQuestion
               });
               if (qtype == '2') {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
                 })
               } else {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
                 })
               }
@@ -181,7 +178,7 @@ Page({
       Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
         Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
           if (res.data.success) {
-            wx.navigateTo({
+            wx.redirectTo({
               url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
             })
           } else {
