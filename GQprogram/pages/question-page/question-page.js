@@ -102,7 +102,8 @@ Page({
   checked: function(e) {
     var that = this;
     var id = e.target.dataset.id;
-    if (this.data.exerciseType == 1) {
+    //根据exerciseType值的不同，判断是否显示对错
+    if (this.data.exerciseType == 1) {//exerciseType=1表示考试阶段，不直接给出对错判断
 
       // if (this.data.result == id) {
       e.target.dataset.option = 'option-checked';
@@ -141,7 +142,8 @@ Page({
     })
   },
   next: function() {
-    if (!this.data.isEndQuestion) {
+    //判断是否是最后一题
+    if (!this.data.isEndQuestion) { //如果不是最后一题就就结束本题，继续推题
       Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
         if (res.data.success) {
           Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=" + this.data.exerciseType).then(res => {
@@ -151,6 +153,7 @@ Page({
               this.setData({
                 isEndQuestion: res.data.data.isEndQuestion
               });
+              //判断题目类型，根据qtype不同跳到不同的页面
               if (qtype == '2') {
                 wx.redirectTo({
                   url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=" + this.data.exerciseType + "&isEndQuestion=" + this.data.isEndQuestion
@@ -174,29 +177,42 @@ Page({
           })
         }
       })
-    } else {
+    } else { //如果是最后一题就结束本题，不再推题
       Get("/cp/finishansque?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + this.data.id + "&answer=" + this.data.result + "&exerciseType=" + this.data.exerciseType).then(res => {
-        Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
-          if (res.data.success) {
-            wx.redirectTo({
-              url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
-            })
-          } else {
-            wx.showToast({
-              title: res.data.msg,
-            })
-          }
-        })
+        if (this.data.exerciseType == 1) { //如果exerciseType=1，则结束考试，不再推题，跳转到诊断结果页面
+          Get("/cp/cpexam/finish?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId).then(res => {
+            if (res.data.success) {
+              wx.redirectTo({
+                url: "../diagnostic-result/diagnostic-result?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+              })
+            } else {
+              wx.showToast({
+                title: res.data.msg,
+              })
+            }
+          })
+        } else { //如果exerciseType=2，则跳转到学习总结页面
+          wx.redirectTo({
+            url: "../start-learning/start-learning?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+          })
+        }
       })
     }
 
 
   },
+  //二轮做题阶段，弹出对错之后的隐藏
   hideTap: function() {
     this.setData({
       isCorrect: false,
       isWrong: false
     })
+  },
+  //查看题目解析
+  lookAnalysis: function(e) {
+    var qId = e.target.dataset.qId;
+    wx.redirectTo({
+      url: "../topic-analysis/topic-analysis?qId=" + qId
+    })
   }
-
 })

@@ -1,5 +1,7 @@
 {
-  "navigationBarBackgroundColor": "rgba(0,0,0,0)",
-  "navigationBarTitleText": "",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "开始诊断",
+  "navigationBarTextStyle": "black",
   "usingComponents": {}
 }

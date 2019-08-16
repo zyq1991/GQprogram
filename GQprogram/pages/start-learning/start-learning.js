@@ -25,7 +25,7 @@ Page({
     Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
         this.setData(res.data.data)
-        
+
       }
     })
     // Get("/cp/video/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1").then(res => {
@@ -88,12 +88,34 @@ Page({
   },
   comment: function() {
     wx.navigateTo({
-      url: '../comment-detail/comment-detail?videoNo='+this.data.videoNo
+      url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo
     })
   },
-  viedoEnded(){
-    Get("/cp/question/push?miniOpenId="+this.data.miniOpenId+"&eId="+this.data.eId+"&exerciseType=2").then(res => {
+  viedoEnded() {
+    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
       this.setData(res.data.data);
+      if (res.data.success) {
+        let qtype = res.data.data.qType,
+          qId = res.data.data.id,
+          isEndQuestion = res.data.data.isEndQuestion;
+        console.log(res.data)
+        if (qtype == '2') {
+          wx.redirectTo({
+            url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+          })
+
+        } else {
+          wx.redirectTo({
+            url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+          })
+
+        }
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+        })
+      }
+
     })
   }
 })

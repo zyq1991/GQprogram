@@ -22,7 +22,7 @@
       <text>我的答案：<text class="my-answer"></text></text>
       <text>正确答案：<text></text></text>
       <view class="look">
-        <button>查看解析</button>
+        <button bindtap="lookAnalysis" data-qId="{{qId}}">查看解析</button>
       </view>
 
     </view>

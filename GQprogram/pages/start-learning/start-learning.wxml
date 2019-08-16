@@ -1,4 +1,4 @@
-<!--start-learning.wxml-->
+<!--start-learning.wxml开始学习页面-->
 <view class="container">
   <view style="width:100%;">
     <!-- <video style="width:100%;height=400px;margin:1px;" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
@@ -17,7 +17,7 @@
       <image src="/assets/image/ico_msg.png"></image>
     </view>
   </view>
-  <view class="q-content">
+  <!-- <view class="q-content">
     <view class="question">
       <text>{{stem}}</text>
     </view>
@@ -39,15 +39,9 @@
         <view class="option-content">a=5,b=4,c=3,d=2</view>
       </view>
     </view>
-    <!-- <view class="pic-option">
-    <view class="pic-item">
-      <image></image>
-      <button>A</button>
-    </view>
-  </view> -->
 
   </view>
   <view class="next-btn">
     <button class="btn" bindtap="next">下一题</button>
-  </view>
+  </view> -->
 </view>

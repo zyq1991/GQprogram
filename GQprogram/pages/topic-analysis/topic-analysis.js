@@ -12,7 +12,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let qId = options.qId;
+    Get("/cp/question/judgment?qId=" + qId).then(res => {
+      if (res.data.success) {
+        this.setData(res.data.data);
+      }
+    })
   },
 
   /**
