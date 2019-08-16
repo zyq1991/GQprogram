@@ -25,6 +25,7 @@ Page({
     Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
         this.setData(res.data.data)
+      }else{
 
       }
     })
@@ -91,7 +92,36 @@ Page({
       url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo
     })
   },
-  viedoEnded() {
+  viedoEnded() { //视频播放结束直接跳转做题
+    this.pushQuestion();
+  },
+  //判断是否点赞
+  isMarkIt: function(e) {
+    this.setData({
+      isMark: !this.data.isMark
+    })
+  },
+  //跳转到评论页面
+  toComment: function() {
+    wx.navigateTo({
+      url: "../personal-comment/personal-comment?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&videoNo=" + this.data.videoNo
+    })
+  },
+  //视频暂停状态弹框
+  pause: function() {
+    wx.showModal({
+      title: '是否开始练习',
+      success(res) {
+        if (res.confirm) {
+          this.pushQuestion();
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
+  pushQuestion: function() {//开始做题
     Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
       this.setData(res.data.data);
       if (res.data.success) {
@@ -118,14 +148,16 @@ Page({
 
     })
   },
-  isMarkIt: function(e) {
-    this.setData({
-      isMark: !this.data.isMark
-    })
-  },
-  toComment: function() {
-    wx.navigateTo({
-      url: "../personal-comment/personal-comment?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&videoNo=" + this.data.videoNo
+  videoErrorCallback:function(){
+    wx.showModal({
+      title: '该视频不存在',
+      success(res) {
+        if (res.confirm) {
+          // this.pushQuestion();
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   }
 })

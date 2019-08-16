@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/start-learning/start-learning",
     "pages/index/index",
     "pages/ready-diagnosis/ready-diagnosis",
     "pages/question-page/question-page",
@@ -11,6 +10,7 @@
     "pages/comment-detail/comment-detail",
     "pages/component/calculator/calculator",
     "pages/super/super",
+    "pages/start-learning/start-learning",
     "pages/personal-comment/personal-comment"
     
   ],
