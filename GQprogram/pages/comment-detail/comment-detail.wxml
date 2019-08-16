@@ -9,8 +9,8 @@
         <view class="comment-top">
           <view class="name">{{item.userName}}</view>
           <view class="dz" bindtap="likeIt">
-            <image src="/assets/image/ico_dz_bor.png" wx:if="{{!isLikeIt}}"></image>
-            <image src="/assets/image/ico_dz_pre.png" wx:if="{{isLikeIt}}"></image>
+            <image src="/assets/image/ico_dz_bor.png" hidden="{{!isLikeIt}}"></image>
+            <image src="/assets/image/ico_dz_pre.png" hidden="{{isLikeIt}}"></image>
             <text>{{count}}</text>
           </view>
         </view>

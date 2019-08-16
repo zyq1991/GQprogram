@@ -1,4 +1,4 @@
-// pages/comment-detail/comment-detail.js
+// pages/personal-comment/personal-comment.js
 import {
   Get
 } from '../../utils/request.js';
@@ -8,23 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLikeIt: false
+    content: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // let videoNo = options.videoNo;
-    let videoNo = 1;
-    Get('/cp/comment/list?videoNo=' + videoNo).then(res => {
-      if (res.data.success) {
-        this.setData({
-          contents: res.data.data.contents
-        });
-      }
+    this.setData({
+      miniOpenId: options.miniOpenId,
+      eId: options.eId,
+      videoNo: data.videoNo
     })
-    console.log(this.data);
   },
 
   /**
@@ -75,9 +70,12 @@ Page({
   onShareAppMessage: function() {
 
   },
-  likeIt: function() {
+  submit: function() {
+    Post("/cp/comment/saveContent?miniOpenId=" + this.data.miniOpenId + "&videoNo=" + this.data.videoNo + "&content=" + this.data.content).then()
+  },
+  getContent: function(e) {
     this.setData({
-      isLikeIt: !this.data.isLikeIt
+      content: e.detail.value
     })
   }
 })

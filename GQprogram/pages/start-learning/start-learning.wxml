@@ -8,12 +8,13 @@
   <view class="input-comment">
     <view class="ipt">
       <image src="/assets/image/ico_pl.png" class="pl-image"></image>
-      <input placeholder="写评论..." bindtap="comment"></input>
+      <input placeholder="写评论..." bindtap="toComment"></input>
     </view>
-    <view>
-      <image src="/assets/image/ico_dz_bor.png" class="dz-image"></image>
+    <view bindtap="isMarkIt">
+      <image src="/assets/image/ico_dz_bor.png" class="dz-image" hidden="{{isMark}}"></image>
+      <image src="/assets/image/ico_dz_pre.png" class="dz-image" hidden="{{!isMark}}"></image>
     </view>
-    <view class="msg-image">
+    <view class="msg-image" bindtap="comment">
       <image src="/assets/image/ico_msg.png"></image>
     </view>
   </view>

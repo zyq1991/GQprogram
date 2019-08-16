@@ -1,0 +1,7 @@
+<!--pages/personal-comment/personal-comment.wxml-->
+<view class="container">
+  <textarea placeholder="写评论..." bindinput="getContent"></textarea>
+  <view>
+  <button bindtap="submit">提交</button>
+  </view>
+</view>

@@ -8,8 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    text: '假设有两个变量'
-
+    text: '假设有两个变量',
+    isMark: false
   },
 
   /**
@@ -101,12 +101,12 @@ Page({
         console.log(res.data)
         if (qtype == '2') {
           wx.redirectTo({
-            url: "../question-page/question-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+            url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
           })
 
         } else {
           wx.redirectTo({
-            url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+            url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
           })
 
         }
@@ -116,6 +116,16 @@ Page({
         })
       }
 
+    })
+  },
+  isMarkIt: function(e) {
+    this.setData({
+      isMark: !this.data.isMark
+    })
+  },
+  toComment: function() {
+    wx.navigateTo({
+      url: "../personal-comment/personal-comment?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&videoNo=" + this.data.videoNo
     })
   }
 })
