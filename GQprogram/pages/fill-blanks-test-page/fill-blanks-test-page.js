@@ -237,7 +237,7 @@ Page({
             })
           } else { //如果exerciseType=2，则跳转到学习总结页面
             wx.redirectTo({
-              url: "../start-learning/start-learning?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
+              url: "../learning-summary/learning-summary?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId
             })
           }
 
