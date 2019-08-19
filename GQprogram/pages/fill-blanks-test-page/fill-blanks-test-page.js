@@ -12,6 +12,7 @@ Page({
   data: {
     text: "假设有两个分类变量X和Y，它们的值域分别为{x1,x2}和{y1,y2}，其中2x2列联表为:",
     isShow: false,
+    isChange:false,
     result: '',
     tmpArr: [],
     layout: [

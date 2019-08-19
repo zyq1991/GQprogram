@@ -14,7 +14,8 @@ Page({
     nameId: "",
     result: '',
     option: '',
-    optionContent: ''
+    optionContent: '',
+    isChange:false
   },
 
   /**
@@ -120,7 +121,8 @@ Page({
         e.target.dataset.optionContent = 'option-content-checked';
         this.setData({
           isCorrect: true,
-          isWrong: false
+          isWrong: false,
+          isChange:true
         });
 
       } else {
@@ -128,7 +130,8 @@ Page({
         e.target.dataset.optionContent = 'option-content-wrong';
         this.setData({
           isCorrect: false,
-          isWrong: true
+          isWrong: true,
+          isChange:true
         });
 
       }
@@ -214,5 +217,8 @@ Page({
     wx.redirectTo({
       url: "../topic-analysis/topic-analysis?qId=" + qId
     })
+  },
+  submit:function(){
+    
   }
 })

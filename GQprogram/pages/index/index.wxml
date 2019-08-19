@@ -1,5 +1,5 @@
 <!--index.wxml-->
 <view class="container">
  <image src="/assets/image/transition.png" style="height:100%;width:100%;"></image>
- <button bindtap="click" data-id='id'>点击打印</button>
+ <!-- <button bindtap="click" data-id='id'>点击打印</button> -->
 </view>

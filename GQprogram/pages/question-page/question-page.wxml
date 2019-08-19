@@ -9,9 +9,17 @@
       <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">{{item}}</view>
     </view>
   </view>
-  <view class="next-btn">
-    <button class="btn" catchtap="next">下一题</button>
-  </view>
+  <block wx:if="{{exerciseType==1}}">
+    <view class="next-btn">
+      <button class="btn" catchtap="next">下一题</button>
+    </view>
+  </block>
+  <block wx:if="{{exerciseType==2}}">
+    <view class="next-btn">
+      <button class="btn" catchtap="submit" wx:if="{{!isChange}}">提交</button>
+      <button class="btn" catchtap="next" wx:if="{{isChange}}">下一题</button>
+    </view>
+  </block>
   <image src="/assets/image/ico_hdzq.png" class="correct-ico" wx:if="{{isCorrect}}"></image>
 
 </view>

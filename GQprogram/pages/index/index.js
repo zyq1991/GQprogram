@@ -13,10 +13,10 @@ Page({
     //     console.log(res)
     //   }
     // })
-    // wx.redirectTo({
-    //   url: '../ready-diagnosis/ready-diagnosis'
-    //   // url: '../component/calculator/calculator'
-    // })
+    wx.redirectTo({
+      url: '../ready-diagnosis/ready-diagnosis'
+      // url: '../component/calculator/calculator'
+    })
 
   },
 
