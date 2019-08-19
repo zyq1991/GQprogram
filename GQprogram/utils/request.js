@@ -1,4 +1,5 @@
 const domain = 'http://39.105.185.44:8090';
+// const domain = 'https://bianshixue';
 const process = (url, data, option) => {
   if (!option) {
     option = { method: 'GET' };

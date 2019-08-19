@@ -15,20 +15,20 @@
         <image src="/assets/image/ico_gl.png"></image>
         <text>求解一般概率与统计概率与统计一般的梯度</text>
       </view>
-      <view class="content-item">
+      <!-- <view class="content-item">
         <image src="/assets/image/ico_sxjm.png"></image>
         <text>求解数学建模的梯度</text>
       </view>
       <view class="content-item">
         <image src="/assets/image/ico_yuzs.png"></image>
-        <text>预备知识</text>
-      </view>
+        <text>预备知识</text> 
+      </view>-->
     </view>
   </view>
   <view class="card">
     <text class="card-title">未掌握</text>
     <view class="card-content">
-      <view class="content-item">
+     <!--  <view class="content-item">
         <image src="/assets/image/ico_hs(1).png"></image>
         <text>求解一般函数的梯度一般函数的梯度</text>
       </view>
@@ -39,12 +39,12 @@
       <view class="content-item">
         <image src="/assets/image/ico_gl(1).png"></image>
         <text>求解一般概率与统计概率与统计一般的梯度</text>
-      </view>
-      <view class="content-item">
+      </view> -->
+      <view class="content-item" bindtap="startLearning">
         <image src="/assets/image/ico_sxjm(1).png"></image>
         <text>求解数学建模的梯度</text>
       </view>
-      <view class="content-item">
+      <view class="content-item" bindtap="startLearning">
         <image src="/assets/image/ico_yuzs(1).png"></image>
         <text>预备知识</text>
       </view>
@@ -53,7 +53,7 @@
   <view class="card">
     <text class="card-title">将要学习</text>
     <view class="card-content">
-      <view class="content-item">
+      <view class="content-item" bindtap="startLearning">
         <image src="/assets/image/ico_jyxx.png"></image>
         <text class="content-jyxx">求解一般函数的梯度一般函数的梯度</text>
       </view>
