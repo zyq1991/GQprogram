@@ -17,8 +17,31 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: (res) => {
-              // console.log(res.userInfo)
-              // this.setData(res.userInfo);
+              let nickName = res.userInfo.nickName;
+              Get("/cp/upcpuser?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&nickName=" + nickName).then(res => {
+                if (res.data.data) {
+                  //小程序开始，判断跳转到哪个页面
+                  Get("/cp/learning/index?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
+                    console.log(res)
+                    if (res.data.success) {
+                      let status = res.data.data.startLearning;
+                      if (status == 0) { //0表示开始页面
+                        wx.redirectTo({
+                          url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+                        })
+                      } else { //1表示诊断结果页面
+                        wx.redirectTo({
+                          url: "../diagnostic-result/diagnostic-result?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+                        })
+                      }
+                    } else {
+                      wx.showToast({
+                        title: '请检查网络',
+                      })
+                    }
+                  })
+                }
+              })
             }
           })
         }
@@ -31,32 +54,30 @@ Page({
 
   },
   bindGetUserInfo: (e) => {
-    let that = this;
-    console.log(e.detail.userInfo)
-    // this.setData(e.detail.userInfo);
-    console.log(data)
-  },
-  click: function(e) {
-    //小程序开始，判断跳转到哪个页面
-    Get("/cp/learning/index?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
-      console.log(res)
-      if (res.data.success) {
-        let status = res.data.data.startLearning;
-        if (status == 0) { //0表示开始页面
-          wx.redirectTo({
-            url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
-          })
-        } else { //1表示诊断结果页面
-          wx.redirectTo({
-            url: "../diagnostic-result/diagnostic-result?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
-          })
-        }
-      } else {
-        wx.showToast({
-          title: '请检查网络',
+    let nickName = res.userInfo.nickName;
+    Get("/cp/upcpuser?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&nickName=" + nickName).then(res => {
+      if (res.data.data) {
+        //小程序开始，判断跳转到哪个页面
+        Get("/cp/learning/index?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
+          console.log(res)
+          if (res.data.success) {
+            let status = res.data.data.startLearning;
+            if (status == 0) { //0表示开始页面
+              wx.redirectTo({
+                url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+              })
+            } else { //1表示诊断结果页面
+              wx.redirectTo({
+                url: "../diagnostic-result/diagnostic-result?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+              })
+            }
+          } else {
+            wx.showToast({
+              title: '请检查网络',
+            })
+          }
         })
       }
     })
-  },
-
+  }
 })
