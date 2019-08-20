@@ -9,7 +9,8 @@ Page({
    */
   data: {
     text: '假设有两个变量',
-    isMark: false
+    isMark: false,
+    startPoint: [0, 0]
   },
 
   /**
@@ -183,5 +184,18 @@ Page({
         }
       }
     })
+  },
+  mytouchstart: (e) => {
+    console.log(e)
+    // this.setData({
+    //   startPoint: [e.touches[0].pageX, e.touches[0].pageY]
+    // })
+  },
+  mytouchmove: function (e) {
+    console.log(e)
+    // this.setData({
+    //   endPoint: [e.touches[0].pageX, e.touches[0].pageY]
+    // });
+    // if (endPoint[1] > startPoint[1]){}
   }
 })

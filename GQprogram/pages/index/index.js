@@ -6,22 +6,37 @@ import {
 const app = getApp()
 
 Page({
-  data: {},
-  onLoad: function() {
-    // wx.getUserInfo({
-    //   success:res => {
-    //     console.log(res)
-    //   }
-    // })
-    wx.redirectTo({
-      url: '../ready-diagnosis/ready-diagnosis'
-      // url: '../component/calculator/calculator'
-    })
+  data: {
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
 
   },
+  onLoad: function() {
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: (res) => {
+              // console.log(res.userInfo)
+              // this.setData(res.userInfo);
+            }
+          })
+        }
+      }
+    })
+    // wx.redirectTo({
+    //   url: '../ready-diagnosis/ready-diagnosis'
+    //   // url: '../component/calculator/calculator'
+    // })
 
+  },
+  bindGetUserInfo: (e) => {
+    let that = this;
+    console.log(e.detail.userInfo)
+    // this.setData(e.detail.userInfo);
+    console.log(data)
+  },
   click: function(e) {
-    console.log(e)
     //小程序开始，判断跳转到哪个页面
     Get("/cp/learning/index?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
       console.log(res)
@@ -42,5 +57,6 @@ Page({
         })
       }
     })
-  }
+  },
+
 })
