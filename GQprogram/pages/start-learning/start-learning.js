@@ -8,9 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    text: '假设有两个变量',
     isMark: false,
-    startPoint: [0, 0]
+    startPoint: [0, 0],
+    commentDisplay:false,
+    videoDisplay:true,
+    isLikeIt: false
   },
 
   /**
@@ -185,17 +187,42 @@ Page({
       }
     })
   },
-  mytouchstart: (e) => {
-    console.log(e)
-    // this.setData({
-    //   startPoint: [e.touches[0].pageX, e.touches[0].pageY]
-    // })
+  mytouchstart: function(e){
+    this.setData({
+      startPoint: [e.touches[0].pageX, e.touches[0].pageY]
+    })
   },
-  mytouchmove: function (e) {
-    console.log(e)
-    // this.setData({
-    //   endPoint: [e.touches[0].pageX, e.touches[0].pageY]
-    // });
+  mytouchmove: function(e){
+    this.setData({
+      endPoint: [e.touches[0].pageX, e.touches[0].pageY]
+    });
     // if (endPoint[1] > startPoint[1]){}
+  },
+  mytouchend: function(e){
+    let moveY = this.data.endPoint[1] - this.data.startPoint[1];
+    if (moveY < 0) {
+      this.setData({
+        commentDisplay: true,
+        videoDisplay:false
+      })
+      Get('/cp/comment/list?videoNo=' + this.data.videoNo).then(res => {
+        if (res.data.success) {
+          this.setData({
+            contents: res.data.data.contents
+          });
+        }
+      })
+    }else{
+      this.setData({
+        commentDisplay: false,
+        videoDisplay:true
+      })
+    }
+    console.log(this.data)
+  },
+  likeIt: function () {
+    this.setData({
+      isLikeIt: !this.data.isLikeIt
+    })
   }
 })
