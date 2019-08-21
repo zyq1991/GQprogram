@@ -7,7 +7,7 @@
         <image src="/assets/image/ico_hs.png"></image>
         <text>求解一般函数的梯度一般函数的梯度</text>
       </view>
-      <view class="content-item">
+      <view class="content-item" style='display:none'>
         <image src="/assets/image/ico_kjjh.png"></image>
         <text>求解空间几何的梯度</text>
       </view>
