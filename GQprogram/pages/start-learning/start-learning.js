@@ -10,8 +10,8 @@ Page({
   data: {
     isMark: false,
     startPoint: [0, 0],
-    commentDisplay:false,
-    videoDisplay:true,
+    commentDisplay: false,
+    videoDisplay: true,
     isLikeIt: false
   },
 
@@ -187,23 +187,24 @@ Page({
       }
     })
   },
-  mytouchstart: function(e){
+  //视频上滑操作
+  mytouchstart: function(e) {
     this.setData({
       startPoint: [e.touches[0].pageX, e.touches[0].pageY]
     })
   },
-  mytouchmove: function(e){
+  mytouchmove: function(e) {
     this.setData({
       endPoint: [e.touches[0].pageX, e.touches[0].pageY]
     });
     // if (endPoint[1] > startPoint[1]){}
   },
-  mytouchend: function(e){
+  mytouchend: function(e) {
     let moveY = this.data.endPoint[1] - this.data.startPoint[1];
     if (moveY < 0) {
       this.setData({
         commentDisplay: true,
-        videoDisplay:false
+        videoDisplay: false
       })
       Get('/cp/comment/list?videoNo=' + this.data.videoNo).then(res => {
         if (res.data.success) {
@@ -212,17 +213,27 @@ Page({
           });
         }
       })
-    }else{
+    } else {
       this.setData({
         commentDisplay: false,
-        videoDisplay:true
+        videoDisplay: true
       })
     }
     console.log(this.data)
   },
-  likeIt: function () {
+  //点赞操作
+  likeIt: function() {
     this.setData({
       isLikeIt: !this.data.isLikeIt
+    })
+  },
+  submit: function() {
+    Post("/cp/comment/saveContent?miniOpenId=" + this.data.miniOpenId + "&videoNo=" + this.data.videoNo + "&content=" + this.data.content).then()
+  },
+  //获取评论输入框内容
+  getContent: function(e) {
+    this.setData({
+      content: e.detail.value
     })
   }
 })
