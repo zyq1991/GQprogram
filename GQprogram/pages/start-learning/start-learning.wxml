@@ -45,7 +45,7 @@
   <view class="next-btn">
     <button class="btn" bindtap="next">下一题</button>
   </view> -->
-  <view wx:if="{{commentDisplay}}" class="comment-view">
+  <view wx:if="{{commentDisplay}}" class="comment-view" bindtouchstart="mytouchstart" bindtouchmove="mytouchmove" bindtouchend="mytouchend" >
     <view class="content">
       <view class="comment-detail" wx:for-items="{{contents}}" wx:key="{{index}}" wx:for-item="item">
         <view class="avatar">

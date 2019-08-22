@@ -10,6 +10,7 @@ Page({
   data: {
     isMark: false,
     startPoint: [0, 0],
+    endPoint:[0,0],
     commentDisplay: false,
     videoDisplay: true,
     isLikeIt: false
@@ -29,7 +30,9 @@ Page({
       if (res.data.success) {
         this.setData(res.data.data)
       } else {
-
+        wx.showToast({
+          title: res.data.msg,
+        })
       }
     })
     // Get("/cp/video/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1").then(res => {
@@ -211,6 +214,10 @@ Page({
           this.setData({
             contents: res.data.data.contents
           });
+        }else{
+          wx.showToast({
+            title: res.data.msg,
+          })
         }
       })
     } else {
