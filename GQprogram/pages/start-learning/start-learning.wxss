@@ -239,14 +239,15 @@ page {
 }
 
 .input-comment {
-  width: 90%;
-  height: 98rpx;
+  /* width: 90%; */
+  /* height: 98rpx; */
   line-height: 98rpx;
   position: absolute;
-  bottom: 0;
+  top:70%;
+  right: 5%;
+  /* bottom: 0; */
   z-index: 1000;
-  display: flex;
-  justify-content: space-between;
+ 
 }
 
 .comment-detail .avatar {
