@@ -219,6 +219,7 @@ Page({
     })
   },
   submit:function(){
-    
+    let query = wx.createSelectorQuery();
+    query.select()
   }
 })
