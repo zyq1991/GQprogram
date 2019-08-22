@@ -220,6 +220,7 @@ Page({
   },
   submit:function(){
     let query = wx.createSelectorQuery();
-    query.select()
+    let queryNode=query.select("option");
+    queryNode.addClass("option-checked")
   }
 })

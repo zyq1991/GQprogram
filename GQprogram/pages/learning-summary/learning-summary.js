@@ -21,6 +21,7 @@ Page({
       miniOpenId: miniOpenId,
       eId: eId
     })
+    //学习总结
     Get("/cp/cpexam/end/report?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
         this.setData(res.data.data)

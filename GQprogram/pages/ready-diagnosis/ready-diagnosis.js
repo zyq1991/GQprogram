@@ -97,10 +97,12 @@ Page({
   },
 
   start: function() {
+    //开始诊断，首先先开始考试接口
     Get("/cp/cpexam/start?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
       if (res.data.success) {
         let miniOpenId = res.data.data.miniOpenId,
           eId = res.data.data.eId;
+          //获取题目信息，根据qtype跳转到不同页面
         Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=1").then(res => {
           if (res.data.success) {
             let qtype = res.data.data.qType,

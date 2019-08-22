@@ -75,6 +75,7 @@ Page({
   onShareAppMessage: function() {
 
   },
+  //点赞
   likeIt: function() {
     this.setData({
       isLikeIt: !this.data.isLikeIt

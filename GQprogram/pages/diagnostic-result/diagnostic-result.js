@@ -22,10 +22,9 @@ Page({
       miniOpenId: miniOpenId,
       eId: eId
     })
-    console.log(this.data)
+    //获取诊断结果
     Get("/cp/cpexam/report?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
-        console.log(res.data.data)
         this.setData(res.data.data)
       }
     })
@@ -79,6 +78,7 @@ Page({
   onShareAppMessage: function() {
 
   },
+  //开始学习按钮，跳转到视频页面，开始学习
   startLearning: function() {
     wx.redirectTo({
       url: '../start-learning/start-learning?miniOpenId='+this.data.miniOpenId+'&eId='+this.data.eId,

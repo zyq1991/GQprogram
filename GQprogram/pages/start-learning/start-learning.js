@@ -151,33 +151,33 @@ Page({
     })
 
   },
-  pushQuestion: function() { //开始做题
-    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
-      this.setData(res.data.data);
-      if (res.data.success) {
-        let qtype = res.data.data.qType,
-          qId = res.data.data.id,
-          isEndQuestion = res.data.data.isEndQuestion;
-        console.log(res.data)
-        if (qtype == '2') {
-          wx.redirectTo({
-            url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-          })
+  // pushQuestion: function() { //开始做题
+  //   Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+  //     this.setData(res.data.data);
+  //     if (res.data.success) {
+  //       let qtype = res.data.data.qType,
+  //         qId = res.data.data.id,
+  //         isEndQuestion = res.data.data.isEndQuestion;
+  //       console.log(res.data)
+  //       if (qtype == '2') {
+  //         wx.redirectTo({
+  //           url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+  //         })
 
-        } else {
-          wx.redirectTo({
-            url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-          })
+  //       } else {
+  //         wx.redirectTo({
+  //           url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+  //         })
 
-        }
-      } else {
-        wx.showToast({
-          title: res.data.msg,
-        })
-      }
+  //       }
+  //     } else {
+  //       wx.showToast({
+  //         title: res.data.msg,
+  //       })
+  //     }
 
-    })
-  },
+  //   })
+  // },
   videoErrorCallback: function() {
     wx.showModal({
       title: '该视频不存在',
