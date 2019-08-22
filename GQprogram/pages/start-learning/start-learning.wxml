@@ -5,7 +5,7 @@
       binderror="videoErrorCallback" bindended="viedoEnded" bindpause="pause" bindtouchstart="mytouchstart" bindtouchmove="mytouchmove" bindtouchend="mytouchend" play-btn-position='center'></video>
     <!-- <video style="width:100%;height=400px;margin:1px;" src="{{video}}" binderror="videoErrorCallback" bindended="viedoEnded" bindpause="pause"></video> -->
   </view>
-  <!-- <view class="input-comment">
+   <view class="input-comment">
     <view class="ipt" style='display:none' >
       <image src="/assets/image/ico_pl.png" class="pl-image"></image>
       <input  placeholder="写评论..." bindtap="toComment"></input>
@@ -17,7 +17,7 @@
     <view class="msg-image" bindtap="comment">
       <image src="/assets/image/ico_msg.png"></image>
     </view>
-  </view> -->
+  </view>
   <!-- <view class="q-content">
     <view class="question">
       <text>{{stem}}</text>
