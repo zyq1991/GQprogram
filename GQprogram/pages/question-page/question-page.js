@@ -103,7 +103,7 @@ Page({
   checked: function(e) {
     var id = e.target.dataset.id;
     //根据exerciseType值的不同，判断是否显示对错
-    if (this.data.exerciseType == 1) { //exerciseType=1表示考试阶段，不直接给出对错判断
+    //if (this.data.exerciseType == 1) { //exerciseType=1表示考试阶段，不直接给出对错判断
 
       // if (this.data.result == id) {
       e.target.dataset.option = 'option-checked';
@@ -114,27 +114,27 @@ Page({
       //   e.target.dataset.optionContent = 'option-content-wrong';
 
       // }
-    } else {
-      if (this.data.result == this.data.options[id].key) {
-        e.target.dataset.option = 'option-checked';
-        e.target.dataset.optionContent = 'option-content-checked';
-        this.setData({
-          isCorrect: true,
-          isWrong: false,
-          isChange: true
-        });
+    // } else {
+    //   if (this.data.result == this.data.options[id].key) {
+    //     e.target.dataset.option = 'option-checked';
+    //     e.target.dataset.optionContent = 'option-content-checked';
+    //     this.setData({
+    //       isCorrect: true,
+    //       isWrong: false,
+    //       isChange: true
+    //     });
 
-      } else {
-        e.target.dataset.option = 'option-wrong';
-        e.target.dataset.optionContent = 'option-content-wrong';
-        this.setData({
-          isCorrect: false,
-          isWrong: true,
-          isChange: true
-        });
+    //   } else {
+    //     e.target.dataset.option = 'option-wrong';
+    //     e.target.dataset.optionContent = 'option-content-wrong';
+    //     this.setData({
+    //       isCorrect: false,
+    //       isWrong: true,
+    //       isChange: true
+    //     });
 
-      }
-    }
+    //   }
+    // }
     this.setData({
       option: e.target.dataset.option,
       optionContent: e.target.dataset.optionContent,
@@ -219,6 +219,7 @@ Page({
   submit: function() {
     let query = wx.createSelectorQuery();
     let queryNode = query.select("option");
-    queryNode.addClass("option-checked")
+    // queryNode.addClass("option-checked")
+    console.log(queryNode)
   }
 })

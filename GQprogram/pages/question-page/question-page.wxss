@@ -30,7 +30,7 @@ page {
 
 .option-item {
   display: flex;
-  height: 100rpx;
+  min-height: 100rpx;
   border-radius: 20px;
   text-align: center;
   width: 620rpx;
@@ -41,8 +41,7 @@ page {
   color: #fff;
   background: #e4e8eb;
   width: 120rpx;
-  line-height: 100rpx;
-  height: 100%;
+  min-height: 100%;
   border-top-left-radius: 20rpx;
   border-bottom-left-radius: 20rpx;
   border: 2rpx solid #fff;

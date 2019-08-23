@@ -67,7 +67,7 @@ const set_token = (token) => {
 
 const fetch_token = () => {
   return wx_login().then(code => {
-    return Post('/cp/findcpuser', { code }, { isNotAuth: true });
+    return Post('/cp/upcpuser', { code }, { isNotAuth: true });
   }).then(res => {
     if (res.data.success) {
       return set_token(res.data.token);
@@ -77,7 +77,7 @@ const fetch_token = () => {
         icon: 'none',
         title: res.data.info || '请求错误'
       });
-      throw 'err: /cp/findcpuser';
+      throw 'err: /cp/upcpuser';
     }
   });
 };
