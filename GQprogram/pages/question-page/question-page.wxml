@@ -1,12 +1,15 @@
 <!-- pages/question-page/question-page.wxml -->
 <view class="content" catchtap="hideTap">
   <view class="question">
-    <text>{{stem}}</text>
+    <!-- <text innerHtml="{{stem}}"></text> -->
+    <rich-text nodes="{{stem}}"></rich-text>
   </view>
   <view class="options">
     <view class="option-item" catchtap="checked" wx:for-items="{{options}}" wx:key="{{index}}" wx:for-item="item">
-      <view class="option {{nameId==index?option:''}}" data-id="{{index}}">{{index==0 ? 'A ':(index==1?'B':(index==2?'C':'D'))}}</view>
-      <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">{{item}}</view>
+      <view class="option {{nameId==index?option:''}}" data-id="{{index}}">{{item.key}}</view>
+      <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">
+      <rich-text nodes="{{item.value}}"></rich-text>
+      </view>
     </view>
   </view>
   <block wx:if="{{exerciseType==1}}">

@@ -25,6 +25,9 @@ Page({
                     console.log(res)
                     if (res.data.success) {
                       let status = res.data.data.startLearning;
+                      // wx.redirectTo({
+                      //   url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+                      // })
                       if (status == 0) { //0表示开始页面
                         wx.redirectTo({
                           url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
@@ -62,6 +65,9 @@ Page({
           console.log(res)
           if (res.data.success) {
             let status = res.data.data.startLearning;
+            // wx.redirectTo({
+            //   url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+            // })
             if (status == 0) { //0表示开始页面
               wx.redirectTo({
                 url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId

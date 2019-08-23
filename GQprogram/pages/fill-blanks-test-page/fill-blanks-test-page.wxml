@@ -2,7 +2,8 @@
 <view class="container">
   <view class="con-top">
     <view class="question">
-      <text>{{stem}}</text>
+      <!-- <text>{{stem}}</text> -->
+      <rich-text nodes="{{stem}}"></rich-text>
     </view>
     <view class="content">
       <!-- <input selection-start="10" selection-end="10" bindtap="calcular" value="{{result}}"/> -->

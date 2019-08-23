@@ -15,7 +15,7 @@ Page({
     result: '',
     option: '',
     optionContent: '',
-    isChange:false
+    isChange: false
   },
 
   /**
@@ -101,10 +101,9 @@ Page({
 
   },
   checked: function(e) {
-    var that = this;
     var id = e.target.dataset.id;
     //根据exerciseType值的不同，判断是否显示对错
-    if (this.data.exerciseType == 1) {//exerciseType=1表示考试阶段，不直接给出对错判断
+    if (this.data.exerciseType == 1) { //exerciseType=1表示考试阶段，不直接给出对错判断
 
       // if (this.data.result == id) {
       e.target.dataset.option = 'option-checked';
@@ -116,13 +115,13 @@ Page({
 
       // }
     } else {
-      if (this.data.result == this.data.options[id]) {
+      if (this.data.result == this.data.options[id].key) {
         e.target.dataset.option = 'option-checked';
         e.target.dataset.optionContent = 'option-content-checked';
         this.setData({
           isCorrect: true,
           isWrong: false,
-          isChange:true
+          isChange: true
         });
 
       } else {
@@ -131,17 +130,16 @@ Page({
         this.setData({
           isCorrect: false,
           isWrong: true,
-          isChange:true
+          isChange: true
         });
 
       }
     }
-
     this.setData({
       option: e.target.dataset.option,
       optionContent: e.target.dataset.optionContent,
       nameId: id,
-      result: this.data.options[id]
+      result: this.data.options[id].key
     })
   },
   next: function() {
@@ -218,9 +216,9 @@ Page({
       url: "../topic-analysis/topic-analysis?qId=" + qId
     })
   },
-  submit:function(){
+  submit: function() {
     let query = wx.createSelectorQuery();
-    let queryNode=query.select("option");
+    let queryNode = query.select("option");
     queryNode.addClass("option-checked")
   }
 })
