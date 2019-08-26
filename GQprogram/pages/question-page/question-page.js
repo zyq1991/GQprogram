@@ -15,7 +15,8 @@ Page({
     result: '',
     option: '',
     optionContent: '',
-    isChange: false
+    isChange: false,
+    isTrue: true
   },
 
   /**
@@ -36,7 +37,7 @@ Page({
       if (res.data.success) {
         this.setData(res.data.data);
         this.setData({
-          result: res.data.data.key
+          _result: res.data.data.key
         })
         Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
       }
@@ -105,15 +106,15 @@ Page({
     //根据exerciseType值的不同，判断是否显示对错
     //if (this.data.exerciseType == 1) { //exerciseType=1表示考试阶段，不直接给出对错判断
 
-      // if (this.data.result == id) {
+    if (this.data.isTrue) {
       e.target.dataset.option = 'option-checked';
       e.target.dataset.optionContent = 'option-content-checked';
 
-      // } else {
-      //   e.target.dataset.option = 'option-wrong';
-      //   e.target.dataset.optionContent = 'option-content-wrong';
+    } else {
+      e.target.dataset.option = 'option-wrong';
+      e.target.dataset.optionContent = 'option-content-wrong';
 
-      // }
+    }
     // } else {
     //   if (this.data.result == this.data.options[id].key) {
     //     e.target.dataset.option = 'option-checked';
@@ -139,7 +140,8 @@ Page({
       option: e.target.dataset.option,
       optionContent: e.target.dataset.optionContent,
       nameId: id,
-      result: this.data.options[id].key
+      result: this.data.options[id].key,
+      isTrue: true
     })
   },
   next: function() {
@@ -217,9 +219,24 @@ Page({
     })
   },
   submit: function() {
-    let query = wx.createSelectorQuery();
-    let queryNode = query.select("option");
-    // queryNode.addClass("option-checked")
-    console.log(queryNode)
+    // let query = wx.createSelectorQuery();
+    // let queryNode = query.select("option");
+    // // queryNode.addClass("option-checked")
+    // console.log(queryNode)
+    if (this.data.result == this.data._result) {
+      this.setData({
+        isTrue: true,
+        isCorrect: true,
+        isWrong: false,
+        isChange: true
+      })
+    } else {
+      this.setData({
+        isTrue: false,
+        isCorrect: false,
+        isWrong: true,
+        isChange: true
+      })
+    }
   }
 })
