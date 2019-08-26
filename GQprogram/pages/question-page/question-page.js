@@ -213,9 +213,8 @@ Page({
   },
   //查看题目解析
   lookAnalysis: function(e) {
-    var qId = e.target.dataset.qId;
     wx.redirectTo({
-      url: "../topic-analysis/topic-analysis?qId=" + qId
+      url: "../topic-analysis/topic-analysis?qId=" + this.data.id
     })
   },
   submit: function() {

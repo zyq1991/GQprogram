@@ -1,11 +1,11 @@
 <!--pages/topic-analysis/topic-analysis.wxml-->
 <view class="content">
   <view class="title">
-    <text>{{title}}</text>
+    <rich-text nodes="{{stem}}"></rich-text>
   </view>
   <view class="analysis">
     <text>解析:</text>
-    <text>1234567890</text>
+    <text>{{analysis}}</text>
   </view>
   <view class="test-position">
     <text>考点定位:</text>
