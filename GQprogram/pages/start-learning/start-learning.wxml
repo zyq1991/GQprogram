@@ -1,8 +1,8 @@
 <!--start-learning.wxml开始学习页面-->
 <view class="container">
-  <view wx:if="{{videoDisplay}}" catchtouchstart="mytouchstart" catchtouchmove="mytouchmove" catchtouchend="mytouchend">
+  <view wx:if="{{videoDisplay}}" >
     <video page-gesture="true" class='video' autoplay='true' src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
-      binderror="videoErrorCallback" catchended="viedoEnded" catchpause="pause"  play-btn-position='center'></video>
+      binderror="videoErrorCallback" bindended="viedoEnded" bindpause="pause"  play-btn-position='center' bindtouchstart="mytouchstart" bindtouchmove="mytouchmove" bindtouchend="mytouchend"></video>
     <!-- <video style="width:100%;height=400px;margin:1px;" src="{{video}}" binderror="videoErrorCallback" bindended="viedoEnded" bindpause="pause"></video> -->
   </view>
    <view class="input-comment">
@@ -18,65 +18,5 @@
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_msg.png"></image>
     </view>
   </view>
-  <!-- <view class="q-content">
-    <view class="question">
-      <text>{{stem}}</text>
-    </view>
-    <view>
-      <view class="option-item" bindtap="checked">
-        <view class="option {{index==nameId?'option-checked':''}}" data-id="{{index}}">A</view>
-        <view class="option-content {{index==nameId?'option-content-checked':''}}" data-id="{{index}}">a=5,b=4,c=3,d=2</view>
-      </view>
-      <view class="option-item">
-        <view class="option">B</view>
-        <view class="option-content">a=5,b=4,c=3,d=2</view>
-      </view>
-      <view class="option-item">
-        <view class="option">C</view>
-        <view class="option-content">a=5,b=4,c=3,d=2</view>
-      </view>
-      <view class="option-item">
-        <view class="option">D</view>
-        <view class="option-content">a=5,b=4,c=3,d=2</view>
-      </view>
-    </view>
-
-  </view>
-  <view class="next-btn">
-    <button class="btn" bindtap="next">下一题</button>
-  </view> -->
-  <!-- <view wx:if="{{commentDisplay}}" class="comment-view" bindtouchstart="mytouchstart" bindtouchmove="mytouchmove" bindtouchend="mytouchend" >
-    <view class="content">
-      <view class="comment-detail" wx:for-items="{{contents}}" wx:key="{{index}}" wx:for-item="item">
-        <view class="avatar">
-          <image src="{{item.igUrl}}"></image>
-        </view>
-        <view class="detail">
-          <view class="comment-top">
-            <view class="name">{{item.userName}}</view>
-            <view class="dz" bindtap="likeIt">
-              <image src="/assets/image/ico_dz_bor.png" hidden="{{!isLikeIt}}"></image>
-              <image src="/assets/image/ico_dz_pre.png" hidden="{{isLikeIt}}"></image>
-              <text>{{count}}</text>
-            </view>
-          </view>
-          <view class="comment">
-            <text class="inner"></text>
-            <text>{{item.content}}</text>
-          </view>
-        </view>
-      </view>
-
-
-    </view>
-    <view class="input-comment">
-      <view class="ipt">
-        <image src="/assets/image/ico_pl.png" class="pl-image"></image>
-        <input placeholder="写评论..."bindinput="getContent"></input>
-      </view>
-      <view>
-        <button bindtap="submit">提交</button>
-      </view>
-    </view>
-  </view> -->
+  
 </view>

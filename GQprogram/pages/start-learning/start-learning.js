@@ -205,51 +205,73 @@ Page({
   mytouchend: function(e) {
     let moveY = this.data.endPoint[1] - this.data.startPoint[1];
     if (moveY < 0) {
-      this.setData({
-        // commentDisplay: true,
-        videoDisplay: false
-      })
-      // Get('/cp/comment/list?videoNo=' + this.data.videoNo).then(res => {
-      //   if (res.data.success) {
-      //     this.setData({
-      //       contents: res.data.data.contents
-      //     });
-      //   }else{
-      //     wx.showToast({
-      //       title: res.data.msg,
-      //     })
-      //   }
-      // })
-      Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
-        this.setData(res.data.data);
-        if (res.data.success) {
-          let qtype = res.data.data.qType,
-            qId = res.data.data.id,
-            isEndQuestion = res.data.data.isEndQuestion;
-          console.log(res.data)
-          if (qtype == '2') {
-            wx.redirectTo({
-              url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-            })
+      wx.showModal({
+        title: '是否开始练习',
+        success: (res) => {
+          if (res.confirm) {
+            Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+              this.setData(res.data.data);
+              if (res.data.success) {
+                let qtype = res.data.data.qType,
+                  qId = res.data.data.id,
+                  isEndQuestion = res.data.data.isEndQuestion;
+                console.log(res.data)
+                if (qtype == '2') {
+                  wx.redirectTo({
+                    url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+                  })
 
-          } else {
-            wx.redirectTo({
-              url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-            })
+                } else {
+                  wx.redirectTo({
+                    url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+                  })
 
+                }
+              } else {
+                wx.showToast({
+                  title: res.data.msg,
+                })
+              }
+
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
           }
-        } else {
-          wx.showToast({
-            title: res.data.msg,
-          })
         }
+      })
+    //   Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+    //     this.setData(res.data.data);
+    //     if (res.data.success) {
+    //       let qtype = res.data.data.qType,
+    //         qId = res.data.data.id,
+    //         isEndQuestion = res.data.data.isEndQuestion;
+    //       console.log(res.data)
+    //       if (qtype == '2') {
+    //         wx.redirectTo({
+    //           url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+    //         })
 
-      })
-    } else {
-      this.setData({
-        // commentDisplay: false,
-        videoDisplay: true
-      })
+    //       } else {
+    //         wx.redirectTo({
+    //           url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+    //         })
+
+    //       }
+    //     } else {
+    //       wx.showToast({
+    //         title: res.data.msg,
+    //       })
+    //     }
+
+    //   })
+    //   this.setData({
+    //     videoDisplay: false
+    //   })
+    // } else {
+    //   this.setData({
+    //     // commentDisplay: false,
+    //     videoDisplay: true
+    //   })
     }
     console.log(this.data)
   },
@@ -258,9 +280,6 @@ Page({
     this.setData({
       isLikeIt: !this.data.isLikeIt
     })
-  },
-  submit: function() {
-    Post("/cp/comment/saveContent?miniOpenId=" + this.data.miniOpenId + "&videoNo=" + this.data.videoNo + "&content=" + this.data.content).then()
   },
   //获取评论输入框内容
   getContent: function(e) {
