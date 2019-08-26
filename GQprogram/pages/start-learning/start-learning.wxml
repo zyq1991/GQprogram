@@ -7,15 +7,15 @@
   </view>
    <view class="input-comment">
     <view class="ipt" style='display:none' >
-      <image src="/assets/image/ico_pl.png" class="pl-image"></image>
+      <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_pl.png" class="pl-image"></image>
       <input  placeholder="写评论..." bindtap="toComment"></input>
     </view>
     <view bindtap="isMarkIt">
-      <image src="/assets/image/ico_dz_bor.png" class="dz-image" hidden="{{isMark}}"></image>
-      <image src="/assets/image/ico_dz_pre.png" class="dz-image" hidden="{{!isMark}}"></image>
+      <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" class="dz-image" hidden="{{isMark}}"></image>
+      <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_pre.png" class="dz-image" hidden="{{!isMark}}"></image>
     </view>
     <view class="msg-image" bindtap="comment">
-      <image src="/assets/image/ico_msg.png"></image>
+      <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_msg.png"></image>
     </view>
   </view>
   <!-- <view class="q-content">

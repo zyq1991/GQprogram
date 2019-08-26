@@ -4,7 +4,7 @@
     <text class="card-title">已掌握</text>
     <view class="card-content">
       <view class="content-item">
-        <image src="/assets/image/ico_hs.png"></image>
+        <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_hs.png"></image>
         <text>求解一般函数的梯度一般函数的梯度</text>
       </view>
       <view class="content-item" style='display:none'>
@@ -12,7 +12,7 @@
         <text>求解空间几何的梯度</text>
       </view>
       <view class="content-item">
-        <image src="/assets/image/ico_gl.png"></image>
+        <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_gl.png"></image>
         <text>求解一般概率与统计概率与统计一般的梯度</text>
       </view>
       <!-- <view class="content-item">
@@ -41,11 +41,11 @@
         <text>求解一般概率与统计概率与统计一般的梯度</text>
       </view> -->
       <view class="content-item" bindtap="startLearning">
-        <image src="/assets/image/ico_sxjm(1).png"></image>
+        <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_sxjm(1).png"></image>
         <text>求解数学建模的梯度</text>
       </view>
       <view class="content-item" bindtap="startLearning">
-        <image src="/assets/image/ico_yuzs(1).png"></image>
+        <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_yuzs(1).png"></image>
         <text>预备知识</text>
       </view>
     </view>
@@ -54,7 +54,7 @@
     <text class="card-title">将要学习</text>
     <view class="card-content">
       <view class="content-item" bindtap="startLearning">
-        <image src="/assets/image/ico_jyxx.png"></image>
+        <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_jyxx.png"></image>
         <text class="content-jyxx">求解一般函数的梯度一般函数的梯度</text>
       </view>
     </view>

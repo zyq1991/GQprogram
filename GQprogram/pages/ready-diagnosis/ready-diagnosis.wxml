@@ -1,11 +1,11 @@
 <!--pages/ready-diagnosis/ready-diagnosis.wxml-->
 <view class="container">
   <view class="bg">
-    <image src="/assets/image/ready-background.png" class="bg-image"></image>
-    <image src="/assets/image/banner.png" class="liner-image"></image>
-    <image src="/assets/image/blue-big.png" class="big-ball"></image>
-    <image src="/assets/image/earth.png" class="middle-ball"></image>
-    <image src="/assets/image/small-ball.png" class="small-ball"></image>
+    <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ready-background.png" class="bg-image"></image>
+    <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/banner.png" class="liner-image"></image>
+    <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/blue-big.png" class="big-ball"></image>
+    <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/earth.png" class="middle-ball"></image>
+    <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/small-ball.png" class="small-ball"></image>
   </view>
 
   <view class="intro">
