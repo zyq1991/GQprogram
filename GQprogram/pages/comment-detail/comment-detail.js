@@ -16,6 +16,10 @@ Page({
    */
   onLoad: function(options) {
     // let videoNo = options.videoNo;
+    this.setData({
+      miniOpenId: options.miniOpenId,
+      eId: options.eId
+    })
     let videoNo = 1;
     Get('/cp/comment/list?videoNo=' + videoNo).then(res => {
       if (res.data.success) {
@@ -79,6 +83,21 @@ Page({
   likeIt: function() {
     this.setData({
       isLikeIt: !this.data.isLikeIt
+    })
+  },
+  submit: function() {
+    Get('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
+      if (res.data.success) {
+        this.setData({
+          contents: res.data.data.contents
+        });
+      }
+    })
+  },
+  //获取评论输入框内容
+  getContent: function(e) {
+    this.setData({
+      content: e.detail.value
     })
   }
 })

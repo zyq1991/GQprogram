@@ -204,7 +204,7 @@ Page({
   },
   mytouchend: function(e) {
     let moveY = this.data.endPoint[1] - this.data.startPoint[1];
-    if (moveY < 0) {
+    if (this.data.startPoint[1]>0 && moveY < 0) {
       wx.showModal({
         title: '是否开始练习',
         success: (res) => {

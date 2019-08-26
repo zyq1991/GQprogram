@@ -28,11 +28,14 @@
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_pl.png" class="pl-image"></image>
       <input placeholder="写评论..."></input>
     </view>
-    <view>
+    <!-- <view>
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" class="dz-image"></image>
     </view>
     <view class="msg-image">
       <image src="/https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_msg.png"></image>
+    </view> -->
+    <view>
+    <button>提交</button>
     </view>
   </view>
 </view>
