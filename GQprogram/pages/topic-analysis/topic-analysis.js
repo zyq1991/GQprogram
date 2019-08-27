@@ -17,7 +17,7 @@ Page({
   onLoad: function(options) {
     let qId = options.qId;
     console.log(options)
-    Get("/cp/question/judgment?qId=" + qId).then(res => {
+    Get("/cp/question/analysis?qId=" + qId).then(res => {
       if (res.data.success) {
         this.setData(res.data.data);
       }
