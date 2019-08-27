@@ -5,11 +5,11 @@
   </view>
   <view class="analysis">
     <text>解析:</text>
-    <text>{{analysis}}</text>
+    <text wx:for-items="{{analysis}}" wx:key="{{index}}" wx:for-item="item" class="analysis-txt">{{item}}</text>
   </view>
   <view class="test-position">
     <text>考点定位:</text>
-    <text>12345678900</text>
+    <text >{{taskPoints}}</text>
   </view>
   <view class="select-btn">
     <button>没懂</button>

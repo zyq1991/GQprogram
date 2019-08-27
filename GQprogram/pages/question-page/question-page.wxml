@@ -10,7 +10,7 @@
       <view class='option-text'>{{item.key}}</view>  
         </view>
       <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">
-      <rich-text nodes="{{item.value}}" data-id="{{index}}"></rich-text>
+        <rich-text nodes="{{item.value}}" data-id="{{index}}"></rich-text>
       </view>
     </view>
   </view>

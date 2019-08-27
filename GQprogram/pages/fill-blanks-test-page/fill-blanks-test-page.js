@@ -13,6 +13,8 @@ Page({
     text: "假设有两个分类变量X和Y，它们的值域分别为{x1,x2}和{y1,y2}，其中2x2列联表为:",
     isShow: false,
     isChange:false,
+    isCorrect: false,
+    isWrong: false,
     result: '',
     tmpArr: [],
     layout: [
@@ -216,6 +218,9 @@ Page({
     Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
       if (res.data.success) {
         this.setData(res.data.data);
+        this.setData({
+          _result:res.data.data.key
+        })
         Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
       }
     })
@@ -311,10 +316,38 @@ Page({
   resultChange: function(e) {
     this.data.result = e.detail.value;
   },
-  lookAnalysis: function (e) {
-    var qId = e.target.dataset.qId;
-    wx.redirectTo({
-      url: "../topic-analysis/topic-analysis?qId=" + qId
+  //二轮做题阶段，弹出对错之后的隐藏
+  hideTap: function () {
+    this.setData({
+      isCorrect: false,
+      isWrong: false
     })
+  },
+  //查看题目解析
+  lookAnalysis: function (e) {
+    wx.redirectTo({
+      url: "../topic-analysis/topic-analysis?qId=" + this.data.id
+    })
+  },
+  submit: function () {
+    // let query = wx.createSelectorQuery();
+    // let queryNode = query.select("option");
+    // // queryNode.addClass("option-checked")
+    // console.log(queryNode)
+    if (this.data.result == this.data._result) {
+      this.setData({
+        isTrue: true,
+        isCorrect: true,
+        isWrong: false,
+        isChange: true
+      })
+    } else {
+      this.setData({
+        isTrue: false,
+        isCorrect: false,
+        isWrong: true,
+        isChange: true
+      })
+    }
   }
 })

@@ -1,7 +1,0 @@
-<!--pages/calculator.wxml-->
-<view class="calculator-row" wx:for-items="{{layout}}" wx:for-item="itemName" wx:key="unique">
-
-  <view class="calculator-key" wx:for-items="{{itemName}}" wx:for-item="keyInfo" wx:key="unique">
-    <button class="key-btn" bindtap="num" id="{{keyInfo.id}}">{{keyInfo.value}}</button>
-  </view>
-</view>
