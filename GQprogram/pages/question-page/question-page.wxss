@@ -87,7 +87,7 @@ page {
 .next-btn {
   width: 100%;
   position: absolute;
-  bottom: 20rpx;
+  bottom: 50rpx;
 }
 
 .btn {
