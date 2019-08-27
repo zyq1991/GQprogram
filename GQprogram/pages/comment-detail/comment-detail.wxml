@@ -3,7 +3,7 @@
   <view class="content">
     <view class="comment-detail" wx:for-items="{{contents}}" wx:key="{{index}}" wx:for-item="item">
       <view class="avatar">
-        <image src="{{item.igUrl}}"></image>
+        <image src="{{item.igUrl}}" binderror="imgError"></image>
       </view>
       <view class="detail">
         <view class="comment-top">

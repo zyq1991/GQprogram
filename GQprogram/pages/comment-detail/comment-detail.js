@@ -118,5 +118,8 @@ Page({
     this.setData({
       content: e.detail.value
     })
+  },
+  imgError:function(){
+    console.log('报错啦')
   }
 })
