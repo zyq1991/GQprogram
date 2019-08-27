@@ -1,5 +1,8 @@
 <!--pages/learning-summary/learning-summary.wxml-->
 <view class="container">
+<view class='imgbg'>
+<image src='../../assets/image/conclusion-bg.png'></image>
+</view>
   <view class="card">
     <text class="card-title">在过去的15分钟里，你通过学习已经基本掌握了一下知识点：</text>
     <view class="card-content">
