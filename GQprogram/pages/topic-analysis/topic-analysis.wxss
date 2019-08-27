@@ -10,6 +10,7 @@ page {
   height: 100%;
   padding: 40rpx 30rpx 0;
   position: relative;
+
 }
 
 .title {
@@ -37,8 +38,9 @@ page {
 }
 
 .select-btn {
-  position: absolute;
-  bottom: 20rpx;
+  position: fixed;
+  bottom: 40rpx;
+  left: 0rpx;
   display: flex;
   width: 100%;
   justify-content: space-between;

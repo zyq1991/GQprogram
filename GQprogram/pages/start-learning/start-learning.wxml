@@ -15,7 +15,7 @@
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_pre.png" class="dz-image" hidden="{{!isMark}}"></image>
     </view>
     <view class="msg-image" bindtap="comment">
-      <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_msg.png"></image>
+      <image src="../../assets/image/ico_msg.png"></image>
     </view>
   </view>
   
