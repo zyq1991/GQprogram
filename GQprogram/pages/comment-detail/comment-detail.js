@@ -115,7 +115,6 @@ Page({
   },
   //获取评论输入框内容
   getContent: function(e) {
-    console.log(e)
     this.setData({
       content: e.detail.value
     })
