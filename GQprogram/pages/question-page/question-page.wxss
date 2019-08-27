@@ -45,6 +45,9 @@ page {
   border-top-left-radius: 20rpx;
   border-bottom-left-radius: 20rpx;
   border: 2rpx solid #fff;
+  /* display:inline-block;
+  line-height:100rpx; */
+ position: relative;
 }
 
 .option-content {
@@ -56,10 +59,16 @@ page {
   border-bottom-right-radius: 20rpx;
   border: 2rpx solid #fff;
 }
+.option-text{
+  position: absolute;
+  top:30%;
+  left: 40%;
+}
 
 .option-checked {
   background: #5297ff;
   border: 2rpx solid #5297ff;
+  display: inline-block;
 }
 
 .option-content-checked {

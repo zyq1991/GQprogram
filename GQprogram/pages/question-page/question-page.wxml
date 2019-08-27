@@ -6,7 +6,9 @@
   </view>
   <view class="options">
     <view class="option-item" catchtap="checked" wx:for-items="{{options}}" wx:key="{{index}}" wx:for-item="item">
-      <view class="option {{nameId==index?option:''}}" data-id="{{index}}">{{item.key}}</view>
+      <view class="option {{nameId==index?option:''}}" data-id="{{index}}">
+      <view class='option-text'>{{item.key}}</view>  
+        </view>
       <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">
       <rich-text nodes="{{item.value}}" data-id="{{index}}"></rich-text>
       </view>
