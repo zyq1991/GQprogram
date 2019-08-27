@@ -81,23 +81,32 @@ Page({
 
   },
   //点赞
-  likeIt: function() {
-    this.setData({
-      isLikeIt: !this.data.isLikeIt
-    })
+  likeIt: function(e) {
+    let isSupportIt = !e.currentTarget.dataset.id, index = e.currentTarget.dataset.index;
+   
+    this.data.contents[index].isSupport = isSupportIt;
+    if (isSupportIt){
+      this.data.contents[index].supports++;
+    }else{
+      this.data.contents[index].supports--;
+    }
+    this.setData(this.data);
   },
   submit: function() {
-    console.log(this.data)
     Post('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
       console.log(res)
       if (res.data.success) {
+        wx.showToast({
+          title: '提交评论成功!',
+        })
         this.setData({
           contents: res.data.data.contents
         });
         Get('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId).then(res => {
           if (res.data.success) {
             this.setData({
-              contents: res.data.data.contents
+              contents: res.data.data.contents,
+              content:''
             });
           }
         })

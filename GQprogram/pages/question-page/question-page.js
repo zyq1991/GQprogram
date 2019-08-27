@@ -213,7 +213,8 @@ Page({
   },
   //查看题目解析
   lookAnalysis: function(e) {
-    wx.redirectTo({
+  
+    wx.navigateTo({
       url: "../topic-analysis/topic-analysis?qId=" + this.data.id
     })
   },

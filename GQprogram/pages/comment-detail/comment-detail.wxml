@@ -8,10 +8,10 @@
       <view class="detail">
         <view class="comment-top">
           <view class="name">{{item.userName}}</view>
-          <view class="dz" bindtap="likeIt">
-            <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" hidden="{{!isLikeIt}}"></image>
-            <image src="/https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_pre.png" hidden="{{isLikeIt}}"></image>
-            <text>{{count}}</text>
+          <view class="dz" bindtap="likeIt" data-id="{{item.isSupport}}" data-index="{{index}}">
+            <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" hidden="{{item.isSupport}}"></image>
+            <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_pre.png" hidden="{{!item.isSupport}}"></image>
+            <text>{{item.supports}}</text>
           </view>
         </view>
         <view class="comment">
@@ -26,7 +26,7 @@
   <view class="input-comment">
     <view class="ipt">
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_pl.png" class="pl-image"></image>
-      <input placeholder="写评论..." bindinput="getContent"></input>
+      <input placeholder="写评论..." bindinput="getContent" value="{{content}}"></input>
     </view>
     <!-- <view>
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" class="dz-image"></image>

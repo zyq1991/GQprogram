@@ -17,9 +17,9 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: (res) => {
-              let nickName = res.userInfo.nickName;
+              let nickName = res.userInfo.nickName, imgUrl = res.userInfo.avatarUrl;
               console.log(res.userInfo)
-              Get("/cp/upcpuser?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&nickName=" + nickName).then(res => {
+              Get("/cp/upcpuser?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&nickName=" + nickName+"&imgUrl="+imgUrl).then(res => {
                 if (res.data.data) {
                   //小程序开始，判断跳转到哪个页面
                   Get("/cp/learning/index?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
