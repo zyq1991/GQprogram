@@ -91,7 +91,7 @@ page {
 }
 
 .btn {
-  margin: 0 40rpx 80rpx 40rpx;
+  margin: 0 40rpx 20rpx 40rpx;
   border-radius: 50rpx;
   background: #5297ff;
   border: none;
@@ -148,18 +148,20 @@ page {
   height: 100%;
   width: 100%;
   position: absolute;
-  top: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.3);
 }
 
 .error-content {
   position: absolute;
   bottom: 0;
-  height: 30%;
+  height: 35%;
   width: 100%;
   background: #fff;
 }
-
+.analysis{
+margin-bottom:20rpx;
+}
 .analysis>text {
   display: block;
 }

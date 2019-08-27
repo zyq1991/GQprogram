@@ -95,7 +95,7 @@ Page({
   },
   comment: function() {
     wx.navigateTo({
-      url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo
+      url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo+'&miniOpenId='+this.data.miniOpenId
     })
   },
   viedoEnded() { //视频播放结束直接跳转做题

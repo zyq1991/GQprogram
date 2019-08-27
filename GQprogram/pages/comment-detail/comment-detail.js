@@ -1,6 +1,7 @@
 // pages/comment-detail/comment-detail.js
 import {
-  Get
+  Get,
+  Post
 } from '../../utils/request.js';
 Page({
 
@@ -15,20 +16,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // let videoNo = options.videoNo;
+    let videoNo = options.videoNo,
+      miniOpenId = options.miniOpenId
     this.setData({
-      miniOpenId: options.miniOpenId,
-      eId: options.eId
+      videoNo: videoNo,
+      miniOpenId: miniOpenId
     })
-    let videoNo = 1;
-    Get('/cp/comment/list?videoNo=' + videoNo).then(res => {
+    // let videoNo = 1;
+    Get('/cp/comment/list?videoNo=' + videoNo + '&miniOpenId=' + miniOpenId).then(res => {
       if (res.data.success) {
         this.setData({
           contents: res.data.data.contents
         });
       }
     })
-    console.log(this.data);
   },
 
   /**
@@ -86,16 +87,26 @@ Page({
     })
   },
   submit: function() {
-    Get('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
+    console.log(this.data)
+    Post('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
+      console.log(res)
       if (res.data.success) {
         this.setData({
           contents: res.data.data.contents
         });
+        Get('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId).then(res => {
+          if (res.data.success) {
+            this.setData({
+              contents: res.data.data.contents
+            });
+          }
+        })
       }
     })
   },
   //获取评论输入框内容
   getContent: function(e) {
+    console.log(e)
     this.setData({
       content: e.detail.value
     })
