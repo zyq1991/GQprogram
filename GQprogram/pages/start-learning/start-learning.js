@@ -29,6 +29,7 @@ Page({
     Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
       if (res.data.success) {
         this.setData(res.data.data)
+        console.log(res.data.data)
       } else {
         wx.showToast({
           title: res.data.msg,

@@ -18,6 +18,7 @@ Page({
           wx.getUserInfo({
             success: (res) => {
               let nickName = res.userInfo.nickName;
+              console.log(res.userInfo)
               Get("/cp/upcpuser?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&nickName=" + nickName).then(res => {
                 if (res.data.data) {
                   //小程序开始，判断跳转到哪个页面
