@@ -12,7 +12,6 @@ page {
   padding: 0;
   position: relative;
 }
-
 .options {
   padding: 30rpx;
 }

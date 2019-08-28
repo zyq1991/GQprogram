@@ -29,6 +29,7 @@
     </view>
   </view>
   <view class="to-rest">
-    <text>好好休息一下，下次再来吧</text>
+    <!-- <text>好好休息一下，下次再来吧</text> -->
+    <button bindtap="continue" class="con-btn">继续学习</button>
   </view>
 </view>

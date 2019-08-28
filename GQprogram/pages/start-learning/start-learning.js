@@ -85,7 +85,31 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+      this.setData(res.data.data);
+      if (res.data.success) {
+        let qtype = res.data.data.qType,
+          qId = res.data.data.id,
+          isEndQuestion = res.data.data.isEndQuestion;
+        console.log(res.data)
+        if (qtype == '2') {
+          wx.redirectTo({
+            url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+          })
 
+        } else {
+          wx.redirectTo({
+            url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+          })
+
+        }
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+        })
+      }
+
+    })
   },
 
   /**
@@ -206,40 +230,40 @@ Page({
   mytouchend: function(e) {
     let moveY = this.data.endPoint[1] - this.data.startPoint[1];
     if (this.data.startPoint[1]>0 && moveY < 0) {
-      wx.showModal({
-        title: '是否开始练习',
-        success: (res) => {
-          if (res.confirm) {
-            Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
-              this.setData(res.data.data);
-              if (res.data.success) {
-                let qtype = res.data.data.qType,
-                  qId = res.data.data.id,
-                  isEndQuestion = res.data.data.isEndQuestion;
-                console.log(res.data)
-                if (qtype == '2') {
-                  wx.redirectTo({
-                    url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-                  })
+      // wx.showModal({
+      //   title: '是否开始练习',
+      //   success: (res) => {
+      //     if (res.confirm) {
+      //       Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+      //         this.setData(res.data.data);
+      //         if (res.data.success) {
+      //           let qtype = res.data.data.qType,
+      //             qId = res.data.data.id,
+      //             isEndQuestion = res.data.data.isEndQuestion;
+      //           console.log(res.data)
+      //           if (qtype == '2') {
+      //             wx.redirectTo({
+      //               url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+      //             })
 
-                } else {
-                  wx.redirectTo({
-                    url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-                  })
+      //           } else {
+      //             wx.redirectTo({
+      //               url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+      //             })
 
-                }
-              } else {
-                wx.showToast({
-                  title: res.data.msg,
-                })
-              }
+      //           }
+      //         } else {
+      //           wx.showToast({
+      //             title: res.data.msg,
+      //           })
+      //         }
 
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
+      //       })
+      //     } else if (res.cancel) {
+      //       console.log('用户点击取消')
+      //     }
+      //   }
+      // })
     //   Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
     //     this.setData(res.data.data);
     //     if (res.data.success) {
