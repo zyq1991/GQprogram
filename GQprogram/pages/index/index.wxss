@@ -14,5 +14,6 @@ page {
 
 .get-btn {
   position: absolute;
-  bottom: 20rpx;
+  bottom: 60rpx;
+  box-shadow: 0 0 10rpx ;
 }
