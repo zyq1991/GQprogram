@@ -7,10 +7,11 @@ const app = getApp()
 
 Page({
   data: {
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
   },
   onLoad: function() {
+    
     // wx.getSetting({
     //   success: (res) => {
     //     if (res.authSetting['scope.userInfo']) {
@@ -59,11 +60,15 @@ Page({
   },
   bindGetUserInfo: (e) => {
     console.log(e)
-    let nickName = e.detail.userInfo.nickName;
-    Get("/cp/upcpuser?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&nickName=" + nickName).then(res => {
+    // this.setData({
+    //   miniOpenId: app.globalData.miniOpenId
+    // })
+    let nickName = e.detail.userInfo.nickName,
+      imgUrl = e.detail.userInfo.avatarUrl;
+    Get("/cp/upcpuser?miniOpenId=" + app.globalData.miniOpenId + "&nickName=" + nickName + "&imgUrl=").then(res => {
       if (res.data.data) {
         //小程序开始，判断跳转到哪个页面
-        Get("/cp/learning/index?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
+        Get("/cp/learning/index?miniOpenId=" + app.globalData.miniOpenId).then(res => {
           console.log(res)
           if (res.data.success) {
             let status = res.data.data.startLearning;
@@ -72,11 +77,11 @@ Page({
             // })
             if (status == 0) { //0表示开始页面
               wx.redirectTo({
-                url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+                url: "../ready-diagnosis/ready-diagnosis?miniOpenId=" + app.globalData.miniOpenId + "&eId=" + res.data.data.eId
               })
             } else { //1表示诊断结果页面
               wx.redirectTo({
-                url: "../diagnostic-result/diagnostic-result?miniOpenId=" + res.data.data.miniOpenId + "&eId=" + res.data.data.eId
+                url: "../diagnostic-result/diagnostic-result?miniOpenId=" + app.globalData.miniOpenId + "&eId=" + res.data.data.eId
               })
             }
           } else {

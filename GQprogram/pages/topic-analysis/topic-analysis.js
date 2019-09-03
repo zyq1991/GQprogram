@@ -71,5 +71,12 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+  isEndStudy:function(){
+    Get("/cp/question/analysis?qId=" + qId).then(res => {
+      if (res.data.success) {
+        this.setData(res.data.data);
+      }
+    })
   }
 })
