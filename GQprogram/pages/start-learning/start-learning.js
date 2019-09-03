@@ -13,7 +13,8 @@ Page({
     endPoint: [0, 0],
     commentDisplay: false,
     videoDisplay: true,
-    isLikeIt: false
+    isLikeIt: false,
+    isPlay:false
   },
 
   /**
@@ -134,12 +135,14 @@ Page({
   },
   //跳转到评论页面
   toComment: function() {
+    this.isPlay=true;
     wx.navigateTo({
       url: "../personal-comment/personal-comment?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&videoNo=" + this.data.videoNo
     })
   },
   //视频暂停状态弹框
   pause: function() {
+  if(!this.isPlay){
     wx.showModal({
       title: '是否开始练习',
       success: (res) => {
@@ -174,6 +177,7 @@ Page({
         }
       }
     })
+  }
 
   },
   // pushQuestion: function() { //开始做题
