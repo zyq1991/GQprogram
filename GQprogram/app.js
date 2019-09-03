@@ -55,6 +55,7 @@ App({
     // })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    miniOpenId: "o6Xut1aXVu2ihDFVl5TJO21li690"
   }
 })
