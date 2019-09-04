@@ -21,7 +21,8 @@ Page({
     
     let nickName = e.detail.userInfo.nickName,
       imgUrl = e.detail.userInfo.avatarUrl;
-    Get("/cp/upcpuser?miniOpenId=" + app.globalData.miniOpenId + "&nickName=" + nickName + "&imgUrl=").then(res => {
+      console.log(imgUrl)
+    Get("/cp/upcpuser?miniOpenId=" + app.globalData.miniOpenId + "&nickName=" + nickName + "&imgUrl="+imgUrl).then(res => {
       if (res.data.data) {
         //小程序开始，判断跳转到哪个页面
         Get("/cp/learning/index?miniOpenId=" + app.globalData.miniOpenId).then(res => {
