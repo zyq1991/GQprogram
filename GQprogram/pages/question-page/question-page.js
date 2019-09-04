@@ -213,9 +213,9 @@ Page({
   },
   //查看题目解析
   lookAnalysis: function(e) {
-  
+
     wx.navigateTo({
-      url: "../topic-analysis/topic-analysis?qId=" + this.data.id
+      url: "../topic-analysis/topic-analysis?qId=" + this.data.id + "&eId=" + this.data.eId
     })
   },
   submit: function() {

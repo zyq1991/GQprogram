@@ -9,11 +9,11 @@
   </view>
   <view class="test-position">
     <text>考点定位:</text>
-    <text >{{taskPoints}}</text>
+    <text>{{taskPoints}}</text>
   </view>
   <view class="select-btn">
-    <button>没懂</button>
-    <button>懂了</button>
+    <button data-isUnderstand="false" catchtap="isEndStudy">没懂</button>
+    <button data-isUnderstand="true" catchtap="isEndStudy">懂了</button>
   </view>
 
 </view>

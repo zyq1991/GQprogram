@@ -2,6 +2,7 @@
 import {
   Get
 } from '../../utils/request.js';
+const app = getApp();
 Page({
 
   /**
@@ -15,7 +16,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let qId = options.qId;
+    let qId = options.qId,
+      eId = options.eId;
+    this.setData({
+      qId: qId,
+      eId: eId
+    })
     console.log(options)
     Get("/cp/question/analysis?qId=" + qId).then(res => {
       if (res.data.success) {
@@ -72,10 +78,20 @@ Page({
   onShareAppMessage: function() {
 
   },
-  isEndStudy:function(){
-    Get("/cp/question/analysis?qId=" + qId).then(res => {
+  isEndStudy: function(e) {
+    var isUnderstand = e.target.dataset.isunderstand;
+    Get("/cp/question/endStudy?miniOpenId=" + app.globalData.miniOpenId + "&eId=" + this.data.eId + "&isUnderstand=" + isUnderstand).then(res => {
       if (res.data.success) {
-        this.setData(res.data.data);
+        if (res.data.data.end) {
+          wx.redirectTo({
+            url: "../learning-summary/learning-summary?miniOpenId=" + app.globalData.miniOpenId + "&eId=" + this.data.eId
+          })
+        } else {
+          wx.redirectTo({
+            url: "../diagnostic-result/diagnostic-result?miniOpenId=" + app.globalData.miniOpenId + "&eId=" + this.data.eId
+          })
+        }
+        // this.setData(res.data.data);
       }
     })
   }
