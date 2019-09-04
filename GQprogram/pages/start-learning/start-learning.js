@@ -135,6 +135,7 @@ Page({
   },
   //跳转到评论页面
   toComment: function() {
+    console.log('评论跳转')
     this.isPlay=true;
     wx.navigateTo({
       url: "../personal-comment/personal-comment?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&videoNo=" + this.data.videoNo

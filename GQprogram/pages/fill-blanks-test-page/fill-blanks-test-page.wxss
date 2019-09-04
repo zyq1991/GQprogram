@@ -11,11 +11,11 @@ page {
   height: 100%;
   padding: 0;
   position: relative;
-  display: initial
 }
 
 .con-top {
   height: 80%;
+  width: 100%
 }
 
 .question {
