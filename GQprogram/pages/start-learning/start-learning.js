@@ -1,6 +1,6 @@
 // start-learning.js
 import {
-  Get
+  Get,Post
 } from '../../utils/request.js';
 Page({
 
@@ -142,7 +142,7 @@ Page({
     this.setData(this.data);
   },
   submit: function () {
-    Get('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
+    Post('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
       console.log(res)
       if (res.data.success) {
         wx.showToast({
