@@ -14,7 +14,7 @@ Page({
     commentDisplay: false,
     videoDisplay: true,
     isLikeIt: false,
-    isPlay:false
+    isPlay: false
   },
 
   /**
@@ -23,11 +23,12 @@ Page({
   onLoad: function(options) {
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
+    let taskId = options.taskId;
     this.setData({
       miniOpenId: miniOpenId,
       eId: eId
     })
-    Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId).then(res => {
+    Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&taskId=" + taskId).then(res => {
       if (res.data.success) {
         this.setData(res.data.data)
         console.log(res.data.data)
@@ -121,7 +122,7 @@ Page({
   },
   comment: function() {
     wx.navigateTo({
-      url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo+'&miniOpenId='+this.data.miniOpenId
+      url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId
     })
   },
   viedoEnded() { //视频播放结束直接跳转做题
@@ -136,49 +137,49 @@ Page({
   //跳转到评论页面
   toComment: function() {
     console.log('评论跳转')
-    this.isPlay=true;
+    this.isPlay = true;
     wx.navigateTo({
       url: "../personal-comment/personal-comment?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&videoNo=" + this.data.videoNo
     })
   },
   //视频暂停状态弹框
   pause: function() {
-  if(!this.isPlay){
-    wx.showModal({
-      title: '是否开始练习',
-      success: (res) => {
-        if (res.confirm) {
-          Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
-            this.setData(res.data.data);
-            if (res.data.success) {
-              let qtype = res.data.data.qType,
-                qId = res.data.data.id,
-                isEndQuestion = res.data.data.isEndQuestion;
-              console.log(res.data)
-              if (qtype == '2') {
-                wx.redirectTo({
-                  url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-                })
+    if (!this.isPlay) {
+      wx.showModal({
+        title: '是否开始练习',
+        success: (res) => {
+          if (res.confirm) {
+            Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+              this.setData(res.data.data);
+              if (res.data.success) {
+                let qtype = res.data.data.qType,
+                  qId = res.data.data.id,
+                  isEndQuestion = res.data.data.isEndQuestion;
+                console.log(res.data)
+                if (qtype == '2') {
+                  wx.redirectTo({
+                    url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+                  })
 
+                } else {
+                  wx.redirectTo({
+                    url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+                  })
+
+                }
               } else {
-                wx.redirectTo({
-                  url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+                wx.showToast({
+                  title: res.data.msg,
                 })
-
               }
-            } else {
-              wx.showToast({
-                title: res.data.msg,
-              })
-            }
 
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
         }
-      }
-    })
-  }
+      })
+    }
 
   },
   // pushQuestion: function() { //开始做题
@@ -234,7 +235,7 @@ Page({
   },
   mytouchend: function(e) {
     let moveY = this.data.endPoint[1] - this.data.startPoint[1];
-    if (this.data.startPoint[1]>0 && moveY < 0) {
+    if (this.data.startPoint[1] > 0 && moveY < 0) {
       // wx.showModal({
       //   title: '是否开始练习',
       //   success: (res) => {
@@ -269,39 +270,39 @@ Page({
       //     }
       //   }
       // })
-    //   Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
-    //     this.setData(res.data.data);
-    //     if (res.data.success) {
-    //       let qtype = res.data.data.qType,
-    //         qId = res.data.data.id,
-    //         isEndQuestion = res.data.data.isEndQuestion;
-    //       console.log(res.data)
-    //       if (qtype == '2') {
-    //         wx.redirectTo({
-    //           url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-    //         })
+      //   Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+      //     this.setData(res.data.data);
+      //     if (res.data.success) {
+      //       let qtype = res.data.data.qType,
+      //         qId = res.data.data.id,
+      //         isEndQuestion = res.data.data.isEndQuestion;
+      //       console.log(res.data)
+      //       if (qtype == '2') {
+      //         wx.redirectTo({
+      //           url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+      //         })
 
-    //       } else {
-    //         wx.redirectTo({
-    //           url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-    //         })
+      //       } else {
+      //         wx.redirectTo({
+      //           url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+      //         })
 
-    //       }
-    //     } else {
-    //       wx.showToast({
-    //         title: res.data.msg,
-    //       })
-    //     }
+      //       }
+      //     } else {
+      //       wx.showToast({
+      //         title: res.data.msg,
+      //       })
+      //     }
 
-    //   })
-    //   this.setData({
-    //     videoDisplay: false
-    //   })
-    // } else {
-    //   this.setData({
-    //     // commentDisplay: false,
-    //     videoDisplay: true
-    //   })
+      //   })
+      //   this.setData({
+      //     videoDisplay: false
+      //   })
+      // } else {
+      //   this.setData({
+      //     // commentDisplay: false,
+      //     videoDisplay: true
+      //   })
     }
     console.log(this.data)
   },
