@@ -79,9 +79,18 @@ Page({
 
   },
   //开始学习按钮，跳转到视频页面，开始学习
-  startLearning: function() {
+  startLearning: function(e) {
+    let id;
+    if (e) {
+      id = e.currentTarget.dataset.id;
+
+    } else {
+      id = ''
+    }
+    console.log(id);
+
     wx.redirectTo({
-      url: '../start-learning/start-learning?miniOpenId='+this.data.miniOpenId+'&eId='+this.data.eId,
+      url: '../start-learning/start-learning?miniOpenId=' + this.data.miniOpenId + '&eId=' + this.data.eId + '&taskId=' + id,
     })
   }
 })
