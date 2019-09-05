@@ -20,20 +20,13 @@
         </view>
       </view>
     </view>
-
-
   </view>
   <view class="input-comment">
     <view class="ipt">
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_pl.png" class="pl-image"></image>
       <input placeholder="写评论..." bindinput="getContent" value="{{content}}"></input>
     </view>
-    <!-- <view>
-      <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" class="dz-image"></image>
-    </view>
-    <view class="msg-image">
-      <image src="/https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_msg.png"></image>
-    </view> -->
+   
     <view>
     <button bindtap="submit">提交</button>
     </view>

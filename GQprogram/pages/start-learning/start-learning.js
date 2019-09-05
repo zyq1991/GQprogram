@@ -14,7 +14,8 @@ Page({
     commentDisplay: false,
     videoDisplay: true,
     isLikeIt: false,
-    isPlay: false
+    isPlay: false,
+    isLikeIt: false
   },
 
   /**
@@ -24,7 +25,9 @@ Page({
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
     let taskId = options.taskId;
+    let videoNo = options.videoNo;
     this.setData({
+      videoNo: videoNo,
       miniOpenId: miniOpenId,
       eId: eId
     })
@@ -36,6 +39,14 @@ Page({
         wx.showToast({
           title: res.data.msg,
         })
+      }
+    })
+    // let videoNo = 1;
+    Get('/cp/comment/list?videoNo=' + videoNo + '&miniOpenId=' + miniOpenId).then(res => {
+      if (res.data.success) {
+        this.setData({
+          contents: res.data.data.contents
+        });
       }
     })
     // Get("/cp/video/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1").then(res => {
@@ -120,14 +131,57 @@ Page({
   onShareAppMessage: function() {
 
   },
-  comment: function() {
-    this.isPlay=true;
-    wx.navigateTo({
-      url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId
+  //点赞
+  likeIt: function (e) {
+    let isSupportIt = !e.currentTarget.dataset.id, index = e.currentTarget.dataset.index;
+
+    this.data.contents[index].isSupport = isSupportIt;
+    if (isSupportIt) {
+      this.data.contents[index].supports++;
+    } else {
+      this.data.contents[index].supports--;
+    }
+    this.setData(this.data);
+  },
+  submit: function () {
+    Get('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
+      console.log(res)
+      if (res.data.success) {
+        wx.showToast({
+          title: '提交评论成功!',
+        })
+        this.setData({
+          contents: res.data.data.contents
+        });
+        Get('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId).then(res => {
+          if (res.data.success) {
+            this.setData({
+              contents: res.data.data.contents,
+              content: ''
+            });
+          }
+        })
+      }
     })
   },
+  //获取评论输入框内容
+  getContent: function (e) {
+    this.setData({
+      content: e.detail.value
+    })
+  },
+  imgError: function () {
+    console.log('报错啦')
+  },
+  comment: function() {
+    this.isPlay=true;
+    console.log("评论接口")
+    // wx.navigateTo({
+    //   url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId
+    // })
+  },
   viedoEnded() { //视频播放结束直接跳转做题
-    this.pushQuestion();
+    // this.pushQuestion();
   },
   //判断是否点赞
   isMarkIt: function(e) {

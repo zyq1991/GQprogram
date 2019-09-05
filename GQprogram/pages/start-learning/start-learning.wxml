@@ -19,5 +19,39 @@
       <image src="../../assets/image/ico_msg.png"></image>
     </view>
   </view>
+  <!-- 评论弹窗 -->
+  <view class="comment_pop" >
+    <view class="content">
+    <view class="comment-detail" wx:for-items="{{contents}}" wx:key="{{index}}" wx:for-item="item">
+      <view class="avatar">
+        <image src="{{item.imgUrl}}" binderror="imgError"></image>
+      </view>
+      <view class="detail">
+        <view class="comment-top">
+          <view class="name">{{item.userName}}</view>
+          <view class="dz" bindtap="likeIt" data-id="{{item.isSupport}}" data-index="{{index}}">
+            <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" hidden="{{item.isSupport}}"></image>
+            <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_pre.png" hidden="{{!item.isSupport}}"></image>
+            <text>{{item.supports}}</text>
+          </view>
+        </view>
+        <view class="comment">
+          <text class="inner"></text>
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+   <view class="input-comment">
+    <view class="ipt">
+      <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_pl.png" class="pl-image"></image>
+      <input placeholder="写评论..." bindinput="getContent" value="{{content}}"></input>
+    </view>
+   
+    <view>
+    <button bindtap="submit">提交</button>
+    </view>
+  </view>
+  </view>
   
 </view>

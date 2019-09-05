@@ -102,7 +102,7 @@ Page({
         this.setData({
           contents: res.data.data.contents
         });
-        Get('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId).then(res => {
+        Post('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId).then(res => {
           if (res.data.success) {
             this.setData({
               contents: res.data.data.contents,
