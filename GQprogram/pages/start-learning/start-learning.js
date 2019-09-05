@@ -25,9 +25,7 @@ Page({
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
     let taskId = options.taskId;
-    let videoNo = options.videoNo;
     this.setData({
-      videoNo: videoNo,
       miniOpenId: miniOpenId,
       eId: eId
     })
