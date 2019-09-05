@@ -32,29 +32,19 @@ Page({
     Get("/cp/video/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&taskId=" + taskId).then(res => {
       if (res.data.success) {
         this.setData(res.data.data)
-        console.log(res.data.data)
+        Get('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + miniOpenId).then(res => {
+          if (res.data.success) {
+            this.setData({
+              contents: res.data.data.contents
+            });
+          }
+        })
       } else {
         wx.showToast({
           title: res.data.msg,
         })
       }
     })
-    // let videoNo = 1;
-    Get('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + miniOpenId).then(res => {
-      if (res.data.success) {
-        this.setData({
-          contents: res.data.data.contents
-        });
-      }
-    })
-    // Get("/cp/video/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1").then(res => {
-    //   if (res.data.success) {
-    //     this.setData(res.data.data);
-    //     Get("/cp/question/push?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690&eId=1&exerciseType=2").then(res=>{
-    //       console.log(res);
-    //     })
-    //   }
-    // })
   },
 
   /**
