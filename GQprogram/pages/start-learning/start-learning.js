@@ -121,6 +121,7 @@ Page({
 
   },
   comment: function() {
+    this.isPlay=true;
     wx.navigateTo({
       url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId
     })
@@ -136,14 +137,13 @@ Page({
   },
   //跳转到评论页面
   toComment: function() {
-    console.log('评论跳转')
-    this.isPlay = true;
     wx.navigateTo({
       url: "../personal-comment/personal-comment?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&videoNo=" + this.data.videoNo
     })
   },
   //视频暂停状态弹框
   pause: function() {
+    console.log('监听视频暂停')
     if (!this.isPlay) {
       wx.showModal({
         title: '是否开始练习',
@@ -223,6 +223,7 @@ Page({
   },
   //视频上滑操作
   mytouchstart: function(e) {
+   
     this.setData({
       startPoint: [e.touches[0].pageX, e.touches[0].pageY]
     })
@@ -234,6 +235,7 @@ Page({
     // if (endPoint[1] > startPoint[1]){}
   },
   mytouchend: function(e) {
+    console.log("视频滑动")
     let moveY = this.data.endPoint[1] - this.data.startPoint[1];
     if (this.data.startPoint[1] > 0 && moveY < 0) {
       // wx.showModal({

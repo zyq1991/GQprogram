@@ -14,6 +14,7 @@
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" class="dz-image" hidden="{{isMark}}"></image>
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_pre.png" class="dz-image" hidden="{{!isMark}}"></image>
     </view>
+    <!-- 评论按钮 -->
     <view class="msg-image" bindtap="comment">
       <image src="../../assets/image/ico_msg.png"></image>
     </view>
