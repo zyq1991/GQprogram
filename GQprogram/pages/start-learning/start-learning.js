@@ -40,7 +40,7 @@ Page({
       }
     })
     // let videoNo = 1;
-    Get('/cp/comment/list?videoNo=' + videoNo + '&miniOpenId=' + miniOpenId).then(res => {
+    Get('/cp/comment/list?videoNo=' + this.data.videoNo + '&miniOpenId=' + miniOpenId).then(res => {
       if (res.data.success) {
         this.setData({
           contents: res.data.data.contents
