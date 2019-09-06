@@ -22,6 +22,9 @@
   <!-- 评论弹窗 -->
   <view class="comment_pop" >
     <view class="content">
+    <view class="close-comment-pop" bindtap='closeCommtentPop'>
+     <text>X</text> 
+    </view>
     <view class="comment-detail" wx:for-items="{{contents}}" wx:key="{{index}}" wx:for-item="item">
       <view class="avatar">
         <image src="{{item.imgUrl}}" binderror="imgError"></image>

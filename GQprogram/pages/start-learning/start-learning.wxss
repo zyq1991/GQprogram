@@ -360,26 +360,35 @@ page {
 .comment_pop{
   position: absolute;
   width: 100%;
-  height: 60%;
+  height: 75%;
   bottom:0;
   left:0;
   background: #fff;
   z-index: 999999;
 
 }
+.close-comment-pop{
+    text-align: rigth;
+    font-size: 26rpx;
+    position: absolute;
+    left:95%;
+    top:10rpx;
+    z-index: 99999;
+  }
+
 .input-comment {
   width: 90%;
   height: 98rpx;
   line-height: 98rpx;
   position: absolute;
-  bottom: 0;
+  top:90%;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
 }
 .content{
   padding: 30rpx;
-  height: 60%;
+  height: 81%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
