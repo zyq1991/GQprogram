@@ -14,8 +14,8 @@ Page({
     commentDisplay: false,
     videoDisplay: true,
     isLikeIt: false,
-    isPlay: false,
-    isLikeIt: false
+    isLikeIt: false,
+    isCommentShow:false
   },
 
   /**
@@ -162,7 +162,9 @@ Page({
     console.log('报错啦')
   },
   comment: function() {
-    this.isPlay=true;
+    this.setData({
+      isCommentShow:true
+    })
     console.log("评论接口")
     // wx.navigateTo({
     //   url: '../comment-detail/comment-detail?videoNo=' + this.data.videoNo + '&miniOpenId=' + this.data.miniOpenId
@@ -186,7 +188,7 @@ Page({
   //视频暂停状态弹框
   pause: function() {
     console.log('监听视频暂停')
-    if (!this.isPlay) {
+    if (!this.isCommentShow) {
       wx.showModal({
         title: '是否开始练习',
         success: (res) => {
@@ -364,6 +366,10 @@ Page({
   },
   //关闭评论弹窗
   closeCommtentPop:function(){
+    this.setData({
+      isCommentShow:false
+    })
+
      console.log('关闭弹窗功能')
   }
 })

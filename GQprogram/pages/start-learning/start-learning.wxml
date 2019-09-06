@@ -5,7 +5,7 @@
       binderror="videoErrorCallback" bindended="viedoEnded" bindpause="pause"  play-btn-position='center' bindtouchstart="mytouchstart" bindtouchmove="mytouchmove" bindtouchend="mytouchend" ></video> -->
     <video src="{{video}}" page-gesture="true" class='video' autoplay='true' binderror="videoErrorCallback" bindended="viedoEnded" catchpause="pause" play-btn-position='center'></video>
   </view>
-   <view class="input-comment">
+   <view class="icon-comment">
     <view class="ipt" style='display:none' >
       <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_pl.png" class="pl-image"></image>
       <input  placeholder="写评论..." bindtap="toComment"></input>
@@ -20,7 +20,7 @@
     </view>
   </view>
   <!-- 评论弹窗 -->
-  <view class="comment_pop" >
+  <view class="comment_pop" wx:if="{{isCommentShow}}">
     <view class="content">
     <view class="close-comment-pop" bindtap='closeCommtentPop'>
      <text>X</text> 

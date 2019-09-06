@@ -242,7 +242,8 @@ page {
   margin-top: 20rpx;
 }
 
-.input-comment {
+.icon-comment {
+
   /* width: 90%; */
   /* height: 98rpx; */
   line-height: 98rpx;
