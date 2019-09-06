@@ -2,6 +2,7 @@
 import {
   Get
 } from '../../utils/request.js';
+const app = getApp()
 Page({
 
   /**
@@ -98,7 +99,7 @@ Page({
 
   start: function() {
     //开始诊断，首先先开始考试接口
-    Get("/cp/cpexam/start?miniOpenId=o6Xut1aXVu2ihDFVl5TJO21li690").then(res => {
+    Get("/cp/cpexam/start?miniOpenId=" + app.globalData.miniOpenId ).then(res => {
       if (res.data.success) {
         let miniOpenId = res.data.data.miniOpenId,
           eId = res.data.data.eId;

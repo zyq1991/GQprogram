@@ -1,17 +1,23 @@
 //app.js
+import {
+  Get, Post
+} from './utils/request.js';
 App({
   onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.setStorageSync('code', res.code);
         console.log(res)
+        Get("/cp/getOpenId?code=" + res.code).then(res=>{
+          this.globalData.miniOpenId = res.data;
+        })
         // 获取用户信息
         wx.getSetting({
           success: res => {
