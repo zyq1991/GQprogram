@@ -14,7 +14,8 @@ Page({
     commentDisplay: false,
     videoDisplay: true,
     isLikeIt: false,
-    isLikeIt: false,
+    isCommentLikeIt:false,
+
     isCommentShow:false
   },
 
@@ -120,7 +121,7 @@ Page({
 
   },
   //点赞
-  likeIt: function (e) {
+  commentLikeIt: function (e) {
     let isSupportIt = !e.currentTarget.dataset.id, index = e.currentTarget.dataset.index;
 
     this.data.contents[index].isSupport = isSupportIt;
@@ -352,8 +353,9 @@ Page({
     }
     console.log(this.data)
   },
-  //点赞操作
+  //评论页面点赞操作
   likeIt: function() {
+    console.log(this.data.isLikeIt,"点赞")
     this.setData({
       isLikeIt: !this.data.isLikeIt
     })

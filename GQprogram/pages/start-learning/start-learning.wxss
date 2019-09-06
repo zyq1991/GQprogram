@@ -386,6 +386,8 @@ page {
   z-index: 1000;
   display: flex;
   justify-content: space-between;
+  margin-left: 30rpx;
+  
 }
 .content{
   padding: 30rpx;
