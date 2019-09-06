@@ -6,11 +6,11 @@
   <view class="card">
     <text class="card-title">{{title}}</text>
     <view class="card-content">
-      <view class="content-item">
-        <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_hs.png"></image>
+      <view class="content-item"  wx:for-items="{{grasps}}" wx:key="{{index}}" wx:for-item="item">
+        <image src="{{item.imgUrl}}"></image>
         <text>求解一般函数的梯度一般函数的梯度</text>
       </view>
-      <view class="content-item">
+      <!-- <view class="content-item">
         <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_kjjh.png"></image>
         <text>求解空间几何的梯度</text>
       </view>
@@ -25,7 +25,7 @@
       <view class="content-item">
         <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_yuzs.png"></image>
         <text>预备知识</text>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="to-rest">

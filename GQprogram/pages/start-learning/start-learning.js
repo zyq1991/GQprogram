@@ -1,6 +1,7 @@
 // start-learning.js
 import {
-  Get,Post
+  Get,
+  Post
 } from '../../utils/request.js';
 Page({
 
@@ -15,8 +16,9 @@ Page({
     videoDisplay: true,
     isLikeIt: false,
     isCommentLikeIt:false,
-
-    isCommentShow:false
+    isCommentShow:false,
+    isLikeIt: false,
+    isCommentShow: false
   },
 
   /**
@@ -120,19 +122,23 @@ Page({
   onShareAppMessage: function() {
 
   },
-  //点赞
-  commentLikeIt: function (e) {
-    let isSupportIt = !e.currentTarget.dataset.id, index = e.currentTarget.dataset.index;
+  //评论内容点赞
+  commentLikeIt: function(e) {
+    let isSupportIt = !e.currentTarget.dataset.id,
+      index = e.currentTarget.dataset.index,
+      id = e.currentTarget.dataset.contentid;
 
     this.data.contents[index].isSupport = isSupportIt;
     if (isSupportIt) {
       this.data.contents[index].supports++;
+      Get("/cp/comment/pointSupport?id=" + id + "&miniOpenId=" + this.data.miniOpenId).then()
     } else {
       this.data.contents[index].supports--;
+      Get("/cp/comment/pointSupport?id=" + id + "&miniOpenId=" + this.data.miniOpenId).then()
     }
     this.setData(this.data);
   },
-  submit: function () {
+  submit: function() {
     Post('/cp/comment/saveContent?miniOpenId=' + this.data.miniOpenId + '&videoNo=' + this.data.videoNo + '&content=' + this.data.content).then(res => {
       console.log(res)
       if (res.data.success) {
@@ -154,17 +160,17 @@ Page({
     })
   },
   //获取评论输入框内容
-  getContent: function (e) {
+  getContent: function(e) {
     this.setData({
       content: e.detail.value
     })
   },
-  imgError: function () {
+  imgError: function() {
     console.log('报错啦')
   },
   comment: function() {
     this.setData({
-      isCommentShow:true
+      isCommentShow: true
     })
     console.log("评论接口")
     // wx.navigateTo({
@@ -174,11 +180,22 @@ Page({
   viedoEnded() { //视频播放结束直接跳转做题
     // this.pushQuestion();
   },
-  //判断是否点赞
+  //判断视频是否点赞
   isMarkIt: function(e) {
-    this.setData({
-      isMark: !this.data.isMark
-    })
+    if (!this.data.isMark) {
+      this.setData({
+        isMark: !this.data.isMark
+      })
+    }
+
+    Get("/cp/video/pointSupport?miniOpenId=" + this.data.miniOpenId + "&videoNo=" + this.data.videoNo).then(
+      res => {
+        wx: showToast({
+          title: res.data.videoSupport,
+          icon: 'success'
+        })
+      }
+    )
   },
   //跳转到评论页面
   toComment: function() {
@@ -268,7 +285,7 @@ Page({
   },
   //视频上滑操作
   mytouchstart: function(e) {
-   
+
     this.setData({
       startPoint: [e.touches[0].pageX, e.touches[0].pageY]
     })
@@ -353,25 +370,25 @@ Page({
     }
     console.log(this.data)
   },
-  //评论页面点赞操作
+  //点赞操作
   likeIt: function() {
-    console.log(this.data.isLikeIt,"点赞")
     this.setData({
       isLikeIt: !this.data.isLikeIt
     })
+    Get("/cp/video/pointSupport?miniOpenId="+this.data.miniOpenId+"&videoNo="+this.data.videoNo)
   },
   //获取评论输入框内容
-  getContent: function(e) {
-    this.setData({
-      content: e.detail.value
-    })
-  },
+  // getContent: function(e) {
+  //   this.setData({
+  //     content: e.detail.value
+  //   })
+  // },
   //关闭评论弹窗
-  closeCommtentPop:function(){
+  closeCommtentPop: function() {
     this.setData({
-      isCommentShow:false
+      isCommentShow: false
     })
 
-     console.log('关闭弹窗功能')
+    console.log('关闭弹窗功能')
   }
 })

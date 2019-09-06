@@ -17,8 +17,6 @@ Page({
 
   },
   bindGetUserInfo: (e) => {
-    console.log(e)
-    
     let nickName = e.detail.userInfo.nickName,
       imgUrl = e.detail.userInfo.avatarUrl;
       console.log(imgUrl)

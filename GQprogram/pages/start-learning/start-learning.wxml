@@ -32,7 +32,8 @@
       <view class="detail">
         <view class="comment-top">
           <view class="name">{{item.userName}}</view>
-          <view class="dz" bindtap="commentLikeIt" data-id="{{item.isSupport}}" data-index="{{index}}">
+
+          <view class="dz" bindtap="commentLikeIt" data-id="{{item.isSupport}}" data-index="{{index}}" data-contentId="{{item.id}}">
             <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_bor.png" hidden="{{item.isSupport}}"></image>
             <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_dz_pre.png" hidden="{{!item.isSupport}}"></image>
             <text>{{item.supports}}</text>
