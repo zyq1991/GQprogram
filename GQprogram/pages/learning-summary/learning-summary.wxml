@@ -1,12 +1,12 @@
 <!--pages/learning-summary/learning-summary.wxml-->
-<view class="container">
-<view class='imgbg'>
-<image src='../../assets/image/conclusion-bg.png'></image>
-</view>
+<view class="content">
+  <view class='imgbg'>
+    <image src='../../assets/image/conclusion-bg.png'></image>
+  </view>
   <view class="card">
     <text class="card-title">{{title}}</text>
     <view class="card-content">
-      <view class="content-item"  wx:for-items="{{grasps}}" wx:key="{{index}}" wx:for-item="item">
+      <view class="content-item" wx:for-items="{{grasps}}" wx:key="{{index}}" wx:for-item="item">
         <image src="{{item.imgUrl}}"></image>
         <text>求解一般函数的梯度一般函数的梯度</text>
       </view>

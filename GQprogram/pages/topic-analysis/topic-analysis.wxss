@@ -10,7 +10,6 @@ page {
   height: 100%;
   padding: 40rpx 30rpx 0;
   position: relative;
-
 }
 
 .title {
@@ -25,7 +24,7 @@ page {
   font-size: 32rpx;
 }
 
-.analysis .analysis-txt, .test-position text:first-child {
+.analysis text:first-child, .test-position text:first-child {
   color: #5297ff;
   margin-bottom: 14rpx;
   display: block;
@@ -35,6 +34,10 @@ page {
   color: #6c6f71;
   display: block;
   margin-bottom: 60rpx;
+}
+
+.analysis text {
+  color: #6c6f71;
 }
 
 .select-btn {
