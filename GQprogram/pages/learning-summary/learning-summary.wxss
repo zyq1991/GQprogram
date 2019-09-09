@@ -73,10 +73,11 @@ page {
 }
 
 .con-btn {
-  height: 60rpx;
+  height: 47rpx;
   border-radius: 40rpx;
-  line-height: 60rpx;
+  line-height: 47rpx;
   background: #fff;
-  font-size: 16rpx;
-  width:40%;
+  font-size: 20rpx;
+  width:23%;
+  color:#9596a6;
 }

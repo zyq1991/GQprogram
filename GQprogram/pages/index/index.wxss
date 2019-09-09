@@ -15,5 +15,7 @@ page {
 .get-btn {
   position: absolute;
   bottom: 60rpx;
-  box-shadow: 0 0 10rpx ;
+  box-shadow: 0 0 4rpx ;
+  background-color: #c9caf7;
+  color:#88889a
 }
