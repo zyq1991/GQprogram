@@ -230,6 +230,11 @@ Page({
         isWrong: false,
         isChange: true
       })
+      setTimeout(() => {
+        this.setData({
+          isCorrect: false
+        })
+      }, 1000)
     } else {
       this.setData({
         isTrue: false,
