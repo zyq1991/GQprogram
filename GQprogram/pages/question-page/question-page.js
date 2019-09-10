@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data: "",
+    stem:"",
     isCorrect: false,
     isWrong: false,
     nameId: "",
@@ -50,8 +50,21 @@ Page({
   onReady: function() {
     
       Get("/cp/question/getQuesById?id=4").then(res => {
-        this.setData(res.data.data);
-      })
+        let stem=res.data.data.stem;
+        stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block');
+        stem=stem.replace(/\<p/gi ,'<p style="height:50rpx;display:flex;"')
+        console.log(stem)
+        this.setData({
+          data:res.data.data,
+          stem:stem
+          });
+      })   
+      // this.setData({
+      //   stem:"所给集合是相同集合的序号是 ____.      <br>      <br>      1. <img src="http://latex.codecogs.com/svg.latex?M=\{x \mid y=x+1, y\in\mathbb{R}\}, N =\{y\mid y=x+1, x \in \mathbb{R}\}" border="0">;      <br>      2. <img src="http://latex.codecogs.com/svg.latex?M=\{x \mid x^2-12x+36=0\}, N = \{6\}" border="0">;      <br>      3. <img src="http://latex.codecogs.com/svg.latex?M=\{x \mid x^2-4x-12=0\}, N = \{y \mid y^2-4y-12=0\}" border="0">;      <br>      4. <img src="http://latex.codecogs.com/svg.latex?M=\{ (x,y) \mid y=x^2+4 \}, N = \{y \mid y=x^2+4, x \in \mathbb{R}\}" border="0">。"
+
+      // })
+    
+
     
     
   },

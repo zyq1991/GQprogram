@@ -2,7 +2,7 @@
 <view class="content" catchtap="hideTap">
   <view class="question">
     <!-- <text innerHtml="{{stem}}"></text> -->
-    <rich-text nodes="{{stem}}"></rich-text>
+    <rich-text nodes="{{stem}}" class="rich_text"></rich-text>
   </view>
   <view class="options">
     <view class="option-item" catchtap="checked" wx:for-items="{{options}}" wx:key="{{index}}" wx:for-item="item">

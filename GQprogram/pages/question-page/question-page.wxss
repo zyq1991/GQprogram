@@ -19,6 +19,12 @@ page {
 .question {
   margin: 30rpx;
   padding: 0;
+  height: 100%;
+  overflow-x: auto;
+}
+.rich_text{
+  /* width: 100%; */
+  height: 100%;
 }
 
 .question text {
