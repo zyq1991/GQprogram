@@ -31,7 +31,8 @@ page {
 
 .next-btn {
   width: 100%;
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   bottom: 20rpx;
 }
 
