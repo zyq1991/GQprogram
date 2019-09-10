@@ -15,7 +15,7 @@ page {
 
 .con-top {
   height: 80%;
-  width: 100%
+  width: 100%;
 }
 
 .question {
@@ -94,4 +94,15 @@ page {
   background: #fff;
   width: 100%;
   border: 2rpx solid #333;
+}
+
+.ceshi {
+  display: block;
+  width: 80%;
+  height: 100%;
+  border: 1rpx solid #5297ff;
+  border-radius: 20rpx;
+  padding:10rpx;
+  margin: 0 auto;
+  background: #fff;
 }

@@ -12,7 +12,7 @@ Page({
   data: {
     text: "假设有两个分类变量X和Y，它们的值域分别为{x1,x2}和{y1,y2}，其中2x2列联表为:",
     isShow: false,
-    isChange:false,
+    isChange: false,
     isCorrect: false,
     isWrong: false,
     result: '',
@@ -206,26 +206,37 @@ Page({
       ]
     ],
   },
-  onLoad: function(options) {
-    let miniOpenId = options.miniOpenId;
-    let eId = options.eId;
-    let exerciseType = options.exerciseType;
-    this.setData({
-      miniOpenId: miniOpenId,
-      eId: eId,
-      exerciseType: exerciseType
-    })
-    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
-      if (res.data.success) {
-        this.setData(res.data.data);
-        this.setData({
-          _result:res.data.data.key
-        })
-        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
-      }
+  // onLoad: function(options) {
+  //   let miniOpenId = options.miniOpenId;
+  //   let eId = options.eId;
+  //   let exerciseType = options.exerciseType;
+  //   this.setData({
+  //     miniOpenId: miniOpenId,
+  //     eId: eId,
+  //     exerciseType: exerciseType
+  //   })
+  //   Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
+  //     if (res.data.success) {
+  //       this.setData(res.data.data);
+  //       this.setData({
+  //         _result:res.data.data.key
+  //       })
+  //       Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
+  //     }
+  //   })
+  // },
+  onReady: function() {
+
+    Get("/cp/question/getQuesById?id=4").then(res => {
+      let stem = res.data.data.stem;
+      stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
+      stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')
+      this.setData({
+        data: res.data.data,
+        stem: stem
+      });
     })
   },
-
   next: function() {
     //判断是否是最后一题
     if (this.data.isEndQuestion) { //如果是最后一题就结束本题，不再推题
@@ -314,22 +325,23 @@ Page({
     })
   },
   resultChange: function(e) {
+
     this.data.result = e.detail.value;
   },
   //二轮做题阶段，弹出对错之后的隐藏
-  hideTap: function () {
+  hideTap: function() {
     this.setData({
       isCorrect: false,
       isWrong: false
     })
   },
   //查看题目解析
-  lookAnalysis: function (e) {
+  lookAnalysis: function(e) {
     wx.redirectTo({
       url: "../topic-analysis/topic-analysis?qId=" + this.data.id
     })
   },
-  submit: function () {
+  submit: function() {
     // let query = wx.createSelectorQuery();
     // let queryNode = query.select("option");
     // // queryNode.addClass("option-checked")
@@ -349,5 +361,12 @@ Page({
         isChange: true
       })
     }
+  },
+  changeText: function(e) {
+    console.log(e);
+    var that = this;
+    that.setData({
+      isShow: true,
+    });
   }
 })
