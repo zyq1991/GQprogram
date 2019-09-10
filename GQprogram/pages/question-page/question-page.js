@@ -49,7 +49,6 @@ Page({
    */
   onReady: function() {
     
-<<<<<<< HEAD
       Get("/cp/question/getQuesById?id=1").then(res => {
         // let stem=res.data.data.stem;
         // stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
@@ -57,19 +56,8 @@ Page({
         console.log(this.data)
         this.setData(
           res.data.data
-          );
-=======
-      Get("/cp/question/getQuesById?id=2").then(res => {
-        let stem=res.data.data.stem;
-        stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
-        stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')
-        console.log(stem)
-        this.setData({
-          data:res.data.data,
-          stem:stem
-          });
->>>>>>> 798301e552d2f1dcd3240ad41932edf844888b10
-      })   
+          );   
+      })
   },
 
   /**
