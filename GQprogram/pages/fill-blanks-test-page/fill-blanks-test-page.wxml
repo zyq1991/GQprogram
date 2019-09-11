@@ -22,9 +22,9 @@
     </view>
 
 
-    <view class="next-btn">
+    <!-- <view class="next-btn">
       <button class="btn" bindtap="next">下一题</button>
-    </view>
+    </view> -->
     <block wx:if="{{exerciseType==1}}">
       <view class="next-btn">
         <button class="btn" catchtap="next">下一题</button>

@@ -1,18 +1,15 @@
 {
   "pages": [
-    
-    "pages/fill-blanks-test-page/fill-blanks-test-page",
     "pages/index/index",
     "pages/ready-diagnosis/ready-diagnosis",
     "pages/question-page/question-page",
-    
+    "pages/fill-blanks-test-page/fill-blanks-test-page",
     "pages/diagnostic-result/diagnostic-result",
     "pages/topic-analysis/topic-analysis",
     "pages/learning-summary/learning-summary",
     "pages/comment-detail/comment-detail",
     "pages/start-learning/start-learning",
     "pages/personal-comment/personal-comment"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

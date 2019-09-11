@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    stem:"",
+    stem: "",
     isCorrect: false,
     isWrong: false,
     nameId: "",
@@ -23,41 +23,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // let miniOpenId = options.miniOpenId,
-    //   eId = options.eId,
-    //   exerciseType = options.exerciseType,
-    //   isEndQuestion = options.isEndQuestion;
-    // this.setData({
-    //   miniOpenId: miniOpenId,
-    //   eId: eId,
-    //   exerciseType: exerciseType,
-    //   isEndQuestion: isEndQuestion
-    // })
-    // Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
-    //   if (res.data.success) {
-    //     this.setData(res.data.data);
-    //     this.setData({
-    //       _result: res.data.data.key
-    //     })
-    //     Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
-    //   }
-    // })
+    let miniOpenId = options.miniOpenId,
+      eId = options.eId,
+      exerciseType = options.exerciseType,
+      isEndQuestion = options.isEndQuestion;
+    this.setData({
+      miniOpenId: miniOpenId,
+      eId: eId,
+      exerciseType: exerciseType,
+      isEndQuestion: isEndQuestion
+    })
+    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
+      if (res.data.success) {
+        this.setData(res.data.data);
+        this.setData({
+          _result: res.data.data.key
+        })
+        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
-      Get("/cp/question/getQuesById?id=1").then(res => {
-        // let stem=res.data.data.stem;
-        // stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
-        // stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')
-        console.log(this.data)
-        this.setData(
-          res.data.data
-          );   
-      })
+// 测试，修改样式
+    // Get("/cp/question/getQuesById?id=1").then(res => {
+    //   // let stem=res.data.data.stem;
+    //   // stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
+    //   // stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')
+    //   console.log(this.data)
+    //   this.setData(
+    //     res.data.data
+    //   );
+    // })
   },
 
   /**
@@ -106,15 +106,18 @@ Page({
     //根据exerciseType值的不同，判断是否显示对错
     //if (this.data.exerciseType == 1) { //exerciseType=1表示考试阶段，不直接给出对错判断
 
-    if (this.data.isTrue) {
-      e.target.dataset.option = 'option-checked';
-      e.target.dataset.optionContent = 'option-content-checked';
+    // if (this.data.isTrue) {
+    // e.target.dataset.option = 'option-checked';
+    // e.target.dataset.optionContent = 'option-content-checked';
+    this.setData({
+      option: 'option-checked',
+      optionContent: 'option-content-checked'
+    })
+    // } else {
+    //   e.target.dataset.option = 'option-wrong';
+    //   e.target.dataset.optionContent = 'option-content-wrong';
 
-    } else {
-      e.target.dataset.option = 'option-wrong';
-      e.target.dataset.optionContent = 'option-content-wrong';
-
-    }
+    // }
     // } else {
     //   if (this.data.result == this.data.options[id].key) {
     //     e.target.dataset.option = 'option-checked';
@@ -240,7 +243,9 @@ Page({
         isTrue: false,
         isCorrect: false,
         isWrong: true,
-        isChange: true
+        isChange: true,
+        option: 'option-wrong',
+        optionContent: 'option-content-wrong'
       })
     }
   }

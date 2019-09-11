@@ -206,37 +206,37 @@ Page({
       ]
     ],
   },
-  // onLoad: function(options) {
-  //   let miniOpenId = options.miniOpenId;
-  //   let eId = options.eId;
-  //   let exerciseType = options.exerciseType;
-  //   this.setData({
-  //     miniOpenId: miniOpenId,
-  //     eId: eId,
-  //     exerciseType: exerciseType
-  //   })
-  //   Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
-  //     if (res.data.success) {
-  //       this.setData(res.data.data);
-  //       this.setData({
-  //         _result:res.data.data.key
-  //       })
-  //       Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
-  //     }
-  //   })
-  // },
-  onReady: function() {
-
-    Get("/cp/question/getQuesById?id=4").then(res => {
-      let stem = res.data.data.stem;
-      stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
-      stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')
-      this.setData({
-        data: res.data.data,
-        stem: stem
-      });
+  onLoad: function(options) {
+    let miniOpenId = options.miniOpenId;
+    let eId = options.eId;
+    let exerciseType = options.exerciseType;
+    this.setData({
+      miniOpenId: miniOpenId,
+      eId: eId,
+      exerciseType: exerciseType
+    })
+    Get("/cp/question/push?miniOpenId=" + miniOpenId + "&eId=" + eId + "&exerciseType=" + exerciseType).then(res => {
+      if (res.data.success) {
+        this.setData(res.data.data);
+        this.setData({
+          _result: res.data.data.key
+        })
+        Get("/cp/startansque?miniOpenId=" + miniOpenId + "&eId=" + eId + "&qId=" + res.data.data.id + "&exerciseType=" + exerciseType).then(res => {})
+      }
     })
   },
+  // onReady: function() {
+  // 测试，修改样式
+  //   Get("/cp/question/getQuesById?id=4").then(res => {
+  //     let stem = res.data.data.stem;
+  //     stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
+  //     stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')
+  //     this.setData({
+  //       data: res.data.data,
+  //       stem: stem
+  //     });
+  //   })
+  // },
   next: function() {
     //判断是否是最后一题
     if (this.data.isEndQuestion) { //如果是最后一题就结束本题，不再推题
@@ -368,7 +368,7 @@ Page({
       isShow: true,
     });
   },
-  inputFocus:function(){
+  inputFocus: function() {
     wx.hideKeyboard({
       complete: res => {
         console.log('hideKeyboard res', res)
