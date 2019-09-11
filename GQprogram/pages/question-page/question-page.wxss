@@ -63,7 +63,10 @@ page {
   border-top-right-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
   border: 2rpx solid #fff;
+  /* display: flex; */
+  padding:20rpx 0; 
 }
+
 .option-text{
   position: absolute;
   top:30%;

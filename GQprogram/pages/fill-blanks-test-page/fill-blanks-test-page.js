@@ -206,6 +206,7 @@ Page({
       ]
     ],
   },
+
   onLoad: function(options) {
     let miniOpenId = options.miniOpenId;
     let eId = options.eId;
@@ -225,6 +226,8 @@ Page({
       }
     })
   },
+
+
   // onReady: function() {
   // 测试，修改样式
   //   Get("/cp/question/getQuesById?id=4").then(res => {
