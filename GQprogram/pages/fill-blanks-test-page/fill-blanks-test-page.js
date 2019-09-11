@@ -325,7 +325,6 @@ Page({
     })
   },
   resultChange: function(e) {
-
     this.data.result = e.detail.value;
   },
   //二轮做题阶段，弹出对错之后的隐藏
@@ -368,5 +367,12 @@ Page({
     that.setData({
       isShow: true,
     });
+  },
+  inputFocus:function(){
+    wx.hideKeyboard({
+      complete: res => {
+        console.log('hideKeyboard res', res)
+      }
+    })
   }
 })

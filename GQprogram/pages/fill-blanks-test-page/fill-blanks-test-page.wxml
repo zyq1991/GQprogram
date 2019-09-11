@@ -7,8 +7,8 @@
     </view>
     <view class="content">
       <!-- <input selection-start="10" selection-end="10" bindtap="calcular" value="{{result}}"/> -->
-      <!-- <textarea selection-start="10" selection-end="10" bindtap="calcular" readonly="true" focus="{{result}}" value="{{result}}" bindinput="resultChange" bindfocus="inputFocus"></textarea> -->
-      <text class="ceshi" bindtap="changeText" data-result="{{result}}">{{result}}</text>
+      <textarea selection-start="10" selection-end="10" bindtap="calcular" readonly="true" focus="{{result}}" value="{{result}}" bindinput="resultChange" bindfocus="inputFocus"></textarea>
+      <!-- <text class="ceshi" bindtap="changeText" data-result="{{result}}">{{result}}</text> -->
     </view>
     <!-- <calculator></calculator> -->
     <view wx:if="{{isShow}}">
