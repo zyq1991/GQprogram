@@ -205,7 +205,7 @@ Page({
   },
   //视频暂停状态弹框
   pause: function() {
-    console.log('监听视频暂停')
+    console.log('监听视频暂停', this.isCommentShow)
     if (!this.isCommentShow) {
       wx.showModal({
         title: '是否开始练习',
