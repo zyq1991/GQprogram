@@ -211,8 +211,7 @@ Page({
   //二轮做题阶段，弹出对错之后的隐藏
   hideTap: function() {
     this.setData({
-      isCorrect: false,
-      isWrong: false
+      isCorrect: false
     })
   },
   //查看题目解析

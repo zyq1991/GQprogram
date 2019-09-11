@@ -7,8 +7,8 @@
   <view class="options">
     <view class="option-item" catchtap="checked" wx:for-items="{{options}}" wx:key="{{index}}" wx:for-item="item">
       <view class="option {{nameId==index?option:''}}" data-id="{{index}}">
-      <view class='option-text'>{{item.key}}</view>  
-        </view>
+        <view class='option-text'>{{item.key}}</view>
+      </view>
       <view class="option-content {{nameId==index?optionContent:''}}" data-id="{{index}}">
         <rich-text nodes="{{item.value}}" data-id="{{index}}" class="option-content-img"></rich-text>
       </view>
@@ -28,7 +28,7 @@
   <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_hdzq.png" class="correct-ico" wx:if="{{isCorrect}}"></image>
 
 </view>
-<view class="error-view" wx:if="{{isWrong}}" catchtap="hideTap">
+<!-- <view class="error-view" wx:if="{{isWrong}}" catchtap="hideTap">
   <view class="error-content">
     <view class="analysis">
       <text>回答错误</text>
@@ -42,6 +42,12 @@
     <view class="next-btn">
       <button class="btn" catchtap="next">下一题</button>
     </view>
+  </view>
+
+</view> -->
+<view class="error-view" wx:if="{{isWrong}}" catchtap="hideTap">
+  <view class="error-content" bindtap="lookAnalysis" data-qId="{{qId}}">
+    <text>查看解析</text>
   </view>
 
 </view>
