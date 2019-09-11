@@ -103,7 +103,41 @@ page {
   height: 100%;
   border: 1rpx solid #5297ff;
   border-radius: 20rpx;
-  padding:10rpx;
+  padding: 10rpx;
   margin: 0 auto;
   background: #fff;
+}
+
+.correct-ico {
+  width: 288rpx;
+  height: 288rpx;
+  position: absolute;
+  z-index: 1000;
+  top: 30%;
+  left: 30%;
+}
+
+.error-view {
+  height: 18%;
+  width: 50rpx;
+  border-radius: 10rpx;
+  position: absolute;
+  bottom: 15%;
+  right: 0;
+  /* background: rgba(0, 0, 0, 0.3); */
+}
+
+.error-content {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  border-radius: 10rpx;
+  background: rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.error-content text {
+  font-size: 32rpx;
 }

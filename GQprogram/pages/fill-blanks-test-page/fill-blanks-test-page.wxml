@@ -41,7 +41,7 @@
   </view>
   <image src="https://bianshixue.oss-cn-zhangjiakou.aliyuncs.com/image/ico_hdzq.png" class="correct-ico" wx:if="{{isCorrect}}"></image>
 </view>
-<view class="error-view" wx:if="{{isWrong}}" catchtap="hideTap">
+<!-- <view class="error-view" wx:if="{{isWrong}}" catchtap="hideTap">
   <view class="error-content">
     <view class="analysis">
       <text>回答错误</text>
@@ -56,4 +56,10 @@
       <button class="btn" catchtap="next">下一题</button>
     </view>
   </view>
+</view> -->
+<view class="error-view" wx:if="{{isWrong}}" catchtap="hideTap">
+  <view class="error-content" bindtap="lookAnalysis" data-qId="{{qId}}">
+    <text>查看解析</text>
+  </view>
+
 </view>

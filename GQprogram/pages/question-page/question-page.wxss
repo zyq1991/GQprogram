@@ -156,11 +156,11 @@ page {
 
 .error-view {
   height: 18%;
-  width: 8%;
+  width: 50rpx;
+  border-radius: 10rpx;
   position: absolute;
   bottom: 15%;
   right: 0;
-  /* background: rgba(0, 0, 0, 0.3); */
 }
 
 .error-content {
@@ -169,8 +169,13 @@ page {
   height: 100%;
   width: 100%;
   right: 0;
-  background: #fff;
+  border-radius: 10rpx;
+  background: rgba(255, 255, 255, 0.1);
   text-align: center;
+}
+
+.error-content text {
+  font-size: 32rpx;
 }
 
 .analysis {
