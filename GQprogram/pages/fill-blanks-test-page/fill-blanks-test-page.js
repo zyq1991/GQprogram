@@ -227,7 +227,7 @@ Page({
   // },
   onReady: function() {
 
-    Get("/cp/question/getQuesById?id=4").then(res => {
+    Get("/cp/question/getQuesById?id=1").then(res => {
       let stem = res.data.data.stem;
       stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
       stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')

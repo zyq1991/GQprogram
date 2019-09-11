@@ -50,10 +50,16 @@ Page({
   onReady: function() {
     
       Get("/cp/question/getQuesById?id=1").then(res => {
-        // let stem=res.data.data.stem;
+        let options=res.data.data.options;
+        console.log(options)
+        // if(options!==null){
+        //   options.forEach((item,index)=>{
+        //     item.value = item.value.replace(/\<img/gi, '<img style="padding:20rpx 0;"');
+        //   })
+        // }
         // stem = stem.replace(/\<img/gi, '<img style="height:50rpx";display:inline-block;');
         // stem = stem.replace(/\<p/gi, '<p style="height:50rpx;display:flex;"')
-        console.log(this.data)
+        
         this.setData(
           res.data.data
           );   
