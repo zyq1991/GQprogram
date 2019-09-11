@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/question-page/question-page",
+    
     "pages/fill-blanks-test-page/fill-blanks-test-page",
     "pages/index/index",
     "pages/ready-diagnosis/ready-diagnosis",
-    
+    "pages/question-page/question-page",
     
     "pages/diagnostic-result/diagnostic-result",
     "pages/topic-analysis/topic-analysis",
