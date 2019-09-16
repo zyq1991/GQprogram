@@ -3,6 +3,7 @@ import {
   Get,
   Post
 } from '../../utils/request.js';
+const app = getApp()
 Page({
 
   /**
@@ -88,33 +89,33 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  // onReachBottom: function() {
-  //   Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
-  //     this.setData(res.data.data);
-  //     if (res.data.success) {
-  //       let qtype = res.data.data.qType,
-  //         qId = res.data.data.id,
-  //         isEndQuestion = res.data.data.isEndQuestion;
-  //       console.log(res.data)
-  //       if (qtype == '2') {
-  //         wx.redirectTo({
-  //           url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-  //         })
+  onReachBottom: function() {
+    Get("/cp/question/push?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&exerciseType=2").then(res => {
+      this.setData(res.data.data);
+      if (res.data.success) {
+        let qtype = res.data.data.qType,
+          qId = res.data.data.id,
+          isEndQuestion = res.data.data.isEndQuestion;
+        console.log(res.data)
+        if (qtype == '2') {
+          wx.redirectTo({
+            url: "../question-page/question-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+          })
 
-  //       } else {
-  //         wx.redirectTo({
-  //           url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
-  //         })
+        } else {
+          wx.redirectTo({
+            url: "../fill-blanks-test-page/fill-blanks-test-page?miniOpenId=" + this.data.miniOpenId + "&eId=" + this.data.eId + "&qId=" + qId + "&exerciseType=2" + "&isEndQuestion=" + isEndQuestion
+          })
 
-  //       }
-  //     } else {
-  //       wx.showToast({
-  //         title: res.data.msg,
-  //       })
-  //     }
+        }
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+        })
+      }
 
-  //   })
-  // },
+    })
+  },
 
   /**
    * 用户点击右上角分享
@@ -206,7 +207,7 @@ Page({
   //视频暂停状态弹框
   pause: function() {
     console.log('监听视频暂停', this.isCommentShow)
-    if (!this.isCommentShow) {
+    if (!this.isCommentShow || !app.globalData.isPull) {
       wx.showModal({
         title: '是否开始练习',
         success: (res) => {

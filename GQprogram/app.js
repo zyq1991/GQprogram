@@ -63,6 +63,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    miniOpenId: "o6Xut1aXVu2ihDFVl5TJO21li690"
+    miniOpenId: "o6Xut1aXVu2ihDFVl5TJO21li690",
+    isPull:false
   }
 })
